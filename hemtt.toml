@@ -1,0 +1,13 @@
+name = "MEOW"
+prefix = "meow"
+author = "Kotovskiy34"
+files = [
+    "*.dll",
+    "*.so",
+    "mod.cpp",
+    "README.md",
+    "AUTHORS.txt",
+    "LICENSE",
+    "*.paa",
+    "meta.cpp"
+]
