@@ -1,1 +1,3 @@
-#define QUOTE(x) "x"
+#include "\z\meow\addons\main\script_mod.hpp"
+
+#define Q(x) #x

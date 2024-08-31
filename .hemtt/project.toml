@@ -12,7 +12,7 @@ include = [
     "AUTHORS.txt",
     "LICENSE",
     "*.paa",
-    "meta.cpp",
+    "meta.cpp"
 ]
 
 [version]

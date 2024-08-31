@@ -1,0 +1,9 @@
+name = "MEOW";
+actionName = "GitHub";
+action = "https://github.com/wCATw/MEOW";
+description = "MEOW";
+tooltip = "MEOW";
+picture = "MEOW.paa";
+logo = "MEOW.paa";
+logoOver = "MEOW.paa";
+overviewPicture = "MEOW.paa";

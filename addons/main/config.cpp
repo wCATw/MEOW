@@ -6,7 +6,6 @@ class CfgPatches {
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
-        requiredAddons[] = {"cba_main","ace_common"};
         author = "Kotovskiy34";
         url = "https://github.com/wCATw/MEOW";
     };
