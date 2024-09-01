@@ -11,3 +11,5 @@ class CfgPatches {
         url = "https://github.com/wCATw/MEOW";
     };
 };
+
+#include "CfgFunctions.hpp"

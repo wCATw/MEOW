@@ -22,5 +22,6 @@
 #else
     #define COMPONENT_NAME Q(MEOW - COMPONENT_BEAUTIFIED)
 #endif
-
-#define ADDON COMPONENT
+#ifndef ADDON
+    #define ADDON COMPONENT
+#endif
