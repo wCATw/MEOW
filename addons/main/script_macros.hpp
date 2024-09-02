@@ -1,5 +1,5 @@
 #include "\z\meow\addons\main\script_mod.hpp"
-
+`
 #define Q(x) #x
 
 #define FUNC(x) ADDON##_fnc_##x
