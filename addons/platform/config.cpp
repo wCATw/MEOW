@@ -8,5 +8,8 @@ class CfgPatches {
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {"meow_main"};
         url = "https://github.com/wCATw/MEOW";
+        VERSION_CONFIG;
     };
 };
+
+#include "CfgEventHandlers.hpp"
