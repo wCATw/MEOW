@@ -6,7 +6,11 @@ class CfgPatches {
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
+        author = "Bloodwyn";
         requiredAddons[] = {"meow_main"};
         url = "https://github.com/wCATw/MEOW";
+        VERSION_CONFIG;
     };
 };
+
+#include "CfgEventHandlers.hpp"

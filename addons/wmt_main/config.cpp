@@ -1,7 +1,7 @@
 #include "script_component.hpp"
 
 class CfgPatches {
-    class ADDON {
+    class SUBADDON {
         name = COMPONENT_NAME;
         units[] = {};
         weapons[] = {};
@@ -11,5 +11,3 @@ class CfgPatches {
         url = "https://github.com/wCATw/MEOW";
     };
 };
-
-#include "CfgFunctions.hpp"
