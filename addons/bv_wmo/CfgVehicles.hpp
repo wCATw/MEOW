@@ -1,7 +1,7 @@
 class CfgVehicles {
     class Items_base_F;
 
-    class BW_roadway_obj : Items_base_F {
+    class WMO_roadway_obj : Items_base_F {
         scope = 2;
         author = "Bloodwyn";
         model = QPATHTOF(models\rw.p3d);
@@ -13,7 +13,7 @@ class CfgVehicles {
         accuracy = 0.2;
     };
 
-    class BW_roadway_obj_debug : Items_base_F {
+    class WMO_roadway_obj_debug : Items_base_F {
         scope = 2;
         author = "Bloodwyn";
         model = QPATHTOF(models\rw_debug.p3d);

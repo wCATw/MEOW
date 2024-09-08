@@ -3,7 +3,7 @@
 class CfgPatches {
     class ADDON {
         name = COMPONENT_NAME;
-        units[] = {};
+        units[] = {"WMO_roadway_obj","WMO_roadway_obj_debug"};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
         author = "Bloodwyn";

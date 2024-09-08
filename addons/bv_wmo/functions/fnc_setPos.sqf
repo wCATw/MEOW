@@ -44,64 +44,61 @@ if (_obj isEqualTo GVAR(anker))then{
 
     _searchCollPos1 = eyePos player;
     _searchCollPos2 = eyePos player;
-    if !((animationState player) in ["aovrpercmstpsraswrfldf","aovrpercmstpsnonwnondf","aovrpercmstpslowwrfldf"])then{  //not V hopping
+    if !((animationState player) in ["aovrpercmstpsraswrfldf","aovrpercmstpsnonwnondf","aovrpercmstpslowwrfldf"]) then {
         _searchCollPos1 = _posWorld vectorAdd [0,0,0.6];
     };
 
-    //sorry for that check. Its the collsion stuff
     if(
         ({!isNull (_x select 2) && (_x select 0) distance _searchCollPos1 < 0.5 && (_x#1)#2 < .5} count (
             (lineIntersectsSurfaces [_searchCollPos1,_searchCollPos1 vectorAdd _vel,player,objNull,true,1,"GEOM"])+
             (lineIntersectsSurfaces [_searchCollPos1,_searchCollPos1 vectorAdd ([_vel,-30]call BIS_fnc_rotateVector2D),player,objNull,true,1,"GEOM"])+
             (lineIntersectsSurfaces [_searchCollPos1,_searchCollPos1 vectorAdd ([_vel,30]call BIS_fnc_rotateVector2D),player,objNull,true,1,"GEOM"])+
-            (lineIntersectsSurfaces [_searchCollPos2,_searchCollPos2 vectorAdd _vel,player,objNull,true,1,"GEOM"])//+
-            //(lineIntersectsSurfaces [_searchCollPos2,_searchCollPos2 vectorAdd ([_vel,30]call BIS_fnc_rotateVector2D),player,objNull,true,1,"GEOM"])+
-            //(lineIntersectsSurfaces [_searchCollPos2,_searchCollPos2 vectorAdd ([_vel,-30]call BIS_fnc_rotateVector2D),player,objNull,true,1,"GEOM"])
+            (lineIntersectsSurfaces [_searchCollPos2,_searchCollPos2 vectorAdd _vel,player,objNull,true,1,"GEOM"])
             )
         >0)
-    )then{
+    ) then {
         _xToCenter = (GVAR(anker) worldToModelVisual _posWorld)#0;
         _vec = GVAR(anker) vectorModelToWorld [-_xToCenter,0,0];
         _line1 = [GVAR(anker),"GEOM"]intersect[_searchCollPos1,_searchCollPos1 vectorAdd _vel] select {(_x#0) find "ladder_" > -1};
         _line2 = [GVAR(anker),"GEOM"]intersect[_searchCollPos1,_searchCollPos1 vectorAdd _vec] select {(_x#0) find "ladder_" > -1};
-        if (_line2 isEqualTo [] && _line1 isEqualTo [])then{
+        if (_line2 isEqualTo [] && _line1 isEqualTo []) then {
             _temp = _temp vectorAdd (_vel vectorMultiply -0.02);
         };
     };
 
 
     _h = _helperpos#2;
-    if((_temp select 2) - _h < .25)then{
+    if((_temp select 2) - _h < .25) then {
         _temp set [2,_h-.1];
     }else{
         _temp set [2,(_temp select 2)-2.8/diag_fps]; // simulating a fall velocity
     };
     _dirDiff = prevDirAnker - getDir GVAR(anker);
     _dir = direction player - _dirDiff;
-    if (vectorMagnitude(velocity GVAR(anker)) < 12)then{
-        player setVelocityTransformation [_temp,_temp,[0,0,0],[0,0,- 0.4],vectorDir player,[sin _dir,cos _dir,0],[0,0,1],[0,0,1],1]; //looks smoother in MP when the vehicle is not to fast
-    }else{
+    if (vectorMagnitude(velocity GVAR(anker)) < 12) then {
+        player setVelocityTransformation [_temp,_temp,[0,0,0],[0,0,- 0.4],vectorDir player,[sin _dir,cos _dir,0],[0,0,1],[0,0,1],1];
+    } else {
         player setPosWorld _temp;
         player setDir _dir;
         player setVelocity [0,0,- 0.4];
     };
 
-    prevOffset = GVAR(anker) worldToModelVisual (if(getTerrainHeightASL _posWorld>0)then{(getPosATL player)}else{(getPosASLW player)}); //I never really got how this pos shit works
+    prevOffset = GVAR(anker) worldToModelVisual (if(getTerrainHeightASL _posWorld>0) then { (getPosATL player) } else { (getPosASLW player) });
     prevPlayerPos = _temp;
     prevDirAnker = getDir GVAR(anker);
 }else{  //new object beneath
     //systemChat "new";
     GVAR(exit) apply {GVAR(anker) call _x;};
-    if ([_obj] call FUNC(isWmoObject))then{
+    if ([_obj] call FUNC(isWmoObject)) then {
         GVAR(anker) = _obj;
         BW_WMO_enter apply {_obj call _x;};
-        if (isMultiplayer && !(local _obj) && _obj isEqualTo GVAR(anker))then{
+        if (isMultiplayer && !(local _obj) && _obj isEqualTo GVAR(anker)) then {
             [player,_obj]remoteExecCall ["disableCollisionWith",_obj];
         };
         [GVAR(anker),false] call FUNC(collision);
         GVAR(collision) = false;
-        prevOffset = GVAR(anker) worldToModelVisual (if(getTerrainHeightASL _posWorld>0)then{(getPosATL player)}else{(getPosASLW player)});
+        prevOffset = GVAR(anker) worldToModelVisual (if(getTerrainHeightASL _posWorld>0) then { (getPosATL player) } else { (getPosASLW player) });
         prevPlayerPos = getPosWorld player;
         prevDirAnker = getDir GVAR(anker);
-    }else FUNC(exit);
+    } else FUNC(exit);
 };

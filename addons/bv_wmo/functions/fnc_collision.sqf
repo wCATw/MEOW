@@ -5,7 +5,6 @@ _enable = param [1, false, [true]];
 
 if (isNull _obj) exitWith {};
 
-
 if (_enable) then {
 	player enableCollisionWith _obj;
 } else {

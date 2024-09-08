@@ -17,13 +17,12 @@ ISNILS(GVAR(noRoadway),[]);
     if !(isNull (configFile >> "CfgPatches" >> "acex_sitting"))then{
         GVAR(noRoadway) = GVAR(noRoadway) + ["Land_OfficeChair_01_F","Land_ChairWood_F","Land_RattanChair_01_F","Land_CampingChair_V2_F","Land_CampingChair_V2_white_F","Land_ChairPlastic_F","Land_CampingChair_V1_F","Land_Bench_01_F","Land_Bench_02_F","Land_Bench_03_F","Land_Bench_04_F","Land_Bench_05_F"];
     };
-    //["walkHandler","onEachFrame",FUNC(setPos)] call BIS_fnc_addStackedEventHandler;
     GVAR(MISSIONEVHID) = addMissionEventHandler ["EachFrame",FUNC(setPos)];
 };
 ISNILS(GVAR(enter),[]);
 ISNILS(GVAR(exit),[]);
 
-GVAR(help) = "BW_roadway_obj" createVehicleLocal [0,0,0];
+GVAR(help) = "WMO_roadway_obj" createVehicleLocal [0,0,0];
 GVAR(help) setMass 0;
 GVAR(anker) = objNull;
 
