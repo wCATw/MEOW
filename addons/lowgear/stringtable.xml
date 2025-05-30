@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="MEOW">
+    <Package name="LowGear">
+        <Key ID="str_meow_lowgear_action_off">
+            <English>Disable Low Gear</English>
+            <Russian>Выключить пониженную передачу</Russian>
+        </Key>
+        <Key ID="str_meow_lowgear_action_on">
+            <English>Enable Low Gear</English>
+            <Russian>Включить пониженную передачу</Russian>
+        </Key>
+        <Key ID="str_meow_lowgear_off">
+            <English>Low Gear Disabled</English>
+            <Russian>Пониженная передача выключена</Russian>
+        </Key>
+        <Key ID="str_meow_lowgear_on">
+            <English>Low Gear Enabled</English>
+            <Russian>Пониженная передача включена</Russian>
+        </Key>
+    </Package>
+</Project>

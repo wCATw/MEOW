@@ -1,0 +1,32 @@
+class GVAR(RscButton)
+{
+	type=1;
+	style=2;
+	x=0;
+	y=0;
+	w=0;
+	h=0;
+	shadow=2;
+	font="PuristaMedium";
+	sizeEx="(((((safeZoneW/safeZoneH) min 1.2)/1.2)/25) * 1)";
+	text="";
+	colorText[]={0,0,0,0};
+	colorBackground[]={0,0,0,0};
+	colorFocused[]={0,0,0,0};
+	colorBackgroundActive[]={0,0,0,0};
+	colorDisabled[]={0,0,0,0};
+	colorBackgroundDisabled[]={1,1,1,1};
+	colorBackgroundFocused[]={1,1,1,1};
+	colorBackground2[]={0.75,0.75,0.75,1};
+	offsetX=0;
+	offsetY=0;
+	offsetPressedX=0;
+	offsetPressedY=0;
+	colorShadow[]={0,0,0,0};
+	colorBorder[]={1,1,1,1};
+	borderSize=0;
+	soundEnter[]={};
+	soundPush[]={};
+	soundClick[]={};
+	soundEscape[]={};
+};

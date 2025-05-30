@@ -1,0 +1,31 @@
+name = "MEOW"
+author = "Kotovskiy"
+prefix = "meow"
+mainprefix = "x"
+
+[files]
+include = [
+    "mod.cpp",
+    "MEOW.paa",
+]
+
+[hemtt.launch.default]
+workshop = [
+    "2369477168", # Advanced Developer Tools
+    "1645973522", # Intercept Minimal Dev
+    "1585582292", # Arma Debug Engine
+    "450814997", # CBA_A3
+    "463939057", # ACE3
+    "894678801", # TFAR (BETA)
+]
+
+[lints.sqf.banned_commands]
+severity = "Warning"
+
+[lints.sqf.reasign_reserved_variable]
+severity = "Warning"
+
+[lints.sqf.var_all_caps]
+options.ignore = [
+    "MEOW_RECOMPILES", "MEOW_PREP_RECOMPILE",
+]

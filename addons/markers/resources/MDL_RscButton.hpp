@@ -1,0 +1,33 @@
+class GVAR(MDL_RscButton)
+{
+	type=1;
+	style=2;
+	x=0;
+	y=0;
+	w=0;
+	h=0;
+	shadow=2;
+	font="PuristaMedium";
+	size="";
+	sizeEx="(((((safeZoneW/safeZoneH) min 1.2)/1.2)/25) * 1)";
+	text="";
+	color[]={};
+	colorActive[]={1,0.2,0.2,1};
+	colorText[]={0,0,0,0};
+	colorBackground[]={0,0,0,0};
+	colorFocused[]={1,1,1,1};
+	colorBackgroundActive[]={1,1,1,1};
+	colorDisabled[]={1,1,1,1};
+	colorBackgroundDisabled[]={1,1,1,1};
+	offsetX=0;
+	offsetY=0;
+	offsetPressedX=0;
+	offsetPressedY=0;
+	colorShadow[]={0,0,0,0};
+	colorBorder[]={0,0,0,0};
+	borderSize=0;
+	soundEnter[]={};
+	soundPush[]={};
+	soundClick[]={};
+	soundEscape[]={};
+};
