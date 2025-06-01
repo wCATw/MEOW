@@ -3,7 +3,6 @@
 ADDON = false;
 
 #include "initSettings.inc.sqf"
-#include "initKeybinds.inc.sqf"
 
 PREP_RECOMPILE_START;
 #include "XEH_PREP.hpp"

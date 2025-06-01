@@ -15,7 +15,7 @@ private _category = COMPONENT_NAME;
     [localize LSTRING(SET_DIM_CHANNELS)],
     _category,
     true,
-    false,
+    true,
     {},
     true
 ] call CBA_fnc_addSetting;
@@ -25,7 +25,7 @@ private _category = COMPONENT_NAME;
     [localize LSTRING(SET_DIM_CHANNELS_ALPHA)],
     _category,
     [0, 1, 0.4, 2],
-    false,
+    true,
     {},
     true
 ] call CBA_fnc_addSetting;
@@ -45,7 +45,7 @@ private _category = COMPONENT_NAME;
     [localize LSTRING(SET_DIM_OLD_MARKERS)],
     _category,
     true,
-    false,
+    true,
     {},
     true
 ] call CBA_fnc_addSetting;
@@ -55,7 +55,7 @@ private _category = COMPONENT_NAME;
     [localize LSTRING(SET_DIM_OLD_MARKERS_ALPHA)],
     _category,
     [0, 1, 0.2, 2],
-    false,
+    true,
     {},
     true
 ] call CBA_fnc_addSetting;
@@ -65,7 +65,7 @@ private _category = COMPONENT_NAME;
     [localize LSTRING(SET_DIM_OLD_MARKERS_TIME)],
     _category,
     [5, 180, 15, 0],
-    false,
+    true,
     {},
     true
 ] call CBA_fnc_addSetting;
@@ -75,7 +75,7 @@ private _category = COMPONENT_NAME;
     [localize LSTRING(NOT_DIM_LOADED_MARKERS)],
     _category,
     true,
-    false,
+    true,
     {},
     true
 ] call CBA_fnc_addSetting;
@@ -85,7 +85,7 @@ private _category = COMPONENT_NAME;
     [localize LSTRING(DIM_ONLY_RED_BLUE_GREEN)],
     _category,
     true,
-    false,
+    true,
     {},
     true
 ] call CBA_fnc_addSetting;
