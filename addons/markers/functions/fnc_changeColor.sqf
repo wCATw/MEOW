@@ -2,7 +2,11 @@
 
 params ["_display", "_dir"];
 
-TRACE_2("called changeColor with params:",_display,_dir);
+PARAM_INVALID(_display,"DISPLAY")
+PARAM_INVALID(_dir,"STRING")
+GVAR_ISNIL(markColor)
+GVAR_ISNIL(colorSlotParams)
+GVAR_ISNIL(colorArr)
 
 private _control = _display displayCtrl IDC_PICTURE;
 private _curr_num = GVAR(colorSlotParams) find GVAR(markColor);

@@ -1,11 +1,13 @@
 #include "../script_component.hpp"
 
+GVAR_ISNIL(limitSideMarkers)
+
 private _addHandlers = {
     params ["_mapDisplay"];
 
-    TRACE_1("called _addHandlers in displaysInit with params:",_mapDisplay);
+    PARAM_INVALID(_mapDisplay,"DISPLAY")
 
-    _control = _mapDisplay displayCtrl 51;
+    _control = _mapDisplay displayCtrl IDC_MAP;
     
     _id0 = _control ctrlAddEventHandler ["MouseButtonDblClick", {_this spawn FUNC(mapButtonDblClick)}];
     _id1 = _control ctrlAddEventHandler ["MouseButtonDown", {_this call FUNC(mapMouseDown);}];
@@ -31,12 +33,17 @@ private _addHandlers = {
     _ctrl ctrlCommit 0;
 };
 
+[] spawn {
+    private ["_display"];
+    disableSerialization;
+    while {true} do {
+        waitUntil {_display = uiNamespace getVariable ["RscDisplayInsertMarker", displayNull]; !isNull _display};
+        _display closeDisplay 0;
+    };
+};
+
 waitUntil {(!isNull (findDisplay 12)) or (!isNull (findDisplay 37)) or (!isNull (findDisplay 52)) or (!isNull (findDisplay 53))};
-_mapDisplay = (
-    {
-        if !(isNull (findDisplay _x)) exitWith {findDisplay _x;}
-    } forEach [37,52,53,12]
-);
+_mapDisplay = ({if !(isNull (findDisplay _x)) exitWith {findDisplay _x;}} forEach [37,52,53,12]);
 if (_mapDisplay == (findDisplay 12)) then {
     [_mapDisplay] call _addHandlers;
 } else {

@@ -2,7 +2,13 @@
 
 params ['_mark','_pos','_player','_ctime'];
 
-TRACE_4("called clientLogicPos with params:",_mark,_pos,_player,_ctime);
+PARAM_INVALID(_mark,"STRING")
+PARAM_INVALID(_pos,"ARRAY")
+PARAM_INVALID(_player,"OBJECT")
+PARAM_INVALID(_ctime,"SCALAR")
+GVAR_ISNIL(allMarkers)
+GVAR_ISNIL(allMarkersParams)
+GVAR_ISNIL(disableLoc)
 
 if (GVAR(disableLoc)) exitWith {diag_log "SWT MARKERS: MARKERS DISABLED"};
 

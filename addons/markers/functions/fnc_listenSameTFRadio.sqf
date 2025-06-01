@@ -2,7 +2,8 @@
 
 params ["_player","_unit"];
 
-TRACE_2("called listenSameTFRadio with params:",_player,_unit);
+PARAM_INVALID(_player,"OBJECT")
+PARAM_INVALID(_unit,"OBJECT")
 
 private _playerRadios = _player call FUNC(radioListenFreqs);
 private _unitRadios = _unit call FUNC(radioListenFreqs);

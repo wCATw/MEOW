@@ -1,8 +1,20 @@
 #include "../script_component.hpp"
 
 params ["_mark", "_Chan", "_Text", "_Pos", "_Type", "_Color", "_Dir", "_Scale", "_Name"];
-
-TRACE_9("called createMarker with params:",_mark,_Chan,_Text,_Pos,_Type,_Color,_Dir,_Scale,_Name);
+ 
+PARAM_INVALID(_mark,"STRING")
+PARAM_INVALID(_Chan,"STRING")
+PARAM_INVALID(_Text,"STRING")
+PARAM_INVALID(_Pos,"ARRAY")
+PARAM_INVALID(_Type,"SCALAR")
+PARAM_INVALID(_Color,"SCALAR") // CAN BE STRING
+PARAM_INVALID(_Dir,"SCALAR")
+PARAM_INVALID(_Scale,"ARRAY") // CAN BE SCALAR
+PARAM_INVALID(_Name,"STRING")
+GVAR_ISNIL(allMarkers)
+GVAR_ISNIL(allMarkersParams)
+GVAR_ISNIL(cfgMarkerColorsNames)
+GVAR_ISNIL(cfgMarkersNames)
 
 private _params = _this;
 

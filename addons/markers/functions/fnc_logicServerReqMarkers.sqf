@@ -2,7 +2,8 @@
 
 params ["_player"];
 
-TRACE_1("called logicServerReqMark with params:",_player);
+PARAM_INVALID(_player,"OBJECT")
+GVAR_ISNIL(isPlayerBug)
 
 if (!isPlayer _player) then {
 	if (GVAR(isPlayerBug) find _player == -1) then {

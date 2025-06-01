@@ -1,8 +1,9 @@
 #include "../script_component.hpp"
 
-params [_control];
+params ["_control"];
 
-TRACE_1("called infoAnim with params:",_control);
+PARAM_INVALID(_control,"CONTROL")
+GVAR_ISNIL(RscDisplayInsertMarkerInfo)
 
 private ['_display','_text','_picture','_buttonOK','_buttonCancel',"_buttonInfo","_description","_title","_info",'_control','_pos',"_combo_color","_combo_icon","_swt_info_group"];
 

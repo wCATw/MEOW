@@ -2,7 +2,8 @@
 
 params ["_ctrl"];
 
-TRACE_1("called disableLoc with params:",_ctrl);
+PARAM_INVALID(_ctrl,"CONTROL")
+GVAR_ISNIL(disableLoc)
 
 GVAR(disableLoc) = !(GVAR(disableLoc));
 if (GVAR(disableLoc)) then {

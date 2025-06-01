@@ -2,7 +2,9 @@
 
 params ["_str", "_old", "_new"];
 
-TRACE_3("called strReplace with params:",_str,_old,_new);
+PARAM_INVALID(_str,"STRING")
+PARAM_INVALID(_old,"STRING")
+PARAM_INVALID(_new,"STRING")
 
 private ["_out","_tmp","_la","_lo","_ln","_j","_arr"];
 

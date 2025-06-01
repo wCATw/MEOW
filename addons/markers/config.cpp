@@ -18,6 +18,7 @@ class CfgPatches {
 #include "CfgWeapons.hpp"
 #include "CfgFactionClasses.hpp"
 #include "CfgVehicles.hpp"
+#include "MEOW_Settings.hpp"
 
 class RscListBox;
 class RscIGUIListBox;

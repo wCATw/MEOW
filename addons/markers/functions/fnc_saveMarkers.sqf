@@ -1,5 +1,8 @@
 #include "../script_component.hpp"
 
+GVAR_ISNIL(allMarkersParams)
+GVAR_ISNIL(saveArr)
+
 private ["_arr", "_arr_copy"];
 _arr = + GVAR(allMarkersParams);
 _arr_copy = [];

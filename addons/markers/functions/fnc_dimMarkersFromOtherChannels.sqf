@@ -1,8 +1,15 @@
 #include "../script_component.hpp"
 
-if (isNil {GVAR(dimNonActiveChannels)}) then { GVAR(dimNonActiveChannels) = false; };
-if (isNil {GVAR(dimOldMarkers)}) then { GVAR(dimOldMarkers) = false; };
-if (!GVAR(dimNonActiveChannels) && !GVAR(dimOldMarkers)) exitWith {};
+GVAR_ISNIL(dimNonActiveChannels)
+GVAR_ISNIL(dimNonActiveChannelsAlpha)
+GVAR_ISNIL(dimOldMarkers)
+GVAR_ISNIL(dimOldMarkersAlpha)
+GVAR_ISNIL(dimOldMarkersTime)
+GVAR_ISNIL(timedimOnlyRedBlueGreen)
+GVAR_ISNIL(notdimLoadedMarkers)
+GVAR_ISNIL(allMarkers)
+GVAR_ISNIL(allMarkersParams)
+EGVAR_ISNIL(wmaptools,frzState)
 
 private _swt_to_arma_channel = ["GL","S","C","GR","V","D"];
 private _currentChannel = _swt_to_arma_channel # currentChannel;
@@ -25,7 +32,6 @@ params ["_mrk"];
 if (isNil{_mrk} || {_mrk isEqualTo ""} || {!(_mrk isEqualType "")} ) then {
 	{
 		if (count _x < 12) then {
-			diag_log [QGVAR(dimMarkersFromOtherChannels),"BAD MARKER DATA", _x];
 			_x set [11, CBA_missionTime];
 		};
 		[_x#0,_x#1, _currentChannel, _x#11,_x#10] call _setMrkAlpha ;

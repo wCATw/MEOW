@@ -2,7 +2,10 @@
 
 params ['_mark','_player'];
 
-TRACE_2("called clientLogicDel with params:",_mark,_player);
+PARAM_INVALID(_mark,"STRING")
+PARAM_INVALID(_player,"OBJECT")
+GVAR_ISNIL(allMarkers)
+GVAR_ISNIL(allMarkersParams)
 
 private _m_index = GVAR(allMarkers) find _mark;
 

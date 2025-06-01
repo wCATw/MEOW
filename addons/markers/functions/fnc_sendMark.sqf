@@ -2,15 +2,31 @@
 
 params ["_action", "_params"];
 
-TRACE_2("called sendMark with params:",_action,_params);
+PARAM_INVALID(_action,"STRING")
+PARAM_INVALID(_params,"ARRAY") // CAN BE CONTROL
+GVAR_ISNIL(disable)
+GVAR_ISNIL(markType)
+GVAR_ISNIL(markColor)
+GVAR_ISNIL(cfgMarkersNames)
+GVAR_ISNIL(cfgMarkerColorsNames)
+GVAR_ISNIL(fastTextG)
+GVAR_ISNIL(fastTextN)
+GVAR_ISNIL(fastTextT)
+GVAR_ISNIL(fastTextTSaved)
+GVAR_ISNIL(channel)
+GVAR_ISNIL(posM)
+GVAR_ISNIL(saveText)
+GVAR_ISNIL(text)
+GVAR_ISNIL(ctrlState)
+GVAR_ISNIL(sweetkS)
+GVAR_ISNIL(limitSideMarkers)
 
 if (GVAR(disable)) exitWith {hintSilent (localize LSTRING(DISABLED)); true};
 
 GVAR(markDir) = 0;
 
-private ["_displayMark", "_displayMap", "_text", "_WordlCoord", "_send", "_channel", "_go"];
+private ["_displayMap", "_text", "_WorldCoord", "_send", "_channel", "_go", "_swtid"];
 
-_displayMark = displayNull;
 _displayMap = ({if !(isNull(findDisplay _x)) exitWith {findDisplay _x}} forEach [37,52,53,12]);
 (_displayMap displayCtrl IDC_BUTTON_ADV) ctrlShow false;
 _text = "" + (if (GVAR(fastTextG)) then {((groupId (group player)) call EFUNC(wmaptools,longGroupNameToShort)) + " "} else {""}) + (if (GVAR(fastTextN)) then {name player + " "} else {""}) + (if (GVAR(fastTextT)) then {GVAR(fastTextTSaved) + " "} else {""});
@@ -72,14 +88,14 @@ if (!_go) exitWith {};
 switch (_action) do {
     case "mark": {
     	[0,0] call FUNC(mapMouseUp);
-		_displayMark = _params;
-		_WorldCoord = (_displayMap displayCtrl 51) ctrlMapScreenToWorld [((ctrlPosition (_displayMark displayCtrl IDC_PICTURE)) select 0)+((ctrlPosition (_displayMark displayCtrl IDC_PICTURE)) select 2)/2,((ctrlPosition (_displayMark displayCtrl IDC_PICTURE)) select 1)+((ctrlPosition (_displayMark displayCtrl IDC_PICTURE)) select 3)/2];
+		private _displayMark = _params # 0;
+		_WorldCoord = (_displayMap displayCtrl IDC_MAP) ctrlMapScreenToWorld [((ctrlPosition (_displayMark displayCtrl IDC_PICTURE)) select 0)+((ctrlPosition (_displayMark displayCtrl IDC_PICTURE)) select 2)/2,((ctrlPosition (_displayMark displayCtrl IDC_PICTURE)) select 1)+((ctrlPosition (_displayMark displayCtrl IDC_PICTURE)) select 3)/2];
 		_text =  _text + ctrlText (_displayMark displayCtrl IDC_TEXT);
 		_send pushBack [_swtid,_channel,_text, _WorldCoord, GVAR(cfgMarkersNames) find GVAR(markType), GVAR(cfgMarkerColorsNames) find GVAR(markColor), GVAR(markDir), GVAR(sweetkS), name player];
 		if (!(GVAR(ctrlState))) then {(_displayMark closeDisplay 0)};
     };
 	case "fast": {
-		_WorldCoord = (_displayMap displayCtrl 51) ctrlMapScreenToWorld GVAR(posM);
+		_WorldCoord = (_displayMap displayCtrl IDC_MAP) ctrlMapScreenToWorld GVAR(posM);
 		if (GVAR(saveText)) then {_text = _text + GVAR(text)};
 		_send pushBack [_swtid,_channel,_text,_WorldCoord,GVAR(cfgMarkersNames) find GVAR(markType),GVAR(cfgMarkerColorsNames) find GVAR(markColor),GVAR(markDir),GVAR(sweetkS), name player];
 	};

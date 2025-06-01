@@ -4,7 +4,22 @@
 
 params ["_display"];
 
-TRACE_1("called onLoad with params:",_display);
+PARAM_INVALID(_display,"DISPLAY")
+GVAR_ISNIL(displayCoord)
+GVAR_ISNIL(showInfo)
+GVAR_ISNIL(saveText)
+GVAR_ISNIL(saveMode)
+GVAR_ISNIL(showButt)
+GVAR_ISNIL(showBack)
+GVAR_ISNIL(showColor)
+GVAR_ISNIL(showIcon)
+GVAR_ISNIL(showLb)
+GVAR_ISNIL(text)
+GVAR_ISNIL(pic)
+GVAR_ISNIL(colorArr)
+GVAR_ISNIL(channel)
+GVAR_ISNIL(colorSlotParams)
+GVAR_ISNIL(iconSlotParams)
 
 private ["_text", "_picture", "_buttonOK", "_buttonCancel", "_buttonInfo", "_description", "_channButt", "_info", "_swt_info_group", "_combo_color", "_combo_icon", "_controls_color", "_control_icon", "_control_icon_pic", "_all"];
 
@@ -148,11 +163,11 @@ _coef_h_icon = (_h_icon/_w_icon);
 	_control_pos = ctrlPosition _control;
 	_control ctrlSetPosition [(_pos_control_base select 0) + (_pos_control_base select 2) - (_control_pos select 2)*(_forEachIndex+1),(_pos_control_base select 1),_control_pos select 2,_control_pos select 3];
 	_control ctrlCommit 0;
-} forEach [IDC_ADD_TEXT,IDC_ADD_NAME,IDC_SETTINGS_BUTTON];
+} forEach [IDC_ADD_TEXT,IDC_ADD_NAME,IDC_ADD_GROUP];
 
 if (GVAR(saveMode)) then {
 	[_display displayCtrl IDC_ADD_TEXT,"T",true] call FUNC(fastText);
-	[_display displayCtrl IDC_SETTINGS_BUTTON,"G",true] call FUNC(fastText);
+	[_display displayCtrl IDC_ADD_GROUP,"G",true] call FUNC(fastText);
 	[_display displayCtrl IDC_ADD_NAME,"N",true] call FUNC(fastText);
 };
 _control_pic_pos = ctrlPosition _picture;

@@ -2,7 +2,11 @@
 
 params ["_control", "_num"];
 
-TRACE_2("called setIcon with params:",_control,_num);
+PARAM_INVALID(_control,"CONTROL")
+PARAM_INVALID(_num,"SCALAR")
+GVAR_ISNIL(iconSlotParams)
+GVAR_ISNIL(pic)
+GVAR_ISNIL(markType)
 
 ctrlSetFocus ((ctrlParent _control) displayCtrl IDC_TEXT);
 GVAR(markType) = GVAR(iconSlotParams) select _num;

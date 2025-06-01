@@ -2,7 +2,11 @@
 
 params ["_display", "_dir"];
 
-TRACE_2("called changeIcon with params:",_display,_dir);
+PARAM_INVALID(_display,"DISPLAY")
+PARAM_INVALID(_dir,"STRING")
+GVAR_ISNIL(iconSlotParams)
+GVAR_ISNIL(markType)
+GVAR_ISNIL(pic)
 
 private _control = _display displayCtrl IDC_PICTURE;
 private _curr_num = GVAR(iconSlotParams) find GVAR(markType);

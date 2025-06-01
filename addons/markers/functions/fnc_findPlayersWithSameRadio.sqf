@@ -2,7 +2,7 @@
 
 params ["_player"];
 
-TRACE_1("called findPlayersWithSameRadio with params:",_player);
+PARAM_INVALID(_player,"OBJECT")
 
 private _result = [];
 private _playerRadios = _player call FUNC(radioListenFreqs);

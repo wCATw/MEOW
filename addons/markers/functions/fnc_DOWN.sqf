@@ -2,7 +2,13 @@
 
 params ["_display","_dikCode","_shiftState","_ctrlState","_altState","_pic","_markColor"];
 
-TRACE_7("called DOWN with params:",_display,_dikCode,_shiftState,_ctrlState,_altState,_pic,_markColor);
+PARAM_INVALID(_display,"DISPLAY")
+PARAM_INVALID(_dikCode,"SCALAR")
+PARAM_INVALID(_shiftState,"BOOL")
+PARAM_INVALID(_ctrlState,"BOOL")
+PARAM_INVALID(_altState,"BOOL")
+PARAM_INVALID(_pic,"STRING")
+PARAM_INVALID(_markColor,"STRING")
 
 private _control = (_display displayCtrl IDC_PICTURE);
 private _handled = false;
@@ -53,7 +59,7 @@ if ((_dikCode == 0xC8) or (_dikCode == 0xD0)) then {
                 };
 
                 case 0x22: {
-                    [_display displayCtrl IDC_SETTINGS_BUTTON,"G"] call FUNC(fastText);
+                    [_display displayCtrl IDC_ADD_GROUP,"G"] call FUNC(fastText);
                 };
 
                 case 0x31: {

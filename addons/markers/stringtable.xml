@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="MEOW">
     <Package name="Markers">
+        <Key ID="str_meow_markers_LOG_DIARY_RECORD">
+            <English>Logs</English>
+            <Russian>Логи</Russian>
+        </Key>
+        <Key ID="str_meow_markers_LOG_DIARY_SUBJECT">
+            <English>MEOW Markers</English>
+            <Russian>MEOW Маркеры</Russian>
+        </Key>
         <Key ID="str_meow_markers_adv">
             <English>Advanced...</English>
             <Russian>Расширенные...</Russian>
@@ -136,9 +144,6 @@
         <Key ID="str_meow_markers_marker">
             <English>Marker</English>
             <Russian>Маркер</Russian>
-        </Key>
-        <Key ID="str_meow_markers_markers_log">
-            <English>Logs</English>
         </Key>
         <Key ID="str_meow_markers_markinfo">
             <English>Show marker info</English>

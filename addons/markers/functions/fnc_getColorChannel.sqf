@@ -2,7 +2,8 @@
 
 params ["_channel", "_tag"];
 
-TRACE_2("called getColorChannel with params:",_channel,_tag);
+PARAM_INVALID(_channel,"STRING")
+PARAM_INVALID(_tag,"STRING")
 
 _channel = switch (_channel) do {
 	case "S": {format ["<%2 color='#46D3FF'>%1</%2>", localize "STR_Channel_Side", _tag]};

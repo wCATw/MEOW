@@ -2,7 +2,7 @@
 
 params ["_unit"];
 
-TRACE_1("called getActiveSWRadio with params:",_unit);
+PARAM_INVALID(_unit,"OBJECT")
 
 private _result = nil;
 {	

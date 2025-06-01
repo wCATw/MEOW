@@ -2,7 +2,7 @@
 
 params ["_control"];
 
-TRACE_1("called setButt with params:",_control);
+PARAM_INVALID(_control,"CONTROL")
 
 private ["_display", "_combo_color", "_combo_icon"];
 

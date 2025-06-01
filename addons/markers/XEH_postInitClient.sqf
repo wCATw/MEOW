@@ -6,7 +6,6 @@ GVAR(disable)             = false;
 GVAR(loadEnabled)         = true;
 GVAR(loadEnabledFor)      = true;
 GVAR(loadEnabledWhen)     = true;
-// GVAR(bisMarkers)          = false;
 GVAR(sweetkS)             = 1;
 GVAR(time)                = 0;
 GVAR(mapTime)             = 0;
@@ -18,7 +17,7 @@ GVAR(ctrlState)           = false;
 GVAR(altState)            = false;
 GVAR(channel)             = localize "STR_Channel_Group";
 GVAR(delayCoeff)          = 25;
-GVAR(MarkersLog)          = localize LSTRING(MARKERS_LOG);
+GVAR(markersLog)          = localize LSTRING(LOG_DIARY_SUBJECT);
 GVAR(hold)                = false;
 GVAR(allChannels)         = [localize "STR_Channel_Global",localize "STR_Channel_Side",localize "STR_Channel_Command",localize "STR_Channel_Group",localize "STR_Channel_Vehicle",localize "STR_Channel_Direct"];
 GVAR(availableChannels)   = +GVAR(allChannels);
@@ -88,7 +87,7 @@ waitUntil {!isNull player};
 GVAR(reqMarkers) = player;
 publicVariableServer QGVAR(reqMarkers);
 if (GVAR(logging)) then {
-	player createDiarySubject [QGVAR(MarkersLog),GVAR(MarkersLog)];
+	player createDiarySubject [QGVAR(markersLog),GVAR(markersLog)];
 };
 
 GVAR(dimMarkersHandle) = 0 spawn {

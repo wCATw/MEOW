@@ -2,7 +2,10 @@
 
 params ["_display", "_two", "_posClickX", "_posClickY"];
 
-TRACE_4("called dClPic with params:",_display,_two,_posClickX,_posClickY);
+PARAM_INVALID(_display,"DISPLAY")
+PARAM_INVALID(_poHsClickX,"SCALAR")
+PARAM_INVALID(_posClickY,"SCALAR")
+GVAR_ISNIL(time)
 
 if ((diag_tickTime-GVAR(time)) < 0.3) then {
 	GVAR(time) = diag_tickTime;

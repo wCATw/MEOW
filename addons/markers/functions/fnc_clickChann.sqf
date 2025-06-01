@@ -2,7 +2,7 @@
 
 params ["_displayControl"];
 
-TRACE_1("called clickChann with params:",_displayControl);
+PARAM_INVALID(_displayControl,"CONTROL")
 
 _display = ctrlParent _displayControl;
 ctrlSetFocus (_display displayCtrl IDC_TEXT);

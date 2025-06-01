@@ -2,7 +2,8 @@
 
 params ["_display", "_text"];
 
-TRACE_2("called setChannel with params:",_display,_text);
+PARAM_INVALID(_display,"DISPLAY")
+PARAM_INVALID(_text,"STRING")
 
 private _control = _display displayCtrl IDC_BACKGROUND_DESCRIPTION;
 _control ctrlSetStructuredText parseText format ["<t size='0.8'>%1</t>","Description:"];

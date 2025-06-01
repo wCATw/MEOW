@@ -2,7 +2,20 @@
 
 params ["_displayCtrl"];
 
-TRACE_1("called advancedSetButton with params:",_displayCtrl);
+PARAM_INVALID(_displayCtrl,"CONTROL");
+GVAR_ISNIL(showButt)
+GVAR_ISNIL(showIcon)
+GVAR_ISNIL(showColor)
+GVAR_ISNIL(showLb)
+GVAR_ISNIL(saveText)
+GVAR_ISNIL(saveMode)
+GVAR_ISNIL(showInfo)
+GVAR_ISNIL(showBack)
+GVAR_ISNIL(saveMark)
+GVAR_ISNIL(logging)
+GVAR_ISNIL(markInfo)
+GVAR_ISNIL(disableLoc)
+GVAR_ISNIL(fastTextTSaved)
 
 private _display = ctrlParent _displayCtrl;
 ctrlSetFocus (_display displayCtrl IDC_TEXT);
@@ -24,7 +37,7 @@ if (isNil {GVAR(advSet)}) then {
 	} else {
 		(_display displayCtrl IDC_ADV_BUTTON_DISABLE) ctrlSetText (localize LSTRING(DISABLE));
 	};
-	(_display displayCtrl 451) ctrlSetText GVAR(fastTextTSaved);
+	(_display displayCtrl IDC_ADV_EDIT_SAVED) ctrlSetText GVAR(fastTextTSaved);
 	(_display displayCtrl IDC_CONTROLS_GROUP_ADV) ctrlShow true;
 	(_display displayCtrl IDC_CONTROLS_GROUP_ADV) ctrlSetFade 0;
 	(_display displayCtrl IDC_CONTROLS_GROUP_ADV) ctrlCommit 0.2;

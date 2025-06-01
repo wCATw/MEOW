@@ -1,15 +1,22 @@
 #include "../script_component.hpp"
 
-params ["_control"];
+params ["_display"];
 
-TRACE_1("called unLoad with params:",_control);
+PARAM_INVALID(_display,"DISPLAY")
+GVAR_ISNIL(saveMark)
+GVAR_ISNIL(markType)
+GVAR_ISNIL(markColor)
+GVAR_ISNIL(pic)
+GVAR_ISNIL(colorArr)
+GVAR_ISNIL(iconSlotParams)
+GVAR_ISNIL(saveMode)
 
 GVAR(loadDone) = nil;
 GVAR(dClBut) = nil;
 GVAR(advSet) = nil;
 GVAR(RscDisplayInsertMarkerInfo) = nil;
 GVAR(RscDisplayInsertMarkerSetButton) = nil;
-GVAR(text) = ctrlText (_control displayCtrl IDC_TEXT);
+GVAR(text) = ctrlText (_display displayCtrl IDC_TEXT);
 if !(GVAR(saveMark)) then {
 	GVAR(markType) = GVAR(iconSlotParams) select 0;
 	GVAR(markColor) = GVAR(colorSlotParams) select 0;

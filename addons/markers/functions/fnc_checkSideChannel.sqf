@@ -1,5 +1,8 @@
 #include "../script_component.hpp"
 
+EGVAR_ISNIL(wmaptools,frzState)
+GVAR_ISNIL(limitSideMarkers)
+
 private _hasAbility = false;
 
 if (missionNamespace getVariable [QEGVAR(wmaptools,frzState), 10] < 3 || time < 10) then {

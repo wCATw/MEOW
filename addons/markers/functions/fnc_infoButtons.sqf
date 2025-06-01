@@ -2,7 +2,8 @@
 
 params ["_control", "_act"];
 
-TRACE_2("called infoButtons with params:",_control,_act);
+PARAM_INVALID(_control,"CONTROL")
+PARAM_INVALID(_act,"STRING")
 
 private ["_pos","_display"];
 

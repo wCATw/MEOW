@@ -2,7 +2,13 @@
 
 params ["_control", "_index"];
 
-TRACE_2("called lbSelAdv with params:",_control,_index);
+PARAM_INVALID(_control,"CONTROL")
+PARAM_INVALID(_index,"SCALAR")
+GVAR_ISNIL(markColor)
+GVAR_ISNIL(markType)
+GVAR_ISNIL(pic)
+GVAR_ISNIL(colorArr)
+
 
 ctrlSetFocus ((ctrlParent _control) displayCtrl IDC_TEXT);
 switch (ctrlIDC _control) do {

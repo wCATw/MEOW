@@ -1,10 +1,10 @@
 #include "../script_component.hpp"
 
-params ["_zero", "_one"];
+params ["_one", "_dikCode"];
 
-TRACE_2("called mapMouseUp with params:",_zero,_one);
+PARAM_INVALID(_dikCode,"SCALAR")
 
-if (_one == 0) then {
+if (_dikCode == 0) then {
     if !(isNil {GVAR(markToChangeDir)}) then {
         _dir = + GVAR(direction);
         _mark = GVAR(markToChangeDir);
@@ -25,17 +25,18 @@ if (_one == 0) then {
         };
         GVAR(lineParamsWorld) = nil;
     };
-    if !(isNil {GVAR(ellipse)}) then {
+    if !(isNil {GVAR(ellipseParamsWorld)}) then {
         deleteMarkerLocal "SWT_MARKERS LOCAL ELLIPSE";
         deleteMarkerLocal "SWT_MARKERS LOCAL INFO";
-        if ((GVAR(ellipse) select 0) isNotEqualTo (GVAR(ellipse) select 1)) then
+        if ((GVAR(ellipseParamsWorld) select 0) isNotEqualTo (GVAR(ellipseParamsWorld) select 1)) then
         {
-            _coords = + GVAR(ellipse);
+            _coords = + GVAR(ellipseParamsWorld);
             ["ellipse",_coords] call FUNC(sendMark);
         };
-        GVAR(ellipse) = nil;
+        GVAR(ellipseParamsWorld) = nil;
     };
     if !(isNil {GVAR(markToChangePos)}) then {
+        GVAR_ISNIL(position)
         _mark = GVAR(markToChangePos);
         _coords = + GVAR(position);
         GVAR(changeMark) = ["POS", player, _mark, _mark call FUNC(getChannel), _coords];

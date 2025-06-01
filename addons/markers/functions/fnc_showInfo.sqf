@@ -2,11 +2,20 @@
 
 params ["_control"];
 
-TRACE_1("called showInfo with params:",_control);
+PARAM_INVALID(_control,"CONTROL")
+
+GVAR_ISNIL(hold)
+GVAR_ISNIL(mapTime)
+GVAR_ISNIL(allMarkersParams)
+GVAR_ISNIL(daytime)
+GVAR_ISNIL(posM)
 
 private _getFormatedTime = {
 
 	params ['_time','_ctime'];
+
+	PARAM_INVALID(_time,"SCALAR")
+	PARAM_INVALID(_ctime,"SCALAR")
 
 	private ["_hour", "_minute", "_second", "_daytime", "_hourN", "_minuteN", "_secondN", "_ctimeN"];
 
@@ -35,7 +44,7 @@ _find = false;
 	if (([_pos,GVAR(posM)] call BIS_fnc_distance2D) < 0.025) exitWith {
 		_find = true;
 		if (GVAR(hold)) then {
-			private ["_mark", "_id", "_name", "_channel", "_time", "_colorname", "_Type", "_ctime"];
+			private ["_mark", "_id", "_name", "_channel", "_time", "_Type", "_ctime"];
 
 			_mark = _x select 0;
 			_id = + toArray (_mark);
@@ -45,12 +54,11 @@ _find = false;
 			_channel = _x select 1;
 			_channel = [_channel,"t"] call FUNC(getColorChannel);
 			_time = _x select 9;
-			_colorname = [_name,"t"] call FUNC(getColorName);
 			_Type = _x select 4;
 			_ctime = _x select 11;
 			_ctrl_info ctrlSetStructuredText parseText format ["<t size='0.8'>\
 <t align='center' color='#F88379'>%1 ID: %2" + (if (!isNil {_x select 10} && {_x#10}) then {localize LSTRING(INFOLOADED)} else {""}) + "</t><br/>" + (localize LSTRING(INFOWIN)) + ([_time,_ctime] call _getFormatedTime) + "</t>",
-			(if (_Type==-2) then {localize LSTRING(LINE)} else {if (_Type==-3) then {localize LSTRING(ELLIPSE)} else {localize LSTRING(MARKER)}}), _id, _colorname, _channel];
+			(if (_Type==-2) then {localize LSTRING(LINE)} else {if (_Type==-3) then {localize LSTRING(ELLIPSE)} else {localize LSTRING(MARKER)}}), _id, _name, _channel];
 
 			_ctrl_pos = ctrlPosition _ctrl_info;
 			if ((markerText _mark) == "") then {

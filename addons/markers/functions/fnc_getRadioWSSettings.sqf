@@ -2,7 +2,8 @@
 
 params["_rclass","_unit"]; 
 
-TRACE_2("called getColorName with params:",_rclass,_unit);
+PARAM_INVALID(_rclass,"STRING")
+PARAM_INVALID(_unit,"OBJECT")
 
 private ["_variableName", "_value", "_rc"];
 

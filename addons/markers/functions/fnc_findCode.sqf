@@ -2,7 +2,7 @@
 
 params ["_str"];
 
-TRACE_1("called findCode with params:",_str);
+PARAM_INVALID(_str,"STRING")
 
 private _whileList = "[]1234567890.,- ";
 private _result = -1;
