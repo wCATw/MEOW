@@ -3,7 +3,7 @@
 params ["_displayControlParent", "_dikCode"];
 
 PARAM_INVALID(_displayControlParent,"CONTROL")
-PARAM_INVALID(_dikCode,"NUMBER")
+PARAM_INVALID(_dikCode,"SCALAR")
 GVAR_ISNIL(tempText)
 GVAR_ISNIL(ctrlState)
 

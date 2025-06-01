@@ -14,8 +14,8 @@ private _getFormatedTime = {
 
 	params ['_time','_ctime'];
 
-	PARAM_INVALID(_time,"NUMBER")
-	PARAM_INVALID(_ctime,"NUMBER")
+	PARAM_INVALID(_time,"SCALAR")
+	PARAM_INVALID(_ctime,"SCALAR")
 
 	private ["_hour", "_minute", "_second", "_daytime", "_hourN", "_minuteN", "_secondN", "_ctimeN"];
 

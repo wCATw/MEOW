@@ -3,7 +3,7 @@
 params ["_display", "_coef"];
 
 PARAM_INVALID(_display,"DISPLAY")
-PARAM_INVALID(_coef,"NUMBER")
+PARAM_INVALID(_coef,"SCALAR")
 GVAR_ISNIL(shiftState)
 GVAR_ISNIL(ctrlState)
 GVAR_ISNIL(sweetkS)

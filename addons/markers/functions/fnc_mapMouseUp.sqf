@@ -1,12 +1,6 @@
 #include "../script_component.hpp"
 
-GVAR_ISNIL(direction)
-GVAR_ISNIL(markToChangeDir)
-GVAR_ISNIL(markToChangePos)
-GVAR_ISNIL(lineParamsWorld)
-GVAR_ISNIL(ellipse)
 GVAR_ISNIL(position)
-GVAR_ISNIL(changeMark) 
 
 if (_one == 0) then {
     if !(isNil {GVAR(markToChangeDir)}) then {

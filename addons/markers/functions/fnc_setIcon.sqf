@@ -3,7 +3,7 @@
 params ["_control", "_num"];
 
 PARAM_INVALID(_control,"CONTROL")
-PARAM_INVALID(_num,"NUMBER")
+PARAM_INVALID(_num,"SCALAR")
 GVAR_ISNIL(iconSlotParams)
 GVAR_ISNIL(pic)
 GVAR_ISNIL(markType)

@@ -9,7 +9,6 @@ GVAR_ISNIL(timedimOnlyRedBlueGreen)
 GVAR_ISNIL(notdimLoadedMarkers)
 GVAR_ISNIL(allMarkers)
 GVAR_ISNIL(allMarkersParams)
-GVAR_ISNIL(dimMarkersFromOtherChannels)
 EGVAR_ISNIL(wmaptools,frzState)
 
 private _swt_to_arma_channel = ["GL","S","C","GR","V","D"];
@@ -33,7 +32,6 @@ params ["_mrk"];
 if (isNil{_mrk} || {_mrk isEqualTo ""} || {!(_mrk isEqualType "")} ) then {
 	{
 		if (count _x < 12) then {
-			diag_log [QGVAR(dimMarkersFromOtherChannels),"BAD MARKER DATA", _x];
 			_x set [11, CBA_missionTime];
 		};
 		[_x#0,_x#1, _currentChannel, _x#11,_x#10] call _setMrkAlpha ;

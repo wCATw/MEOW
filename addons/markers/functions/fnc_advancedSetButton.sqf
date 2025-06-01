@@ -38,7 +38,7 @@ if (isNil {GVAR(advSet)}) then {
 	} else {
 		(_display displayCtrl IDC_ADV_BUTTON_DISABLE) ctrlSetText (localize LSTRING(DISABLE));
 	};
-	(_display displayCtrl 451) ctrlSetText GVAR(fastTextTSaved);
+	(_display displayCtrl IDC_ADV_EDIT_SAVED) ctrlSetText GVAR(fastTextTSaved);
 	(_display displayCtrl IDC_CONTROLS_GROUP_ADV) ctrlShow true;
 	(_display displayCtrl IDC_CONTROLS_GROUP_ADV) ctrlSetFade 0;
 	(_display displayCtrl IDC_CONTROLS_GROUP_ADV) ctrlCommit 0.2;

@@ -4,7 +4,6 @@ params ["_player"];
 
 PARAM_INVALID(_player,"OBJECT")
 GVAR_ISNIL(isPlayerBug)
-GVAR_ISNIL(sendJIP)
 
 if (!isPlayer _player) then {
 	if (GVAR(isPlayerBug) find _player == -1) then {

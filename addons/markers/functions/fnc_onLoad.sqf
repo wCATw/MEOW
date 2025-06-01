@@ -163,11 +163,11 @@ _coef_h_icon = (_h_icon/_w_icon);
 	_control_pos = ctrlPosition _control;
 	_control ctrlSetPosition [(_pos_control_base select 0) + (_pos_control_base select 2) - (_control_pos select 2)*(_forEachIndex+1),(_pos_control_base select 1),_control_pos select 2,_control_pos select 3];
 	_control ctrlCommit 0;
-} forEach [IDC_ADD_TEXT,IDC_ADD_NAME,IDC_SETTINGS_BUTTON];
+} forEach [IDC_ADD_TEXT,IDC_ADD_NAME,IDC_ADD_GROUP];
 
 if (GVAR(saveMode)) then {
 	[_display displayCtrl IDC_ADD_TEXT,"T",true] call FUNC(fastText);
-	[_display displayCtrl IDC_SETTINGS_BUTTON,"G",true] call FUNC(fastText);
+	[_display displayCtrl IDC_ADD_GROUP,"G",true] call FUNC(fastText);
 	[_display displayCtrl IDC_ADD_NAME,"N",true] call FUNC(fastText);
 };
 _control_pic_pos = ctrlPosition _picture;

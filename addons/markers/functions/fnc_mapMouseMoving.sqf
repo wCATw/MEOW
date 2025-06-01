@@ -3,17 +3,9 @@
 params ["_control", "_displayCoordX", "_displayCoordY"];
 
 PARAM_INVALID(_control,"CONTROL")
-PARAM_INVALID(_displayCoordX,"NUMBER")
-PARAM_INVALID(_displayCoordY,"NUMBER")
-GVAR_ISNIL(displayCoord)
-GVAR_ISNIL(posM)
-GVAR_ISNIL(direction)
-GVAR_ISNIL(markToChangeDir)
-GVAR_ISNIL(markToChangePos)
-GVAR_ISNIL(lineParamsWorld)
-GVAR_ISNIL(ellipse)
+PARAM_INVALID(_displayCoordX,"SCALAR")
+PARAM_INVALID(_displayCoordY,"SCALAR")
 GVAR_ISNIL(markInfo)
-GVAR_ISNIL(position)
 
 _display = ctrlParent _control;
 GVAR(displayCoord) = [_displayCoordX, _displayCoordY];
@@ -24,7 +16,7 @@ if !(isNil {GVAR(markToChangeDir)}) then {
 	_pos_click = GVAR(posM);
 	_pos = getMarkerPos GVAR(markToChangeDir);
 	_pos = (_ctrl) ctrlMapWorldToScreen _pos;
-	GVAR(direction) =  [_pos,_pos_click] call BIS_fnc_dirTo;
+	GVAR(direction) = [_pos,_pos_click] call BIS_fnc_dirTo;
 	GVAR(direction) = - GVAR(direction) + 180;
 	if ((markerShape GVAR(markToChangeDir) == "ELLIPSE")and((markerSize GVAR(markToChangeDir)) select 0 > (markerSize GVAR(markToChangeDir)) select 1)) then {GVAR(direction) = GVAR(direction) + 90};
 	GVAR(markToChangeDir) setMarkerDirLocal GVAR(direction);

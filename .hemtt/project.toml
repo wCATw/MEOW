@@ -18,6 +18,12 @@ workshop = [
     "463939057", # ACE3
     "894678801", # TFAR (BETA)
 ]
+mission = "meow_debug.VR"
+parameters = [
+    "-noPause",
+    "-noPauseAudio",
+]
+# executable = "arma3"
 
 [lints.sqf.banned_commands]
 severity = "Warning"

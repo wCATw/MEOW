@@ -1,9 +1,9 @@
 #include "../script_component.hpp"
 
-params ["_action", "_params"];
+params ["_action", "_displayMark"];
 
 PARAM_INVALID(_action,"STRING")
-PARAM_INVALID(_params,"ARRAY")
+PARAM_INVALID(_displayMark,"DISPLAY")
 GVAR_ISNIL(disable)
 GVAR_ISNIL(markDir)
 GVAR_ISNIL(markType)
@@ -27,9 +27,8 @@ if (GVAR(disable)) exitWith {hintSilent (localize LSTRING(DISABLED)); true};
 
 GVAR(markDir) = 0;
 
-private ["_displayMark", "_displayMap", "_text", "_WordlCoord", "_send", "_channel", "_go"];
+private ["_displayMap", "_text", "_WordlCoord", "_send", "_channel", "_go"];
 
-_displayMark = displayNull;
 _displayMap = ({if !(isNull(findDisplay _x)) exitWith {findDisplay _x}} forEach [37,52,53,12]);
 (_displayMap displayCtrl IDC_BUTTON_ADV) ctrlShow false;
 _text = "" + (if (GVAR(fastTextG)) then {((groupId (group player)) call EFUNC(wmaptools,longGroupNameToShort)) + " "} else {""}) + (if (GVAR(fastTextN)) then {name player + " "} else {""}) + (if (GVAR(fastTextT)) then {GVAR(fastTextTSaved) + " "} else {""});
@@ -91,7 +90,6 @@ if (!_go) exitWith {};
 switch (_action) do {
     case "mark": {
     	[0,0] call FUNC(mapMouseUp);
-		_displayMark = _params;
 		_WorldCoord = (_displayMap displayCtrl 51) ctrlMapScreenToWorld [((ctrlPosition (_displayMark displayCtrl IDC_PICTURE)) select 0)+((ctrlPosition (_displayMark displayCtrl IDC_PICTURE)) select 2)/2,((ctrlPosition (_displayMark displayCtrl IDC_PICTURE)) select 1)+((ctrlPosition (_displayMark displayCtrl IDC_PICTURE)) select 3)/2];
 		_text =  _text + ctrlText (_displayMark displayCtrl IDC_TEXT);
 		_send pushBack [_swtid,_channel,_text, _WorldCoord, GVAR(cfgMarkersNames) find GVAR(markType), GVAR(cfgMarkerColorsNames) find GVAR(markColor), GVAR(markDir), GVAR(sweetkS), name player];

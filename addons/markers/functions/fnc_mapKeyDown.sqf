@@ -3,15 +3,13 @@
 params ["_display", "_dikCode", "_shift", "_ctrlKey", "_alt"];
 
 PARAM_INVALID(_display,"DISPLAY")
-PARAM_INVALID(_dikCode,"NUMBER")
+PARAM_INVALID(_dikCode,"SCALAR")
 PARAM_INVALID(_shift,"BOOL")
 PARAM_INVALID(_ctrlKey,"BOOL")
 PARAM_INVALID(_alt,"BOOL")
-GVAR_ISNIL(lineParamsWorld)
 GVAR_ISNIL(posM)
 GVAR_ISNIL(allMarkers)
 GVAR_ISNIL(disableLoc)
-GVAR_ISNIL(changeMark)
 
 if (!isNil {GVAR(lineParamsWorld)}) then {
 	if ((_alt || _ctrlKey) && !(_alt && _ctrlKey)) then {

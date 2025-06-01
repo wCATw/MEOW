@@ -3,9 +3,9 @@
 params ['_mark','_dir','_player','_ctime'];
 
 PARAM_INVALID(_mark,"STRING")
-PARAM_INVALID(_dir,"NUMBER")
+PARAM_INVALID(_dir,"SCALAR")
 PARAM_INVALID(_player,"OBJECT")
-PARAM_INVALID(_ctime,"NUMBER")
+PARAM_INVALID(_ctime,"SCALAR")
 GVAR_ISNIL(allMarkers)
 GVAR_ISNIL(allMarkersParams)
 GVAR_ISNIL(disableLoc)

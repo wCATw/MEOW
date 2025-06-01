@@ -3,9 +3,9 @@
 params ["_control", "_button", "_xPos", "_yPos", "_shift", "_ctrl", "_alt"];
 
 PARAM_INVALID(_control,"CONTROL")
-PARAM_INVALID(_button,"NUMBER")
-PARAM_INVALID(_xPos,"NUMBER")
-PARAM_INVALID(_yPos,"NUMBER")
+PARAM_INVALID(_button,"SCALAR")
+PARAM_INVALID(_xPos,"SCALAR")
+PARAM_INVALID(_yPos,"SCALAR")
 PARAM_INVALID(_shift,"BOOL")
 PARAM_INVALID(_ctrl,"BOOL")
 PARAM_INVALID(_alt,"BOOL")

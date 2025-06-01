@@ -3,7 +3,7 @@
 params ["_display","_dikCode","_shiftState","_ctrlState","_altState","_pic","_markColor"];
 
 PARAM_INVALID(_display,"DISPLAY")
-PARAM_INVALID(_dikCode,"NUMBER")
+PARAM_INVALID(_dikCode,"SCALAR")
 PARAM_INVALID(_shiftState,"BOOL")
 PARAM_INVALID(_ctrlState,"BOOL")
 PARAM_INVALID(_altState,"BOOL")

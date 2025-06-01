@@ -3,7 +3,7 @@
 params ["_control", "_num"];
 
 PARAM_INVALID(_control,"CONTROL")
-PARAM_INVALID(_num,"NUMBER")
+PARAM_INVALID(_num,"SCALAR")
 GVAR_ISNIL(markColor)
 GVAR_ISNIL(colorSlotParams)
 GVAR_ISNIL(colorArr)

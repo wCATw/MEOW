@@ -10,7 +10,7 @@ GVAR_ISNIL(MarkersLog)
 private _getFormatedTime = {
     params ["_time"];
 
-    PARAM_INVALID(_time,"NUMBER")
+    PARAM_INVALID(_time,"SCALAR")
 
     private ["_time", "_hour", "_minute", "_second"];
 
