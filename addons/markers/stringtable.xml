@@ -294,13 +294,13 @@
             <Russian>Ограничить маркера в канал стороны</Russian>
         </Key>
         <Key ID="str_meow_markers_set_limit_side_markers_msg">
-            <English>ЗАГЛУШКА</English>
+            <English></English>
         </Key>
-        <Key ID="str_meow_markers_set_limit_side_markers_msg_1">
+        <Key ID="str_meow_markers_set_limit_side_markers_msg_0">
             <English>You need &lt;t underline='true'&gt;LR radio&lt;/t&gt; to place markers in side channel</English>
             <Russian>Требуется &lt;t underline='true'&gt;ДВ&lt;/t&gt; чтобы ставить маркеры в канал стороны</Russian>
         </Key>
-        <Key ID="str_meow_markers_set_limit_side_markers_msg_2">
+        <Key ID="str_meow_markers_set_limit_side_markers_msg_1">
             <English>You need &lt;t underline='true'&gt;LR radio&lt;/t&gt; or &lt;t underline='true'&gt;GPS&lt;/t&gt; to place markers in side channel</English>
             <Russian>Требуется &lt;t underline='true'&gt;ДВ&lt;/t&gt; или &lt;t underline='true'&gt;GPS&lt;/t&gt; чтобы ставить маркеры в канал стороны</Russian>
         </Key>
@@ -315,6 +315,10 @@
         <Key ID="str_meow_markers_set_limit_side_markers_opt2">
             <English>TFAR LR radio or GPS</English>
             <Russian>ДВ рация или GPS</Russian>
+        </Key>
+        <Key ID="str_meow_markers_settings_category">
+            <English>MEOW Markers</English>
+            <Russian>MEOW Маркера</Russian>
         </Key>
         <Key ID="str_meow_markers_settxt">
             <English>&lt;t size='0.77'&gt;&lt;t align='center' color='%1'&gt;Settings:&lt;/t&gt;&lt;br/&gt;To change settings press &lt;img image='\a3\Ui_f\data\GUI\Rsc\RscDisplayArcadeMap\icon_config_ca.paa'/&gt;&lt;br/&gt;You can configure the marker slots in the main settings.&lt;br/&gt;&lt;br/&gt;You can configure the interface parts and load the saved markers in advanced settings. This function is limited to squad leaders only by default.&lt;br/&gt;Loading limit: &lt;t color='%1'&gt;750 markers&lt;/t&gt; at a time.&lt;br/&gt;&lt;br/&gt; Saving is available to all. Saving too many markers to you profile is unadvised (&gt;1000) and can lead to glitches and crashes. In this cases, use the Fast Load option.&lt;/t&gt;</English>
