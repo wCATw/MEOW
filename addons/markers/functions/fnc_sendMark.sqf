@@ -89,13 +89,13 @@ switch (_action) do {
     case "mark": {
     	[0,0] call FUNC(mapMouseUp);
 		private _displayMark = _params # 0;
-		_WorldCoord = (_displayMap displayCtrl 51) ctrlMapScreenToWorld [((ctrlPosition (_displayMark displayCtrl IDC_PICTURE)) select 0)+((ctrlPosition (_displayMark displayCtrl IDC_PICTURE)) select 2)/2,((ctrlPosition (_displayMark displayCtrl IDC_PICTURE)) select 1)+((ctrlPosition (_displayMark displayCtrl IDC_PICTURE)) select 3)/2];
+		_WorldCoord = (_displayMap displayCtrl IDC_MAP) ctrlMapScreenToWorld [((ctrlPosition (_displayMark displayCtrl IDC_PICTURE)) select 0)+((ctrlPosition (_displayMark displayCtrl IDC_PICTURE)) select 2)/2,((ctrlPosition (_displayMark displayCtrl IDC_PICTURE)) select 1)+((ctrlPosition (_displayMark displayCtrl IDC_PICTURE)) select 3)/2];
 		_text =  _text + ctrlText (_displayMark displayCtrl IDC_TEXT);
 		_send pushBack [_swtid,_channel,_text, _WorldCoord, GVAR(cfgMarkersNames) find GVAR(markType), GVAR(cfgMarkerColorsNames) find GVAR(markColor), GVAR(markDir), GVAR(sweetkS), name player];
 		if (!(GVAR(ctrlState))) then {(_displayMark closeDisplay 0)};
     };
 	case "fast": {
-		_WorldCoord = (_displayMap displayCtrl 51) ctrlMapScreenToWorld GVAR(posM);
+		_WorldCoord = (_displayMap displayCtrl IDC_MAP) ctrlMapScreenToWorld GVAR(posM);
 		if (GVAR(saveText)) then {_text = _text + GVAR(text)};
 		_send pushBack [_swtid,_channel,_text,_WorldCoord,GVAR(cfgMarkersNames) find GVAR(markType),GVAR(cfgMarkerColorsNames) find GVAR(markColor),GVAR(markDir),GVAR(sweetkS), name player];
 	};

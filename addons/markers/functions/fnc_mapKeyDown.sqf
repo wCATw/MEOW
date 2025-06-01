@@ -37,7 +37,7 @@ if (!isNil {GVAR(lineParamsWorld)}) then {
 		if (GVAR(disableLoc)) exitWith {diag_log "SWT MARKERS: DEL DISABLED";};
 		{
 			private _pos = getMarkerPos _x;
-			_pos = (_display displayCtrl 51) ctrlMapWorldToScreen _pos;
+			_pos = (_display displayCtrl IDC_MAP) ctrlMapWorldToScreen _pos;
 			if (([_pos,GVAR(posM)] call BIS_fnc_distance2D) < 0.025) exitWith {
 				GVAR(changeMark)  = ["DEL", player, _x, _x call FUNC(getChannel)];
 				if (!isMultiplayer) then {GVAR(changeMark) call FUNC(logicServerChangeMark)};

@@ -37,9 +37,9 @@ if (_shift and !_alt and !_ctrlKey and (_dikCode == 0)) then
 		} forEach GVAR(allMarkers);
 	} else {
 		if (!_shift and _ctrlKey and _alt and (_dikCode == 0)) then {
-			GVAR(lineParamsWorld) = [(_display displayCtrl 51) ctrlMapScreenToWorld _posClick,(_display displayCtrl 51) ctrlMapScreenToWorld _posClick,0,5,0];
-			createMarkerLocal ["SWT_MARKERS LOCAL LINE", (_display displayCtrl 51) ctrlMapScreenToWorld _posClick];
-			createMarkerLocal ["SWT_MARKERS LOCAL INFO", (_display displayCtrl 51) ctrlMapScreenToWorld _posClick];
+			GVAR(lineParamsWorld) = [(_display displayCtrl IDC_MAP) ctrlMapScreenToWorld _posClick,(_display displayCtrl IDC_MAP) ctrlMapScreenToWorld _posClick,0,5,0];
+			createMarkerLocal ["SWT_MARKERS LOCAL LINE", (_display displayCtrl IDC_MAP) ctrlMapScreenToWorld _posClick];
+			createMarkerLocal ["SWT_MARKERS LOCAL INFO", (_display displayCtrl IDC_MAP) ctrlMapScreenToWorld _posClick];
 			"SWT_MARKERS LOCAL INFO" setMarkerShapeLocal "ICON";
 			"SWT_MARKERS LOCAL INFO" setMarkerTypeLocal "hd_dot";
 			"SWT_MARKERS LOCAL INFO" setMarkerSizeLocal [0,0];
@@ -51,9 +51,9 @@ if (_shift and !_alt and !_ctrlKey and (_dikCode == 0)) then
 			"SWT_MARKERS LOCAL LINE" setMarkerSizeLocal [GVAR(lineParamsWorld) select 3,0];
 		} else {
 			if (_shift and !_ctrlKey and _alt and (_dikCode == 0)) then {
-				GVAR(ellipseParamsWorld) = [(_display displayCtrl 51) ctrlMapScreenToWorld _posClick,(_display displayCtrl 51) ctrlMapScreenToWorld _posClick];
-				createMarkerLocal ["SWT_MARKERS LOCAL ELLIPSE", (_display displayCtrl 51) ctrlMapScreenToWorld _posClick];
-				createMarkerLocal ["SWT_MARKERS LOCAL INFO", (_display displayCtrl 51) ctrlMapScreenToWorld _posClick];
+				GVAR(ellipseParamsWorld) = [(_display displayCtrl IDC_MAP) ctrlMapScreenToWorld _posClick,(_display displayCtrl IDC_MAP) ctrlMapScreenToWorld _posClick];
+				createMarkerLocal ["SWT_MARKERS LOCAL ELLIPSE", (_display displayCtrl IDC_MAP) ctrlMapScreenToWorld _posClick];
+				createMarkerLocal ["SWT_MARKERS LOCAL INFO", (_display displayCtrl IDC_MAP) ctrlMapScreenToWorld _posClick];
 				"SWT_MARKERS LOCAL INFO" setMarkerShapeLocal "ICON";
 				"SWT_MARKERS LOCAL INFO" setMarkerTypeLocal "hd_dot";
 				"SWT_MARKERS LOCAL INFO" setMarkerSizeLocal [0,0];
@@ -65,7 +65,7 @@ if (_shift and !_alt and !_ctrlKey and (_dikCode == 0)) then
 				"SWT_MARKERS LOCAL ELLIPSE" setMarkerSizeLocal [0,0];
 			} else {
 				if (_shift and _ctrlKey and !_alt and (_dikCode == 0)) then {
-					_pos = (_display displayCtrl 51) ctrlMapScreenToWorld _posClick;
+					_pos = (_display displayCtrl IDC_MAP) ctrlMapScreenToWorld _posClick;
 					_roads = _pos nearRoads 50;
 					_min = _roads select 0;
 					if (isNil {_min}) exitWith {hint "SWT MARKERS: ROAD NOT FOUND"};

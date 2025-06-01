@@ -9,6 +9,22 @@
             <English>Enable Low Gear</English>
             <Russian>Включить пониженную передачу</Russian>
         </Key>
+        <Key ID="str_meow_lowgear_display_icon">
+            <English></English>
+            <Russian>Показывать значок при включении</Russian>
+        </Key>
+        <Key ID="str_meow_lowgear_fuel_consumption">
+            <English></English>
+            <Russian>Дополнительное потребление топлива в мин</Russian>
+        </Key>
+        <Key ID="str_meow_lowgear_max_speed_on_land">
+            <English></English>
+            <Russian>Максимальная скорость на суше</Russian>
+        </Key>
+        <Key ID="str_meow_lowgear_max_speed_on_water">
+            <English></English>
+            <Russian>Максимальная скорость на воде</Russian>
+        </Key>
         <Key ID="str_meow_lowgear_off">
             <English>Low Gear Disabled</English>
             <Russian>Пониженная передача выключена</Russian>
@@ -16,6 +32,14 @@
         <Key ID="str_meow_lowgear_on">
             <English>Low Gear Enabled</English>
             <Russian>Пониженная передача включена</Russian>
+        </Key>
+        <Key ID="str_meow_lowgear_settings_category">
+            <English>MEOW Low Gear</English>
+            <Russian>MEOW Пониженная передача</Russian>
+        </Key>
+        <Key ID="str_meow_lowgear_speed_limit_multiplier">
+            <English></English>
+            <Russian>Лимит скорости при включенной пониженой</Russian>
         </Key>
     </Package>
 </Project>

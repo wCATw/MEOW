@@ -43,7 +43,7 @@ if !(isNil {GVAR(markToChangeDir)}) then {
 
 		} else {
 			if !(isNil {GVAR(markToChangePos)}) then {
-				GVAR(position) = (_display displayCtrl 51) ctrlMapScreenToWorld GVAR(posM);
+				GVAR(position) = (_display displayCtrl IDC_MAP) ctrlMapScreenToWorld GVAR(posM);
 				GVAR(markToChangePos) setMarkerPosLocal GVAR(position);
 			};
 			if (GVAR(markInfo)) then {call FUNC(showInfo)};

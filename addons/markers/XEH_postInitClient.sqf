@@ -6,7 +6,6 @@ GVAR(disable)             = false;
 GVAR(loadEnabled)         = true;
 GVAR(loadEnabledFor)      = true;
 GVAR(loadEnabledWhen)     = true;
-// GVAR(bisMarkers)          = false;
 GVAR(sweetkS)             = 1;
 GVAR(time)                = 0;
 GVAR(mapTime)             = 0;

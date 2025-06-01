@@ -1,4 +1,4 @@
-private _category = COMPONENT_NAME;
+private _category = localize LSTRING(Settings_Category);
 
 [
     QGVAR(groupMarkersViaRadio), "LIST",

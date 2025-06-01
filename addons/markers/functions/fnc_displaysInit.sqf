@@ -7,7 +7,7 @@ private _addHandlers = {
 
     PARAM_INVALID(_mapDisplay,"DISPLAY")
 
-    _control = _mapDisplay displayCtrl 51;
+    _control = _mapDisplay displayCtrl IDC_MAP;
     
     _id0 = _control ctrlAddEventHandler ["MouseButtonDblClick", {_this spawn FUNC(mapButtonDblClick)}];
     _id1 = _control ctrlAddEventHandler ["MouseButtonDown", {_this call FUNC(mapMouseDown);}];
@@ -31,6 +31,15 @@ private _addHandlers = {
     _ctrl ctrlSetBackgroundColor [0,0,0,0.7];
     _ctrl ctrlSetPosition [0, 0, 10.8*GR_W, 3.5*GR_H];
     _ctrl ctrlCommit 0;
+};
+
+[] spawn {
+    private ["_display"];
+    disableSerialization;
+    while {true} do {
+        waitUntil {_display = uiNamespace getVariable ["RscDisplayInsertMarker", displayNull]; !isNull _display};
+        _display closeDisplay 0;
+    };
 };
 
 waitUntil {(!isNull (findDisplay 12)) or (!isNull (findDisplay 37)) or (!isNull (findDisplay 52)) or (!isNull (findDisplay 53))};

@@ -82,9 +82,9 @@ GVAR(fuel_timer) = 0;
 	if (isEngineOn _veh && {abs(speed _veh) >= 3}) then {
 		GVAR(fuel_timer) = GVAR(fuel_timer) + _dt;
 	
-		if (GVAR(fuel_consumption) > 0.001 && GVAR(fuel_timer) >= 5) then {
+		if (GVAR(fuelConsumption) > 0.001 && GVAR(fuel_timer) >= 5) then {
 			GVAR(fuel_timer) = GVAR(fuel_timer) - 5;
-			_veh setFuel ( fuel _veh - GVAR(fuel_consumption) * 5 / 60 );
+			_veh setFuel ( fuel _veh - GVAR(fuelConsumption) * 5 / 60 );
 		};
 	};
 	
