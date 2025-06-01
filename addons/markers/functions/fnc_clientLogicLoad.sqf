@@ -1,4 +1,22 @@
 #include "../script_component.hpp"
+/*
+	Function: fnc_clientLogicLoad
+
+		Description:
+			Loads a set of markers for a client and logs the operation. Exits if location updates are disabled.
+
+		Arguments:
+			_player    <Object>  - The player loading the markers.
+			_markers   <Array>   - Array of marker data to load.
+
+		Returns:
+			none
+
+		Variables:
+			none
+*/
+
+
 
 params ["_player", "_markers"];
 

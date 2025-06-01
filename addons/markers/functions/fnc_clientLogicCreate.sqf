@@ -1,4 +1,21 @@
 #include "../script_component.hpp"
+/*
+    Function: fnc_clientLogicCreate
+
+        Description:
+            Creates a marker for a client and logs the creation
+
+        Arguments:
+            none (uses _this as marker parameters)
+
+        Returns:
+            none
+
+        Variables:
+            none
+*/
+
+
 
 GVAR_ISNIL(disableLoc)
 

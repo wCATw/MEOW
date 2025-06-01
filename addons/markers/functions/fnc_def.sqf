@@ -1,4 +1,21 @@
 #include "../script_component.hpp"
+/*
+    Function: fnc_def
+
+        Description:
+            Sets default marker color, icon, and settings parameters in the profile namespace and calls profileNil to initialize them.
+
+        Arguments:
+            none
+
+        Returns:
+            none
+
+        Variables:
+            none
+*/
+
+
 
 GVAR_ISNIL(colorSlotParams)
 GVAR_ISNIL(iconSlotParams)

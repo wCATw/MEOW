@@ -1,4 +1,20 @@
 #include "../script_component.hpp"
+/*
+	Function: fnc_changeChannel
+
+		Description:
+			Changes the current marker channel to the next or previous available channel and updates the UI.
+
+		Arguments:
+			_channelDisplay   <Display>  - The display containing the channel control.
+			_dir              <String>   - Direction to change ("UP" or "DOWN").
+
+		Returns:
+			none
+
+		Variables:
+			_curNum   <Number>  - Current channel index.
+*/
 
 params ["_channelDisplay", "_dir"];
 
@@ -8,16 +24,21 @@ GVAR_ISNIL(channel)
 GVAR_ISNIL(availableChannels)
 GVAR_ISNIL(allChannels)
 
+// Get the current channel index
 private _curNum = GVAR(availableChannels) find GVAR(channel);
 
 switch (_dir) do {
 	case "UP": {
+		// Next channel
 		_curNum = _curNum+1;
-		if (_curNum>((count GVAR(availableChannels)) - 1)) then {_curNum = 0};
+		// upper bound
+		if (_curNum>((count GVAR(availableChannels))-1)) then {_curNum = 0};
 	};
 	case "DOWN": {
+		// Previous channel
 		_curNum = _curNum-1;
-		if (_curNum<0) then {_curNum = (count GVAR(availableChannels)) - 1};
+		// lower bound
+		if (_curNum<0) then {_curNum = (count GVAR(availableChannels))-1};
 	};
 	default {
 		hint "Change Channel Error."
@@ -26,6 +47,6 @@ switch (_dir) do {
 
 GVAR(channel) = GVAR(availableChannels) select _curNum;
 
-[_channelDisplay, GVAR(channel)] call FUNC(setChannel);
+[_channelDisplay,GVAR(channel)] call FUNC(setChannel);
 
 setCurrentChannel (GVAR(allChannels) find GVAR(channel));

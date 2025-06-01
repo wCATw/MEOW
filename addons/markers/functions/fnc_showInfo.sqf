@@ -1,4 +1,22 @@
 #include "../script_component.hpp"
+/*
+	Function: fnc_showInfo
+
+		Description:
+			Displays detailed information about a marker when hovering or interacting with it on the map UI. Shows marker ID, type, channel, and time info in a structured text control.
+
+		Arguments:
+			_control   <Control>  - The map control being interacted with.
+
+		Returns:
+			none
+
+		Variables:
+			_control        <Control>  - The map control.
+			_ctrl_info      <Control>  - The info display control.
+			_find           <Bool>     - Whether a marker was found under the cursor.
+			_getFormatedTime <Code>    - Local function to format time values for display.
+*/
 
 params ["_control"];
 
@@ -11,9 +29,7 @@ GVAR_ISNIL(daytime)
 GVAR_ISNIL(posM)
 
 private _getFormatedTime = {
-
 	params ['_time','_ctime'];
-
 	PARAM_INVALID(_time,"SCALAR")
 	PARAM_INVALID(_ctime,"SCALAR")
 
@@ -36,14 +52,15 @@ private ["_ctrl_info", "_find"];
 
 _ctrl_info = _display displayCtrl IDC_BUTTON_ADV;
 _find = false;
+
 {
 	private ["_pos"];
-
 	_pos = getMarkerPos (_x select 0);
 	_pos = _control ctrlMapWorldToScreen _pos;
 	if (([_pos,GVAR(posM)] call BIS_fnc_distance2D) < 0.025) exitWith {
 		_find = true;
 		if (GVAR(hold)) then {
+			// Marker found under cursor, show info in structured text
 			private ["_mark", "_id", "_name", "_channel", "_time", "_Type", "_ctime"];
 
 			_mark = _x select 0;
@@ -61,6 +78,7 @@ _find = false;
 			(if (_Type==-2) then {localize LSTRING(LINE)} else {if (_Type==-3) then {localize LSTRING(ELLIPSE)} else {localize LSTRING(MARKER)}}), _id, _name, _channel];
 
 			_ctrl_pos = ctrlPosition _ctrl_info;
+			// Position info box left/right of marker depending on marker text
 			if ((markerText _mark) == "") then {
 				_ctrl_info ctrlSetPosition [(_pos select 0) - (0.05)/2 + 0.07, (_pos select 1) - (_ctrl_pos select 3)/2, _ctrl_pos select 2, _ctrl_pos select 3];
 			} else {
@@ -71,6 +89,8 @@ _find = false;
 		};
 	};
 } forEach GVAR(allMarkersParams);
+
+// If no marker found, hide info and reset states
 if (!_find) then {
 	_ctrl_info ctrlShow false;
 	GVAR(hold) = false;

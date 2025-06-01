@@ -1,4 +1,23 @@
 #include "../script_component.hpp"
+/*
+	Function: fnc_getColorChannel
+
+		Description:
+			Returns a formatted string for a channel name with the appropriate color for display.
+
+		Arguments:
+			_channel   <String>  - The channel code (e.g., "S", "C", "GL", etc.).
+			_tag       <String>  - The tag to use in the formatted string (e.g., "t").
+
+		Returns:
+			<String> - The formatted and colored channel name string.
+
+		Variables:
+			_channel   <String>  - Channel code.
+			_tag       <String>  - Tag for formatting.
+*/
+
+
 
 params ["_channel", "_tag"];
 

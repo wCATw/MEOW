@@ -1,4 +1,28 @@
 #include "../script_component.hpp"
+/*
+    Function: fnc_getMarkParam
+
+        Description:
+            Retrieves all relevant parameters for a given marker and returns them as an array.
+
+        Arguments:
+            _mark   <String>  - The marker name.
+
+        Returns:
+            <Array> - Array containing the marker name and an array of its type, color, position, text, direction, size, and alpha.
+
+        Variables:
+            _mark         <String>  - Marker name.
+            _markerType   <String>  - Marker type.
+            _markerColor  <String>  - Marker color.
+            _markerPos    <Array>   - Marker position.
+            _markerText   <String>  - Marker text.
+            _markerDir    <Number>  - Marker direction.
+            _markerSize   <Array>   - Marker size.
+            _markerAlpha  <Number>  - Marker alpha.
+*/
+
+
 
 params ["_mark"];
 

@@ -1,4 +1,20 @@
 #include "../script_component.hpp"
+/*
+	Function: fnc_checkBoxesSet
+
+		Description:
+			Handles toggling and updating of various marker dialog UI settings and controls based on user actions.
+
+		Arguments:
+			_ctrls   <Array>   - Array of controls involved in the action.
+			_action  <String>  - The action to perform (e.g., "SHOW OK", "SHOW ICON", etc.).
+
+		Returns:
+			none
+
+		Variables:
+			_ctrl, _display, _controls_color, _controls_icon, _combo_color, _combo_icon, _controls_icon_pic, and many local UI variables.
+*/
 
 params ["_ctrls", "_action"];
 
@@ -30,17 +46,16 @@ _controls_icon_pic = [IDC_ICON_10,IDC_ICON_11,IDC_ICON_12,IDC_ICON_13,IDC_ICON_1
 
 switch (_action) do {
 	case "SHOW OK": {
+		// Animate and toggle OK/Cancel buttons, update their positions and visibility
 		private ["_text", "_buttonOK", "_buttonCancel", "_pos", "_posX", "_posY", "_posW", "_poH", "_show_coef"];
 
 		_show_coef = 2;
 
-		if (GVAR(showInfo)) then 
-		{
+		if (GVAR(showInfo)) then {
 			_show_coef = 2
 		} else {
 			_show_coef = 1
 		};
-
 
 		_text = _display displayCtrl IDC_TEXT;
 		_buttonOK = _display displayCtrl 1;
@@ -71,7 +86,6 @@ switch (_action) do {
 		if (GVAR(showButt)) then {_butt_cor_pos = 1.1*(1 * ((((safeZoneW / safeZoneH) min 1.2) / 1.2) / 25))};
 		{
 			private ["_control", "_pos_control"];
-
 			_control = (_display displayCtrl _x);
 			_pos_control = (ctrlPosition _control);
 			_control ctrlSetPosition [_pos_control select 0, (_pos_control select 1)+_butt_cor_pos, _pos_control select 2, _pos_control select 3];
@@ -79,11 +93,13 @@ switch (_action) do {
 		} forEach (_combo_color+_combo_icon+[IDC_CONTROLS_GROUP_ADV,IDC_BUTTON_ADV]);
 
 		if !(GVAR(showButt)) then {
+			// Hide OK/Cancel buttons
 			{
 				(_display displayCtrl _x) ctrlSetPosition [(ctrlPosition (_display displayCtrl _x)) select 0,(ctrlPosition (_display displayCtrl _x)) select 1,(ctrlPosition (_display displayCtrl _x)) select 2,0];
 				(_display displayCtrl _x) ctrlCommit 0.2;
 			} forEach [1,2];
 		} else {
+			// Show and reposition OK/Cancel buttons
 			_buttonOK ctrlSetPosition _pos;
 			_buttonOK ctrlCommit 0.2;
 			_pos set [0,_posX + _posW / 2];
@@ -92,9 +108,10 @@ switch (_action) do {
 			_buttonCancel ctrlSetPosition _pos;
 			_buttonCancel ctrlCommit 0.2;
 		};
-    };
+	};
 
-    case "SHOW ICON": {
+	case "SHOW ICON": {
+		// Toggle icon controls visibility and fade
 		GVAR(showIcon) = !(GVAR(showIcon));
 		GVAR(settingsParams) set [1,GVAR(showIcon)];
 		profileNamespace setVariable [QGVAR(settingsParams), GVAR(settingsParams)];
@@ -121,14 +138,15 @@ switch (_action) do {
 				_control ctrlShow false;
 			} forEach (_controls_icon+_controls_icon_pic);
 		};
-    };
+	};
 
-     case "SHOW COLOR": {
+	case "SHOW COLOR": {
+		// Toggle color controls visibility and fade
 		GVAR(showColor) = !(GVAR(showColor));
 		GVAR(settingsParams) set [2,GVAR(showColor)];
 		profileNamespace setVariable [QGVAR(settingsParams), GVAR(settingsParams)];
 		saveProfileNamespace;
-			if (GVAR(showColor)) then {
+		if (GVAR(showColor)) then {
 			{
 				_control = _display displayCtrl _x;
 				_control ctrlSetFade 1;
@@ -150,10 +168,11 @@ switch (_action) do {
 				_control ctrlShow false;
 			} forEach (_controls_color);
 		};
-    };
+	};
 
-    case "SHOW LB": {
-    	GVAR(showLb) = !(GVAR(showLb));
+	case "SHOW LB": {
+		// Toggle advanced listboxes (color/icon) visibility and fade
+		GVAR(showLb) = !(GVAR(showLb));
 		GVAR(settingsParams) set [3,GVAR(showLb)];
 		profileNamespace setVariable [QGVAR(settingsParams), GVAR(settingsParams)];
 		saveProfileNamespace;
@@ -182,25 +201,28 @@ switch (_action) do {
 				_control ctrlCommit 0;
 			} forEach [IDC_LB_COLOR,IDC_LB_PIC];
 		};
-    };
+	};
 
-    case "FAST LOAD": {
-    	GVAR(saveMode) = !(GVAR(saveMode));
-    	GVAR(settingsParams) set [4,GVAR(saveMode)];
+	case "FAST LOAD": {
+		// Toggle fast load setting and persist
+		GVAR(saveMode) = !(GVAR(saveMode));
+		GVAR(settingsParams) set [4,GVAR(saveMode)];
 		profileNamespace setVariable [QGVAR(settingsParams), GVAR(settingsParams)];
 		saveProfileNamespace;
 	};
 
 	case "SAVE TEXT": {
+		// Toggle save text setting and persist
 		GVAR(saveText) = !(GVAR(saveText));
-    	GVAR(settingsParams) set [5,GVAR(saveText)];
+		GVAR(settingsParams) set [5,GVAR(saveText)];
 		profileNamespace setVariable [QGVAR(settingsParams), GVAR(settingsParams)];
 		saveProfileNamespace;
 	};
 
 	case "SHOW _INFO": {
+		// Toggle info panel, animate, update settings, reposition controls
 		GVAR(showInfo) = !(GVAR(showInfo));
-    	GVAR(settingsParams) set [6,GVAR(showInfo)];
+		GVAR(settingsParams) set [6,GVAR(showInfo)];
 		profileNamespace setVariable [QGVAR(settingsParams), GVAR(settingsParams)];
 		saveProfileNamespace;
 		if (!isNil {GVAR(RscDisplayInsertMarkerInfo)}) then {
@@ -210,7 +232,6 @@ switch (_action) do {
 
 		waitUntil {ctrlCommitted (_display displayCtrl 1)};
 		_butt_cor_pos = -1.1*(1 * ((((safeZoneW / safeZoneH) min 1.2) / 1.2) / 25));
-
 
 		if (GVAR(showInfo)) then {_butt_cor_pos = 1.1*(1 * ((((safeZoneW / safeZoneH) min 1.2) / 1.2) / 25))};
 		{
@@ -226,8 +247,9 @@ switch (_action) do {
 	};
 
 	case "SHOW BACK": {
+		// Animate background fade in/out
 		GVAR(showBack) = !(GVAR(showBack));
-    	GVAR(settingsParams) set [7,GVAR(showBack)];
+		GVAR(settingsParams) set [7,GVAR(showBack)];
 		profileNamespace setVariable [QGVAR(settingsParams), GVAR(settingsParams)];
 		saveProfileNamespace;
 		if (GVAR(showBack)) then {
@@ -244,22 +266,25 @@ switch (_action) do {
 	};
 
 	case "SAVE MARK": {
+		// Toggle save mark setting and persist
 		GVAR(saveMark) = !(GVAR(saveMark));
-    	GVAR(settingsParams) set [8,GVAR(saveMark)];
+		GVAR(settingsParams) set [8,GVAR(saveMark)];
 		profileNamespace setVariable [QGVAR(settingsParams), GVAR(settingsParams)];
 		saveProfileNamespace;
 	};
 
 	case "_LOG": {
+		// Toggle logging setting and persist
 		GVAR(logging) = !(GVAR(logging));
-    	GVAR(settingsParams) set [10,GVAR(logging)];
+		GVAR(settingsParams) set [10,GVAR(logging)];
 		profileNamespace setVariable [QGVAR(settingsParams), GVAR(settingsParams)];
 		saveProfileNamespace;
 	};
 
 	case "MARK _INFO": {
+		// Toggle mark info, update settings, hide advanced button in map display
 		GVAR(markInfo) = !(GVAR(markInfo));
-    	GVAR(settingsParams) set [11,GVAR(markInfo)];
+		GVAR(settingsParams) set [11,GVAR(markInfo)];
 		profileNamespace setVariable [QGVAR(settingsParams), GVAR(settingsParams)];
 		saveProfileNamespace;
 		_displayMap = ({if !(isNull(findDisplay _x)) exitWith {findDisplay _x}} forEach [37,52,53,12]);

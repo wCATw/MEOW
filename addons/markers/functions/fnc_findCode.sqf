@@ -1,4 +1,23 @@
 #include "../script_component.hpp"
+/*
+	Function: fnc_findCode
+
+		Description:
+			Finds the index of the first character in a string that is not in the allowed whitelist, skipping quoted substrings.
+
+		Arguments:
+			_str   <String>  - The string to search.
+
+		Returns:
+			<Number> - The index of the first non-whitelisted character, or -1 if all are allowed.
+
+		Variables:
+			_str        <String>  - Input string.
+			_whileList  <String>  - Allowed characters.
+			_result     <Number>  - Result index.
+*/
+
+
 
 params ["_str"];
 

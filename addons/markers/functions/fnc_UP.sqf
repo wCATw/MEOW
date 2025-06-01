@@ -1,4 +1,25 @@
 #include "../script_component.hpp"
+/*
+    FILE: fnc_UP.sqf
+
+        Description:
+            Handles key-up events for a display. Updates global modifier key states (shift, ctrl, alt) when their respective keys are released.
+
+        Arguments:
+            _display      <Display>  - The display where the event occurred.
+            _dikCode      <Scalar>   - The DirectInput key code of the released key.
+            _shiftState   <Bool>     - Whether shift was pressed.
+            _ctrlState    <Bool>     - Whether control was pressed.
+            _altState     <Bool>     - Whether alt was pressed.
+            _pic          <String>   - Picture path (purpose context-dependent).
+            _markColor    <String>   - Marker color (purpose context-dependent).
+
+        Returns:
+            <Bool> - Always false, indicating the event was handled.
+
+        Variables:
+            none
+*/
 
 params ["_display","_dikCode","_shiftState","_ctrlState","_altState","_pic","_markColor"];
 
@@ -19,4 +40,5 @@ if (_dikCode in [DIK_LCONTROL,DIK_RCONTROL]) then {
 if (_dikCode in [DIK_LMENU,DIK_RMENU]) then {
 	GVAR(altState) = false;
 };
+
 false;

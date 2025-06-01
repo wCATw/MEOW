@@ -1,4 +1,25 @@
 #include "../script_component.hpp"
+/*
+    Function: fnc_clientLogicDir
+
+        Description:
+            Updates the direction of a marker for a client and logs the change. Exits if location updates are disabled.
+
+        Arguments:
+            _mark     <String>  - Marker name.
+            _dir      <Scalar>  - New marker direction.
+            _player   <Object>  - Player making the change.
+            _ctime    <Scalar>  - Change timestamp.
+
+        Returns:
+            none
+
+        Variables:
+            _mindex     <Number>  - Index of the marker in the global array.
+            _paramsOut  <Array>   - Marker parameters array.
+*/
+
+
 
 params ['_mark','_dir','_player','_ctime'];
 
