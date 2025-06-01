@@ -2,6 +2,6 @@
 
 params ["_marker"];
 
-TRACE_1("called getChannel with params:",_marker);
+PARAM_INVALID(_marker,"STRING")
 
 (GVAR(allMarkersParams) select (GVAR(allMarkers) find _marker)) select 1;

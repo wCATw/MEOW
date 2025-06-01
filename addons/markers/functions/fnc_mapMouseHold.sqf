@@ -2,7 +2,11 @@
 
 params ["_displayParentControl"];
 
-TRACE_1("called mapMouseHold with params:",_displayParentControl);
+PARAM_INVALID(_displayParentControl,"CONTROL")
+GVAR_ISNIL(mapTime);
+GVAR_ISNIL(hold);
+GVAR_ISNIL(markInfo);
+GVAR_ISNIL(delayCoeff);
 
 _display = ctrlParent _displayParentControl;
 if (GVAR(mapTime) == GVAR(delayCoeff)) then {

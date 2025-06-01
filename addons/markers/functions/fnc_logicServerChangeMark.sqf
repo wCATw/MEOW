@@ -2,7 +2,16 @@
 
 params ["_action", "_player", "_mark_id", "_channel"];
 
-TRACE_4("called logicServerChangeMark with params:",_action,_player,_mark_id,_channel);
+PARAM_INVALID(_action,"STRING")
+PARAM_INVALID(_player,"OBJECT")
+PARAM_INVALID(_mark_id,"STRING")
+PARAM_INVALID(_channel,"STRING")
+GVAR_ISNIL(logicServer)
+GVAR_ISNIL(logicServerChangeMark)
+GVAR_ISNIL(channelData)
+GVAR_ISNIL(sendDir)
+GVAR_ISNIL(sendDel)
+GVAR_ISNIL(sendPos)
 
 private ["_pos","_dir", "_ctime"];
 
@@ -96,7 +105,7 @@ switch (_action) do {
 };
 
 
-_channelData = missionNamespace getVariable (DOUBLES(GVAR(logicServer),_channel));
+_channelData = missionNamespace getVariable (format ["%1_%2",GVAR(logicServer),_channel]);
 
 if (_channelData isNotEqualTo []) then {
 	switch _channel do {

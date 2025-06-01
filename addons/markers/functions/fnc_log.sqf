@@ -2,12 +2,15 @@
 
 params ["_action", "_params"];
 
-TRACE_2("called log with params:",_action,_params);
+PARAM_INVALID(_action,"STRING")
+PARAM_INVALID(_params,"ARRAY")
+GVAR_ISNIL(logging)
+GVAR_ISNIL(MarkersLog)
 
 private _getFormatedTime = {
     params ["_time"];
 
-    TRACE_1("called _getFormatedTime in log with params:",_time);
+    PARAM_INVALID(_time,"NUMBER")
 
     private ["_time", "_hour", "_minute", "_second"];
 

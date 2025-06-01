@@ -2,7 +2,11 @@
 
 params ["_display"];
 
-TRACE_1("called loadComboboxes with params:",_display);
+PARAM_INVALID(_display,"DISPLAY")
+GVAR_ISNIL(cfgMarkers)
+GVAR_ISNIL(cfgMarkerColors)
+GVAR_ISNIL(iconSlotParams)
+GVAR_ISNIL(colorSlotParams)
 
 private ['_combo_color',"_combo_icon"];
 _combo_color = [IDC_COMBO_00,IDC_COMBO_01,IDC_COMBO_02,IDC_COMBO_03,IDC_COMBO_04,IDC_COMBO_05];

@@ -2,7 +2,13 @@
 
 params ["_player", "_data"];
 
-TRACE_2("called logicServerLoad with params:",_player,_data);
+PARAM_INVALID(_player,"OBJECT")
+PARAM_INVALID(_data,"ARRAY")
+GVAR_ISNIL(count)
+GVAR_ISNIL(daytime)
+GVAR_ISNIL(logicServer_S)
+GVAR_ISNIL(sendLoad)
+GVAR_ISNIL(isPlayerBug)
 
 {
 	GVAR(count) = GVAR(count) + 1;

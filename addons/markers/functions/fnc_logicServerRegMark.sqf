@@ -2,27 +2,25 @@
 
 params ["_player", "_mark"];
 
-TRACE_2("called logicServerRegMark with params:",_player,_mark);
+PARAM_INVALID(_player,"OBJECT")
+PARAM_INVALID(_mark,"STRING")
+GVAR_ISNIL(sendMark)
+GVAR_ISNIL(count)
+GVAR_ISNIL(groupMarkersViaRadio)
+GVAR_ISNIL(daytime)
+GVAR_ISNIL(isPlayerBug)
+GVAR_ISNIL(sendMark)
 
 private ["_channel", "_cond", "_units"];
-
-private _fnc_areFriendly = {
-	params ["_sideA","_sideB"];
-
-	if (_sideA in [civilian,sideLogic] || _sideB in [civilian,sideLogic]) then {
-		true;
-	} else {
-		private ["_conflictLimit"];
-		_conflictLimit = 0.6;
-
-		[false, true] select (_sideA getFriend _sideB >= _conflictLimit && _sideB getFriend _sideA >= _conflictLimit);
-	};
-};
 
 private _addToChannel = { 
 	params ["_channelData", "_channelUnit", "_mark"];
 
-	_channelData = missionNamespace getVariable (DOUBLES(GVAR(logicServer),_channelData));
+	PARAM_INVALID(_channelData,"STRING")
+	PARAM_INVALID(_channelUnit,"OBJECT")
+	PARAM_INVALID(_mark,"STRING")
+
+	_channelData = missionNamespace getVariable (format ["%1_%2",GVAR(logicServer),_channelData]);
 	if (_channelData find _channelUnit == -1) then {
 		_channelData pushBack _channelUnit;
 		_channelData pushBack [_mark];

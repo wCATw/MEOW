@@ -2,7 +2,7 @@
 
 params ["_mark"];
 
-TRACE_1("called getMarkParam with params:",_mark);
+PARAM_INVALID(_mark,"STRING")
 
 private ["_markerType", "_markerColor", "_markerPos", "_markerText", "_markerDir", "_markerSize", "_markerAlpha"];
 

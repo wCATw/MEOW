@@ -2,7 +2,10 @@
 
 params ["_control", "_lbCurSel"];
 
-TRACE_2("called lbSel with params:",_control,_lbCurSel);
+PARAM_INVALID(_control,"CONTROL")
+PARAM_INVALID(_lbCurSel,"CONTROL")
+GVAR_ISNIL(colorSlotParams)
+GVAR_ISNIL(iconSlotParams)
 
 _num = ctrlIDC (_control) - IDC_COMBO_00;
 ctrlSetFocus (_display displayCtrl IDC_TEXT);

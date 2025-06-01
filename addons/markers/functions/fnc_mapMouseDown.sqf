@@ -2,7 +2,22 @@
 
 params ["_ctrl", "_dikCode", "_posClickX", "_posClickY", "_shift", "_ctrlKey", "_alt"];
 
-TRACE_7("called mapMouseDown with params:",_ctrl,_dikCode,_posClickX,_posClickY,_shift,_ctrlKey,_alt);
+PARAM_INVALID(_ctrl,"CONTROL")
+PARAM_INVALID(_dikCode,"NUMBER")
+PARAM_INVALID(_posClickX,"NUMBER")
+PARAM_INVALID(_posClickY,"NUMBER")
+PARAM_INVALID(_shift,"BOOL")
+PARAM_INVALID(_ctrlKey,"BOOL")
+PARAM_INVALID(_alt,"BOOL")
+GVAR_ISNIL(allMarkers)
+GVAR_ISNIL(allMarkersParams)
+GVAR_ISNIL(markColor)
+GVAR_ISNIL(markToChangePos)
+GVAR_ISNIL(markToChangeDir)
+GVAR_ISNIL(direction)
+GVAR_ISNIL(eclipse)
+GVAR_ISNIL(lineParamsWorld)
+GVAR_ISNIL(limitSideMarkers)
 
 private _display = ctrlParent _ctrl;
 private _posClick = [_posClickX,_posClickY];
