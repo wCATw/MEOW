@@ -27,7 +27,6 @@ PREP(findPlayersWithSameRadio);
 PREP(getActiveSWRadio);
 PREP(getChannel);
 PREP(getColorChannel);
-PREP(getColorName);
 PREP(getMarkParam);
 PREP(getRadioWSSettings);
 PREP(infoAnim);

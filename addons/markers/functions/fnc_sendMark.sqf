@@ -85,9 +85,6 @@ switch (GVAR(channel)) do {
 
 if (!_go) exitWith {};
 
-TRACE_1("CHECK COLORs",GVAR(cfgMarkerColorsNames));
-TRACE_1("CHECL COLOR",GVAR(markColor));
-
 switch (_action) do {
     case "mark": {
     	[0,0] call FUNC(mapMouseUp);

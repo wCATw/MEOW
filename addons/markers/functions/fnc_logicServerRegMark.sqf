@@ -15,7 +15,7 @@ private _addToChannel = {
 	params ["_channelData", "_channelSide", "_markArr"];
 
 	PARAM_INVALID(_channelData,"STRING")
-	PARAM_INVALID(_channelSide,"SIDE")
+	PARAM_INVALID(_channelSide,"SIDE") // CAN BE STRING
 	PARAM_INVALID(_markArr,"ARRAY")
 
 	_channelData = missionNamespace getVariable (format ["%1_%2",GVAR(logicServer),_channelData]);
@@ -43,37 +43,37 @@ _units = [];
 switch (_channel) do {
 	// side channel
 	case "S": {
-		_cond = "(side _x == side _player)";
+		_cond = QUOTE((side _x == side _player));
 		[_channel, side _player, _markArr] call _addToChannel;
 		_units = (playableUnits+switchableUnits);
 	};
 	// command channel
 	case "C": {
-		_cond = "((((leader _x == _x) or (((effectiveCommander (vehicle _x)) == _x) and (vehicle _x != _x))) and (side _x == side _player)) or (_player == _x))";
+		_cond = QUOTE(((((leader _x == _x) or (((effectiveCommander (vehicle _x)) == _x) and (vehicle _x != _x))) and (side _x == side _player)) or (_player == _x)));
 		[_channel, side _player, _markArr] call _addToChannel;
 		_units = (playableUnits+switchableUnits);
 	};
 	// global channel
 	case "GL": {
-		_cond = "true";
+		_cond = QUOTE(true);
 		GVAR(logicServer_GL) pushBack _markArr;
 		_units = (playableUnits+switchableUnits);
 	};
 	// vehicle channel
 	case "V": {
-		_cond = "(_x in vehicle _player)";
+		_cond = QUOTE((_x in vehicle _player));
 		[_channel, vehicle _player, _markArr] call _addToChannel;
 		_units = (playableUnits+switchableUnits);
 	};
 	// group channel
 	case "GR": {
-		_cond = "((group _x == group _player) || (GVAR(groupMarkersViaRadio) > 0 && {(side _x isEqualTo side _player) && {([_player, _x] call FUNC(listenSameTFRadio))}}))";
+		_cond = QUOTE(((group _x == group _player) || (GVAR(groupMarkersViaRadio) > 0 && {(side _x isEqualTo side _player) && {([ARR_2(_player,_x)] call FUNC(listenSameTFRadio))}})));
 		[_channel, group _player, _markArr] call _addToChannel;
 		_units = if (GVAR(groupMarkersViaRadio) > 0) then {playableUnits+switchableUnits} else {units group _player};
 	};
 	// direct channel
 	case "D": {
-		_cond = "(_x distance _player < 15)";
+		_cond = QUOTE((_x distance _player < 15));
 		_units = (playableUnits+switchableUnits);
 	};
 };
