@@ -2,7 +2,20 @@
 
 params ["_ctrls", "_action"];
 
-TRACE_2("called checkBoxesSet with params:",_ctrls,_action);
+PARAM_INVALID(_ctrls,"ARRAY")
+PARAM_INVALID(_action,"STRING")
+GVAR_ISNIL(showInfo)
+GVAR_ISNIL(showButt)
+GVAR_ISNIL(settingsParams)
+GVAR_ISNIL(showIcon)
+GVAR_ISNIL(showColor)
+GVAR_ISNIL(showLb)
+GVAR_ISNIL(saveMode)
+GVAR_ISNIL(saveText)
+GVAR_ISNIL(showBack)
+GVAR_ISNIL(saveMark)
+GVAR_ISNIL(logging)
+GVAR_ISNIL(markInfo)
 
 private ["_controls_color", "_controls_icon", "_combo_color", "_combo_icon", "_controls_icon_pic", "_ctrl", "_display"];
 

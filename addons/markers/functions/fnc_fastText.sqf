@@ -2,7 +2,12 @@
 
 params ["_ctrl", "_action", "_changeState"];
 
-TRACE_3("called fastText with params:",_ctrl,_action,_changeState);
+PARAM_INVALID(_ctrl,"CONTROL")
+PARAM_INVALID(_action,"STRING")
+PARAM_INVALID(_changeState,"BOOL")
+GVAR_ISNIL(fastTextN)
+GVAR_ISNIL(fastTextG)
+GVAR_ISNIL(fastTextT)
 
 ctrlSetFocus ((ctrlParent _ctrl) displayCtrl IDC_TEXT);
 switch (_action) do {

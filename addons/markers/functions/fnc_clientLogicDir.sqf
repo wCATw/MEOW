@@ -2,7 +2,13 @@
 
 params ['_mark','_dir','_player','_ctime'];
 
-TRACE_4("called clientLogicDir with params:",_mark,_dir,_player,_ctime);
+PARAM_INVALID(_mark,"STRING")
+PARAM_INVALID(_dir,"NUMBER")
+PARAM_INVALID(_player,"OBJECT")
+PARAM_INVALID(_ctime,"NUMBER")
+GVAR_ISNIL(allMarkers)
+GVAR_ISNIL(allMarkersParams)
+GVAR_ISNIL(disableLoc)
 
 if (GVAR(disableLoc)) exitWith {diag_log "SWT MARKERS: MARKERS DISABLED"};
 

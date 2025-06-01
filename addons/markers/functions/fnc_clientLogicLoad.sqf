@@ -2,7 +2,8 @@
 
 params ["_player"];
 
-TRACE_1("called clientLogicLoad with params:",_player);
+PARAM_INVALID(_player,"OBJECT")
+GVAR_ISNIL(disableLoc)
 
 if (GVAR(disableLoc)) exitWith {diag_log "SWT MARKERS: MARKERS DISABLED"};
 

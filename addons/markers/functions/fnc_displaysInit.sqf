@@ -1,9 +1,11 @@
 #include "../script_component.hpp"
 
+GVAR_ISNIL(limitSideMarkers)
+
 private _addHandlers = {
     params ["_mapDisplay"];
 
-    TRACE_1("called _addHandlers in displaysInit with params:",_mapDisplay);
+    PARAM_INVALID(_mapDisplay,"DISPLAY")
 
     _control = _mapDisplay displayCtrl 51;
     
@@ -32,11 +34,7 @@ private _addHandlers = {
 };
 
 waitUntil {(!isNull (findDisplay 12)) or (!isNull (findDisplay 37)) or (!isNull (findDisplay 52)) or (!isNull (findDisplay 53))};
-_mapDisplay = (
-    {
-        if !(isNull (findDisplay _x)) exitWith {findDisplay _x;}
-    } forEach [37,52,53,12]
-);
+_mapDisplay = ({if !(isNull (findDisplay _x)) exitWith {findDisplay _x;}} forEach [37,52,53,12]);
 if (_mapDisplay == (findDisplay 12)) then {
     [_mapDisplay] call _addHandlers;
 } else {

@@ -2,7 +2,21 @@
 
 params ["_displayCtrl"];
 
-TRACE_1("called advancedSetButton with params:",_displayCtrl);
+PARAM_INVALID(_displayCtrl,"CONTROL");
+GVAR_ISNIL(advSet)
+GVAR_ISNIL(showButt)
+GVAR_ISNIL(showIcon)
+GVAR_ISNIL(showColor)
+GVAR_ISNIL(showLb)
+GVAR_ISNIL(saveText)
+GVAR_ISNIL(saveMode)
+GVAR_ISNIL(showInfo)
+GVAR_ISNIL(showBack)
+GVAR_ISNIL(saveMark)
+GVAR_ISNIL(logging)
+GVAR_ISNIL(markInfo)
+GVAR_ISNIL(disableLoc)
+GVAR_ISNIL(fastTextTSaved)
 
 private _display = ctrlParent _displayCtrl;
 ctrlSetFocus (_display displayCtrl IDC_TEXT);

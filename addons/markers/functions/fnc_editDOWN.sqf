@@ -2,7 +2,10 @@
 
 params ["_displayControlParent", "_dikCode"];
 
-TRACE_2("called editDOWN with params:",_displayControlParent,_dikCode);
+PARAM_INVALID(_displayControlParent,"CONTROL")
+PARAM_INVALID(_dikCode,"NUMBER")
+GVAR_ISNIL(tempText)
+GVAR_ISNIL(ctrlState)
 
 _display = ctrlParent _displayControlParent;
 if (((_dikCode == 51) or (_dikCode == 52)) and GVAR(ctrlState)) then {

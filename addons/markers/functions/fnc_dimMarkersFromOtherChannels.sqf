@@ -1,8 +1,16 @@
 #include "../script_component.hpp"
 
-if (isNil {GVAR(dimNonActiveChannels)}) then { GVAR(dimNonActiveChannels) = false; };
-if (isNil {GVAR(dimOldMarkers)}) then { GVAR(dimOldMarkers) = false; };
-if (!GVAR(dimNonActiveChannels) && !GVAR(dimOldMarkers)) exitWith {};
+GVAR_ISNIL(dimNonActiveChannels)
+GVAR_ISNIL(dimNonActiveChannelsAlpha)
+GVAR_ISNIL(dimOldMarkers)
+GVAR_ISNIL(dimOldMarkersAlpha)
+GVAR_ISNIL(dimOldMarkersTime)
+GVAR_ISNIL(timedimOnlyRedBlueGreen)
+GVAR_ISNIL(notdimLoadedMarkers)
+GVAR_ISNIL(allMarkers)
+GVAR_ISNIL(allMarkersParams)
+GVAR_ISNIL(dimMarkersFromOtherChannels)
+EGVAR_ISNIL(wmaptools,frzState)
 
 private _swt_to_arma_channel = ["GL","S","C","GR","V","D"];
 private _currentChannel = _swt_to_arma_channel # currentChannel;

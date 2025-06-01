@@ -2,7 +2,7 @@
 
 params ["_str"];
 
-TRACE_1("called addZero with params:",_str);
+PARAM_INVALID(_str,"STRING")
 
 if (_str<10) then {
     "0" + str _str;
