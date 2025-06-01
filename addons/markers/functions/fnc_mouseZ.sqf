@@ -2,7 +2,11 @@
 
 params ["_display", "_coef"];
 
-TRACE_2("called mouseZ with params:",_display,_coef);
+PARAM_INVALID(_display,"DISPLAY")
+PARAM_INVALID(_coef,"NUMBER")
+GVAR_ISNIL(shiftState)
+GVAR_ISNIL(ctrlState)
+GVAR_ISNIL(sweetkS)
 
 if (GVAR(shiftState)) then {
 	if (_coef > 0) then {

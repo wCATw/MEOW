@@ -3,6 +3,9 @@
 private _createOne = {
     params ["_marker", "_params"];
 
+    PARAM_INVALID(_marker,"STRING")
+    PARAM_INVALID(_params,"ARRAY")
+
     private _mark = _marker + str (random 1000);
     _Text  = _params select 0;
     _Pos   = _params select 1;
@@ -26,6 +29,8 @@ private _getParams = {
 private _findMin = {
     params ["_arr"];
 
+    PARAM_INVALID(_arr,"ARRAY")
+
     private ["_min", "_min_f", "_min_cell"];
 
     _min = 0;
@@ -47,6 +52,8 @@ private _findMin = {
 private _pathTo = {
     params ["_curr_road"];
 
+    PARAM_INVALID(_curr_road,"OBJECT")
+
     _parent = (_curr_road call _getParams) select 0 select 3;
     _path = [];
     diag_log ((_curr_road call _getParams) select 0 select 1);
@@ -63,6 +70,8 @@ private _pathTo = {
 
 private _deleteObjects = {
     params ['_objs'];
+
+    PARAM_INVALID(_objs,"ARRAY")    
 
     {
         deleteVehicle _x;

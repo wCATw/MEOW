@@ -2,7 +2,14 @@
 
 params ["_control"];
 
-TRACE_1("called unLoad with params:",_control);
+PARAM_INVALID(_control,"CONTROL")
+GVAR_ISNIL(saveMark)
+GVAR_ISNIL(markType)
+GVAR_ISNIL(markColor)
+GVAR_ISNIL(pic)
+GVAR_ISNIL(colorArr)
+GVAR_ISNIL(iconSlotParams)
+GVAR_ISNIL(saveMode)
 
 GVAR(loadDone) = nil;
 GVAR(dClBut) = nil;

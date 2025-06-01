@@ -2,7 +2,11 @@
 
 params ["_control", "_num"];
 
-TRACE_2("called setColor with params:",_control,_num);
+PARAM_INVALID(_control,"CONTROL")
+PARAM_INVALID(_num,"NUMBER")
+GVAR_ISNIL(markColor)
+GVAR_ISNIL(colorSlotParams)
+GVAR_ISNIL(colorArr)
 
 private ["_controls_icon_pic"];
 

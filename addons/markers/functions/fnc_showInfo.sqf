@@ -2,11 +2,20 @@
 
 params ["_control"];
 
-TRACE_1("called showInfo with params:",_control);
+PARAM_INVALID(_control,"CONTROL")
+
+GVAR_ISNIL(hold)
+GVAR_ISNIL(mapTime)
+GVAR_ISNIL(allMarkersParams)
+GVAR_ISNIL(daytime)
+GVAR_ISNIL(posM)
 
 private _getFormatedTime = {
 
 	params ['_time','_ctime'];
+
+	PARAM_INVALID(_time,"NUMBER")
+	PARAM_INVALID(_ctime,"NUMBER")
 
 	private ["_hour", "_minute", "_second", "_daytime", "_hourN", "_minuteN", "_secondN", "_ctimeN"];
 

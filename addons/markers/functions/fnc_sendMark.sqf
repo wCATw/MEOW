@@ -2,7 +2,26 @@
 
 params ["_action", "_params"];
 
-TRACE_2("called sendMark with params:",_action,_params);
+PARAM_INVALID(_action,"STRING")
+PARAM_INVALID(_params,"ARRAY")
+GVAR_ISNIL(disable)
+GVAR_ISNIL(markDir)
+GVAR_ISNIL(markType)
+GVAR_ISNIL(markColor)
+GVAR_ISNIL(cfgMarkersNames)
+GVAR_ISNIL(cfgMarkerColorsNames)
+GVAR_ISNIL(fastTextG)
+GVAR_ISNIL(fastTextN)
+GVAR_ISNIL(fastTextT)
+GVAR_ISNIL(fastTextTSaved)
+GVAR_ISNIL(channel)
+GVAR_ISNIL(posM)
+GVAR_ISNIL(saveText)
+GVAR_ISNIL(text)
+GVAR_ISNIL(ctrlState)
+GVAR_ISNIL(sweetkS)
+GVAR_ISNIL(clientSend)
+GVAR_ISNIL(limitSideMarkers)
 
 if (GVAR(disable)) exitWith {hintSilent (localize LSTRING(DISABLED)); true};
 

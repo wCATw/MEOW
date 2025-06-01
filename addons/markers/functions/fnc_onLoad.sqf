@@ -4,7 +4,22 @@
 
 params ["_display"];
 
-TRACE_1("called onLoad with params:",_display);
+PARAM_INVALID(_display,"DISPLAY")
+GVAR_ISNIL(displayCoord)
+GVAR_ISNIL(showInfo)
+GVAR_ISNIL(saveText)
+GVAR_ISNIL(saveMode)
+GVAR_ISNIL(showButt)
+GVAR_ISNIL(showBack)
+GVAR_ISNIL(showColor)
+GVAR_ISNIL(showIcon)
+GVAR_ISNIL(showLb)
+GVAR_ISNIL(text)
+GVAR_ISNIL(pic)
+GVAR_ISNIL(colorArr)
+GVAR_ISNIL(channel)
+GVAR_ISNIL(colorSlotParams)
+GVAR_ISNIL(iconSlotParams)
 
 private ["_text", "_picture", "_buttonOK", "_buttonCancel", "_buttonInfo", "_description", "_channButt", "_info", "_swt_info_group", "_combo_color", "_combo_icon", "_controls_color", "_control_icon", "_control_icon_pic", "_all"];
 

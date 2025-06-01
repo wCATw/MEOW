@@ -2,7 +2,18 @@
 
 params ["_control", "_displayCoordX", "_displayCoordY"];
 
-TRACE_3("called mapMouseMoving with params:",_control,_displayCoordX,_displayCoordY);
+PARAM_INVALID(_control,"CONTROL")
+PARAM_INVALID(_displayCoordX,"NUMBER")
+PARAM_INVALID(_displayCoordY,"NUMBER")
+GVAR_ISNIL(displayCoord)
+GVAR_ISNIL(posM)
+GVAR_ISNIL(direction)
+GVAR_ISNIL(markToChangeDir)
+GVAR_ISNIL(markToChangePos)
+GVAR_ISNIL(lineParamsWorld)
+GVAR_ISNIL(ellipse)
+GVAR_ISNIL(markInfo)
+GVAR_ISNIL(position)
 
 _display = ctrlParent _control;
 GVAR(displayCoord) = [_displayCoordX, _displayCoordY];
