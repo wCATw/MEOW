@@ -7,9 +7,10 @@ PARAM_INVALID(_displayCoordX,"SCALAR")
 PARAM_INVALID(_displayCoordY,"SCALAR")
 GVAR_ISNIL(markInfo)
 
-_display = ctrlParent _control;
-GVAR(displayCoord) = [_displayCoordX, _displayCoordY];
-GVAR(posM) = [_displayCoordX, _displayCoordY];
+private _display = ctrlParent _control;
+private _pos = [_displayCoordX, _displayCoordY];
+GVAR(displayCoord) = _pos;
+GVAR(posM) = _pos;
 if !(isNil {GVAR(markToChangeDir)}) then {
 	disableSerialization;
 	_ctrl = _control;
@@ -31,11 +32,11 @@ if !(isNil {GVAR(markToChangeDir)}) then {
 		"SWT_MARKERS LOCAL LINE" setMarkerSizeLocal [GVAR(lineParamsWorld) select 3,(((GVAR(lineParamsWorld) select 0) distance (GVAR(lineParamsWorld) select 1)))/2];
 		"SWT_MARKERS LOCAL LINE" setMarkerDirLocal (_direction);
 	} else {
-		if !(isNil {GVAR(ellipse)}) then {
+		if !(isNil {GVAR(ellipseParamsWorld)}) then {
 			_pos = _control ctrlMapScreenToWorld GVAR(posM);
-			if (abs((_pos select 0) - ((GVAR(ellipse) select 0) select 0)) < IDC_CONTROLS_GROUP_INFO_BUTTON_1 and abs((_pos select 1) - ((GVAR(ellipse) select 0) select 1)) < IDC_CONTROLS_GROUP_INFO_BUTTON_1) then {
-				GVAR(ellipse) set [1, _pos];
-				_size = [abs(((GVAR(ellipse) select 1) select 0) - ((GVAR(ellipse) select 0) select 0)),abs(((GVAR(ellipse) select 1) select 1) - ((GVAR(ellipse) select 0) select 1))];
+			if (abs((_pos select 0) - ((GVAR(ellipseParamsWorld) select 0) select 0)) < IDC_CONTROLS_GROUP_INFO_BUTTON_1 and abs((_pos select 1) - ((GVAR(ellipseParamsWorld) select 0) select 1)) < IDC_CONTROLS_GROUP_INFO_BUTTON_1) then {
+				GVAR(ellipseParamsWorld) set [1, _pos];
+				_size = [abs(((GVAR(ellipseParamsWorld) select 1) select 0) - ((GVAR(ellipseParamsWorld) select 0) select 0)),abs(((GVAR(ellipseParamsWorld) select 1) select 1) - ((GVAR(ellipseParamsWorld) select 0) select 1))];
 				"SWT_MARKERS LOCAL ELLIPSE" setMarkerSizeLocal _size;
 				"SWT_MARKERS LOCAL INFO" setMarkerTextLocal (format ["w: %1, h: %2", _size select 0, _size select 1]);
 			};

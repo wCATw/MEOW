@@ -1,24 +1,16 @@
 #include "../script_component.hpp"
 
-params ["_action", "_player", "_mark_id", "_channel"];
+params ["_action", "_player", "_mark_id", "_channel","_changedParam"];
 
 PARAM_INVALID(_action,"STRING")
 PARAM_INVALID(_player,"OBJECT")
 PARAM_INVALID(_mark_id,"STRING")
 PARAM_INVALID(_channel,"STRING")
-GVAR_ISNIL(logicServer)
-GVAR_ISNIL(logicServerChangeMark)
-GVAR_ISNIL(channelData)
-GVAR_ISNIL(sendDir)
-GVAR_ISNIL(sendDel)
-GVAR_ISNIL(sendPos)
 
-private ["_pos","_dir", "_ctime"];
+private ["_dir", "_ctime"];
 
 private _processMarker = {
-	params ["_action", "_markParams", "_arr", "_index"];
-
-	TRACE_4("called _processMarker in logicServerChangeMark with params:",_action,_markParams,_arr,_index);
+	params ["_action", "_markParams", "_arr", "_index", "_pos"];
 
 	switch (toUpper _action) do {
 		case "DIR": {
@@ -37,8 +29,6 @@ private _processMarker = {
 
 private _findChangeMarkers = {
 	params ["_channelUnit"];
-
-	TRACE_1("called _findChangeMarkers in logicServerChangeMark with params:",_channelUnit);
 
 	private ['_find', "_num"];
 
@@ -72,7 +62,7 @@ _ctime = CBA_missionTime;
 
 switch (_action) do {
 	case "DIR": {
-		_dir = _this select 4;
+		_dir = _changedParam;
 		GVAR(sendDir) = [_mark_id,_dir,_player,_ctime];
 		///////////////////////////
 		// OCAP
@@ -93,7 +83,7 @@ switch (_action) do {
 	};
 
 	case "POS": {
-		_pos = _this select 4;
+		_pos = _changedParam;
 		GVAR(sendPos) = [_mark_id,_pos,_player,_ctime];
 		///////////////////////////
 		// OCAP

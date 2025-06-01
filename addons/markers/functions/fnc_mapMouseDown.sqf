@@ -51,7 +51,7 @@ if (_shift and !_alt and !_ctrlKey and (_dikCode == 0)) then
 			"SWT_MARKERS LOCAL LINE" setMarkerSizeLocal [GVAR(lineParamsWorld) select 3,0];
 		} else {
 			if (_shift and !_ctrlKey and _alt and (_dikCode == 0)) then {
-				GVAR(eclipse) = [(_display displayCtrl 51) ctrlMapScreenToWorld _posClick,(_display displayCtrl 51) ctrlMapScreenToWorld _posClick];
+				GVAR(ellipseParamsWorld) = [(_display displayCtrl 51) ctrlMapScreenToWorld _posClick,(_display displayCtrl 51) ctrlMapScreenToWorld _posClick];
 				createMarkerLocal ["SWT_MARKERS LOCAL ELLIPSE", (_display displayCtrl 51) ctrlMapScreenToWorld _posClick];
 				createMarkerLocal ["SWT_MARKERS LOCAL INFO", (_display displayCtrl 51) ctrlMapScreenToWorld _posClick];
 				"SWT_MARKERS LOCAL INFO" setMarkerShapeLocal "ICON";
@@ -75,14 +75,14 @@ if (_shift and !_alt and !_ctrlKey and (_dikCode == 0)) then
 					["road", getPosATL _min] call FUNC(sendMark);
 				} else {
 					if (_dikCode == 0) then {
-						_map_pos_click = _ctrl ctrlMapScreenToWorld _posClick;
-						private _markers = [GVAR(allMarkers), [_map_pos_click], {[_input0, getMarkerPos _x] call BIS_fnc_distance2D}, "ASCEND"] call BIS_fnc_sortBy;  // MEOW
+						_mapPosClick = _ctrl ctrlMapScreenToWorld _posClick;
+						private _markers = [GVAR(allMarkers), [_mapPosClick], {[_posClick, getMarkerPos _x] call BIS_fnc_distance2D}, "ASCEND"] call BIS_fnc_sortBy;
 						{
 							private _id =  GVAR(allMarkers) find _x;
 							private _param = GVAR(allMarkersParams) # _id;
 							
 							private _pos = _ctrl ctrlMapWorldToScreen (getMarkerPos _x);
-							if (([_pos,_pos_click] call BIS_fnc_distance2D) < 0.05) exitWith {  // MEOW
+							if (([_pos,_posClick] call BIS_fnc_distance2D) < 0.05) exitWith {
 									if (name player == (_param # 8)) then {
 										if (_param #1 isNotEqualTo "S" || (0 call FUNC(checkSideChannel))) then {
 											GVAR(markToChangePos) = _x;

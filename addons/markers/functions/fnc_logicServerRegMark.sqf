@@ -1,41 +1,39 @@
 #include "../script_component.hpp"
 
-params ["_player", "_mark"];
+params ["_player", "_markArr"];
 
 PARAM_INVALID(_player,"OBJECT")
-PARAM_INVALID(_mark,"STRING")
-GVAR_ISNIL(sendMark)
+PARAM_INVALID(_markArr,"ARRAY")
 GVAR_ISNIL(count)
 GVAR_ISNIL(groupMarkersViaRadio)
 GVAR_ISNIL(daytime)
 GVAR_ISNIL(isPlayerBug)
-GVAR_ISNIL(sendMark)
 
 private ["_channel", "_cond", "_units"];
 
 private _addToChannel = { 
-	params ["_channelData", "_channelUnit", "_mark"];
+	params ["_channelData", "_channelSide", "_markArr"];
 
 	PARAM_INVALID(_channelData,"STRING")
-	PARAM_INVALID(_channelUnit,"OBJECT")
-	PARAM_INVALID(_mark,"STRING")
+	PARAM_INVALID(_channelSide,"SIDE")
+	PARAM_INVALID(_markArr,"ARRAY")
 
 	_channelData = missionNamespace getVariable (format ["%1_%2",GVAR(logicServer),_channelData]);
-	if (_channelData find _channelUnit == -1) then {
-		_channelData pushBack _channelUnit;
-		_channelData pushBack [_mark];
+	if (_channelData find _channelSide == -1) then {
+		_channelData pushBack _channelSide;
+		_channelData pushBack [_markArr];
 	} else {
-		(_channelData select ((_channelData find _channelUnit) + 1)) pushBack _mark;
+		(_channelData select ((_channelData find _channelSide) + 1)) pushBack _markArr;
 	};
 };
 
-_channel = _mark select 1;
-_mark pushBack (dayTime - GVAR(daytime)) * 3600;
+_channel = _markArr select 1;
+_markArr pushBack (dayTime - GVAR(daytime)) * 3600;
 GVAR(count) = GVAR(count) + 1;
-_mark set [0, "SWT_M#"+ str GVAR(count)]; // BAD
-_mark set [10, false];
-_mark set [11, CBA_missionTime]; // changetime
-GVAR(sendMark) = _mark;
+_markArr set [0, format ["SWT_M#%1", (str GVAR(count))]];
+_markArr set [10, false];
+_markArr set [11, CBA_missionTime];
+GVAR(sendMark) = _markArr;
 _cond = "";
 _units = [];
 ///////////////////////
@@ -46,31 +44,31 @@ switch (_channel) do {
 	// side channel
 	case "S": {
 		_cond = "(side _x == side _player)";
-		[_channel, side _player, _mark] call _addToChannel;
+		[_channel, side _player, _markArr] call _addToChannel;
 		_units = (playableUnits+switchableUnits);
 	};
 	// command channel
 	case "C": {
 		_cond = "((((leader _x == _x) or (((effectiveCommander (vehicle _x)) == _x) and (vehicle _x != _x))) and (side _x == side _player)) or (_player == _x))";
-		[_channel, side _player, _mark] call _addToChannel;
+		[_channel, side _player, _markArr] call _addToChannel;
 		_units = (playableUnits+switchableUnits);
 	};
 	// global channel
 	case "GL": {
 		_cond = "true";
-		GVAR(logicServer_GL) pushBack _mark;
+		GVAR(logicServer_GL) pushBack _markArr;
 		_units = (playableUnits+switchableUnits);
 	};
 	// vehicle channel
 	case "V": {
 		_cond = "(_x in vehicle _player)";
-		[_channel, vehicle _player, _mark] call _addToChannel;
+		[_channel, vehicle _player, _markArr] call _addToChannel;
 		_units = (playableUnits+switchableUnits);
 	};
 	// group channel
 	case "GR": {
 		_cond = "((group _x == group _player) || (GVAR(groupMarkersViaRadio) > 0 && {(side _x isEqualTo side _player) && {([_player, _x] call FUNC(listenSameTFRadio))}}))";
-		[_channel, group _player, _mark] call _addToChannel;
+		[_channel, group _player, _markArr] call _addToChannel;
 		_units = if (GVAR(groupMarkersViaRadio) > 0) then {playableUnits+switchableUnits} else {units group _player};
 	};
 	// direct channel

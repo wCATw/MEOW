@@ -38,7 +38,7 @@ if (!isNil {GVAR(lineParamsWorld)}) then {
 		{
 			private _pos = getMarkerPos _x;
 			_pos = (_display displayCtrl 51) ctrlMapWorldToScreen _pos;
-			if (([_pos,GVAR(posM)] call BIS_fnc_distance2D) < 0.025) exitWith { // MEOW
+			if (([_pos,GVAR(posM)] call BIS_fnc_distance2D) < 0.025) exitWith {
 				GVAR(changeMark)  = ["DEL", player, _x, _x call FUNC(getChannel)];
 				if (!isMultiplayer) then {GVAR(changeMark) call FUNC(logicServerChangeMark)};
 				publicVariableServer QGVAR(changeMark);

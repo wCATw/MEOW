@@ -23,8 +23,8 @@ if (count GVAR(cfgMarkerColorsNames) != 0) then {
 };
 
 GVAR(cfgMarkers) = "getNumber (_x >> 'scope') > 0 && !(getText (_x >> 'markerClass') in ['NATO_Sizes','Locations','Flags'])" configClasses (configFile >> "CfgMarkers");
-GVAR(cfgMarkerColorsNames) = [];
-{GVAR(cfgMarkerColorsNames) pushBack (configName _x)} forEach GVAR(cfgMarkers);
+GVAR(cfgMarkersNames) = [];
+{GVAR(cfgMarkersNames) pushBack (configName _x)} forEach GVAR(cfgMarkers);
 if (count GVAR(cfgMarkersNames) != 0) then {publicVariable QGVAR(cfgMarkersNames)};
 
 QGVAR(clientSend) addPublicVariableEventHandler {

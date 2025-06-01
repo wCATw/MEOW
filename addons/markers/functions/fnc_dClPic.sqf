@@ -6,7 +6,6 @@ PARAM_INVALID(_display,"DISPLAY")
 PARAM_INVALID(_poHsClickX,"SCALAR")
 PARAM_INVALID(_posClickY,"SCALAR")
 GVAR_ISNIL(time)
-GVAR_ISNIL(dClBut)
 
 if ((diag_tickTime-GVAR(time)) < 0.3) then {
 	GVAR(time) = diag_tickTime;

@@ -1,11 +1,11 @@
 #include "../script_component.hpp"
 
-params ["_str"];
+params ["_num"];
 
-PARAM_INVALID(_str,"STRING")
+PARAM_INVALID(_num,"SCALAR")
 
-if (_str<10) then {
-    "0" + str _str;
+if (_num<10) then {
+    format ["0%1",str _num];
 } else {
-    str _str;
+    str _num;
 };

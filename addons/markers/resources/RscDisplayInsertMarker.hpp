@@ -56,7 +56,7 @@ class GVAR(RscDisplayInsertMarker)
 			y=0;
 			w=QUOTE(5 *  (((safeZoneW/safeZoneH) min 1.2)/40));
 			h=QUOTE(1 *  ((((safeZoneW/safeZoneH) min 1.2)/1.2)/25));
-			OnButtonClick=QUOTE([ARR_2('mark',(ctrlParent (_this select 0)))] call FUNC(sendMark); true);
+			OnButtonClick=QUOTE([ARR_2('mark',[(ctrlParent (_this select 0))])] call FUNC(sendMark); true);
 		};
 		class ButtonChannel: GVAR(RscButton)
 		{

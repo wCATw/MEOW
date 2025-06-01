@@ -1,8 +1,8 @@
 #include "../script_component.hpp"
 
-params ["_control"];
+params ["_display"];
 
-PARAM_INVALID(_control,"CONTROL")
+PARAM_INVALID(_display,"DISPLAY")
 GVAR_ISNIL(saveMark)
 GVAR_ISNIL(markType)
 GVAR_ISNIL(markColor)
@@ -16,7 +16,7 @@ GVAR(dClBut) = nil;
 GVAR(advSet) = nil;
 GVAR(RscDisplayInsertMarkerInfo) = nil;
 GVAR(RscDisplayInsertMarkerSetButton) = nil;
-GVAR(text) = ctrlText (_control displayCtrl IDC_TEXT);
+GVAR(text) = ctrlText (_display displayCtrl IDC_TEXT);
 if !(GVAR(saveMark)) then {
 	GVAR(markType) = GVAR(iconSlotParams) select 0;
 	GVAR(markColor) = GVAR(colorSlotParams) select 0;

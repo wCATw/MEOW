@@ -3,7 +3,7 @@
 params ["_control", "_lbCurSel"];
 
 PARAM_INVALID(_control,"CONTROL")
-PARAM_INVALID(_lbCurSel,"CONTROL")
+PARAM_INVALID(_lbCurSel,"SCALAR")
 GVAR_ISNIL(colorSlotParams)
 GVAR_ISNIL(iconSlotParams)
 
@@ -11,7 +11,7 @@ _num = ctrlIDC (_control) - IDC_COMBO_00;
 ctrlSetFocus (_display displayCtrl IDC_TEXT);
 switch (_num < 6) do {
 	case true: {
-		_class = (_control) lbData (_lbCurSel);
+		_class = _control lbData _lbCurSel;
 		if (_class == "" or {_class == (GVAR(colorSlotParams) select _num)}) exitWith {};
 		GVAR(colorSlotParams) set [_num,_class];
 		profileNamespace setVariable [QGVAR(colorSlotParams), GVAR(colorSlotParams)];

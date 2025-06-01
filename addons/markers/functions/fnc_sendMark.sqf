@@ -1,11 +1,10 @@
 #include "../script_component.hpp"
 
-params ["_action", "_displayMark"];
+params ["_action", "_params"];
 
 PARAM_INVALID(_action,"STRING")
-PARAM_INVALID(_displayMark,"DISPLAY")
+PARAM_INVALID(_params,"ARRAY") // CAN BE CONTROL
 GVAR_ISNIL(disable)
-GVAR_ISNIL(markDir)
 GVAR_ISNIL(markType)
 GVAR_ISNIL(markColor)
 GVAR_ISNIL(cfgMarkersNames)
@@ -20,14 +19,13 @@ GVAR_ISNIL(saveText)
 GVAR_ISNIL(text)
 GVAR_ISNIL(ctrlState)
 GVAR_ISNIL(sweetkS)
-GVAR_ISNIL(clientSend)
 GVAR_ISNIL(limitSideMarkers)
 
 if (GVAR(disable)) exitWith {hintSilent (localize LSTRING(DISABLED)); true};
 
 GVAR(markDir) = 0;
 
-private ["_displayMap", "_text", "_WordlCoord", "_send", "_channel", "_go"];
+private ["_displayMap", "_text", "_WorldCoord", "_send", "_channel", "_go", "_swtid"];
 
 _displayMap = ({if !(isNull(findDisplay _x)) exitWith {findDisplay _x}} forEach [37,52,53,12]);
 (_displayMap displayCtrl IDC_BUTTON_ADV) ctrlShow false;
@@ -87,9 +85,13 @@ switch (GVAR(channel)) do {
 
 if (!_go) exitWith {};
 
+TRACE_1("CHECK COLORs",GVAR(cfgMarkerColorsNames));
+TRACE_1("CHECL COLOR",GVAR(markColor));
+
 switch (_action) do {
     case "mark": {
     	[0,0] call FUNC(mapMouseUp);
+		private _displayMark = _params # 0;
 		_WorldCoord = (_displayMap displayCtrl 51) ctrlMapScreenToWorld [((ctrlPosition (_displayMark displayCtrl IDC_PICTURE)) select 0)+((ctrlPosition (_displayMark displayCtrl IDC_PICTURE)) select 2)/2,((ctrlPosition (_displayMark displayCtrl IDC_PICTURE)) select 1)+((ctrlPosition (_displayMark displayCtrl IDC_PICTURE)) select 3)/2];
 		_text =  _text + ctrlText (_displayMark displayCtrl IDC_TEXT);
 		_send pushBack [_swtid,_channel,_text, _WorldCoord, GVAR(cfgMarkersNames) find GVAR(markType), GVAR(cfgMarkerColorsNames) find GVAR(markColor), GVAR(markDir), GVAR(sweetkS), name player];

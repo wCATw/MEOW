@@ -3,7 +3,6 @@
 params ["_displayCtrl"];
 
 PARAM_INVALID(_displayCtrl,"CONTROL");
-GVAR_ISNIL(advSet)
 GVAR_ISNIL(showButt)
 GVAR_ISNIL(showIcon)
 GVAR_ISNIL(showColor)
