@@ -6,9 +6,13 @@
             Initializes event handlers and UI controls for map displays used in the marker system.
 
         Arguments:
+            Global:
+                limitSideMarkers    <Any>   - Used to determine if side marker limiting is enabled (read-only)
             none
 
         Returns:
+            Global:
+                none
             none
 
         Variables:

@@ -1,22 +1,31 @@
 #include "../script_component.hpp"
-/*
-	Function: fnc_showInfo
+	/*
+		Function: fnc_showInfo
 
-		Description:
-			Displays detailed information about a marker when hovering or interacting with it on the map UI. Shows marker ID, type, channel, and time info in a structured text control.
+			Description:
+				Displays detailed information about a marker when hovering or interacting with it on the map UI. Shows marker ID, type, channel, and time info in a structured text control.
 
-		Arguments:
-			_control   <Control>  - The map control being interacted with.
+			Arguments:
+				_control   <Control>  - The map control being interacted with.
+				Global:
+					hold            <Bool>   - Hold state for info display (read/set)
+					mapTime         <Scalar> - Map time for info display (read/set)
+					allMarkersParams<Array>  - All marker parameters (read)
+					daytime         <Scalar> - Mission daytime (read)
+					posM            <Array>  - Marker position (read)
 
-		Returns:
-			none
+			Returns:
+				none
+				Global:
+					hold            <Bool>   - Hold state for info display (set)
+					mapTime         <Scalar> - Map time for info display (set)
 
-		Variables:
-			_control        <Control>  - The map control.
-			_ctrl_info      <Control>  - The info display control.
-			_find           <Bool>     - Whether a marker was found under the cursor.
-			_getFormatedTime <Code>    - Local function to format time values for display.
-*/
+			Variables:
+				_control        <Control>  - The map control.
+				_ctrl_info      <Control>  - The info display control.
+				_find           <Bool>     - Whether a marker was found under the cursor.
+				_getFormatedTime <Code>    - Local function to format time values for display.
+	*/
 
 params ["_control"];
 

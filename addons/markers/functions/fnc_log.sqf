@@ -1,20 +1,23 @@
 #include "../script_component.hpp"
-/*
-    Function: fnc_log
+    /*
+        Function: fnc_log
 
-        Description:
-            Logs marker actions (create, delete, direction, position, load) to the player's diary if logging is enabled.
+            Description:
+                Logs marker actions (create, delete, direction, position, load) to the player's diary if logging is enabled.
 
-        Arguments:
-            _action   <String>  - The action type ("CREATE", "DEL", "DIR", "POS", "LOAD").
-            _params   <Array>   - Parameters for the action.
+            Arguments:
+                _action   <String>  - The action type ("CREATE", "DEL", "DIR", "POS", "LOAD").
+                _params   <Array>   - Parameters for the action.
+                Global:
+                    logging     <Bool>   - If true, enables logging (read)
+                    markersLog  <String> - Diary subject for marker logs (read)
 
-        Returns:
-            none
+            Returns:
+                none
 
-        Variables:
-            _getFormatedTime, _sep, _text
-*/
+            Variables:
+                _getFormatedTime, _sep, _text
+    */
 
 params ["_action", "_params"];
 

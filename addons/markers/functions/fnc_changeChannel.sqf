@@ -1,20 +1,26 @@
 #include "../script_component.hpp"
-/*
-	Function: fnc_changeChannel
+	/*
+		Function: fnc_changeChannel
 
-		Description:
-			Changes the current marker channel to the next or previous available channel and updates the UI.
+			Description:
+				Changes the current marker channel to the next or previous available channel and updates the UI.
 
-		Arguments:
-			_channelDisplay   <Display>  - The display containing the channel control.
-			_dir              <String>   - Direction to change ("UP" or "DOWN").
+			Arguments:
+				_channelDisplay   <Display>  - The display containing the channel control.
+				_dir              <String>   - Direction to change ("UP" or "DOWN").
+				Global:
+					channel            <Any>   - Current channel (read/set)
+					availableChannels  <Array> - List of available channels (read)
+					allChannels        <Array> - List of all channels (read)
 
-		Returns:
-			none
+			Returns:
+				none
+				Global:
+					channel <Any> - Updated channel (set)
 
-		Variables:
-			_curNum   <Number>  - Current channel index.
-*/
+			Variables:
+				_curNum   <Number>  - Current channel index.
+	*/
 
 params ["_channelDisplay", "_dir"];
 

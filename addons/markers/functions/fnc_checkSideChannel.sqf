@@ -1,19 +1,22 @@
 #include "../script_component.hpp"
-/*
-	Function: fnc_checkSideChannel
+	/*
+		Function: fnc_checkSideChannel
 
-		Description:
-			Determines if the player has the ability to use the side channel for markers, based on mission state and equipment.
+			Description:
+				Determines if the player has the ability to use the side channel for markers, based on mission state and equipment.
 
-		Arguments:
-			none
+			Arguments:
+				none
+				Global:
+					wmaptools_frzState <Any>  - Mission freeze state (read)
+					limitSideMarkers   <Any>  - Controls side channel access (read)
 
-		Returns:
-			<Bool> - True if the player can use the side channel, false otherwise.
+			Returns:
+				<Bool> - True if the player can use the side channel, false otherwise.
 
-		Variables:
-			_hasAbility   <Bool>  - Whether the player can use the side channel.
-*/
+			Variables:
+				_hasAbility   <Bool>  - Whether the player can use the side channel.
+	*/
 
 EGVAR_ISNIL(wmaptools,frzState)
 GVAR_ISNIL(limitSideMarkers)

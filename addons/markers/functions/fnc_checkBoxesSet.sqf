@@ -1,20 +1,35 @@
 #include "../script_component.hpp"
-/*
-	Function: fnc_checkBoxesSet
+	/*
+		Function: fnc_checkBoxesSet
 
-		Description:
-			Handles toggling and updating of various marker dialog UI settings and controls based on user actions.
+			Description:
+				Handles toggling and updating of various marker dialog UI settings and controls based on user actions.
 
-		Arguments:
-			_ctrls   <Array>   - Array of controls involved in the action.
-			_action  <String>  - The action to perform (e.g., "SHOW OK", "SHOW ICON", etc.).
+			Arguments:
+				_ctrls   <Array>   - Array of controls involved in the action.
+				_action  <String>  - The action to perform (e.g., "SHOW OK", "SHOW ICON", etc.).
+				Global:
+					showInfo      <Any> - Advanced info panel state (read/set)
+					showButt      <Any> - Show button state (read/set)
+					settingsParams <Any> - Marker settings (read/set)
+					showIcon      <Any> - Show icon state (read/set)
+					showColor     <Any> - Show color state (read/set)
+					showLb        <Any> - Show listbox state (read/set)
+					saveMode      <Any> - Save mode state (read/set)
+					saveText      <Any> - Save text state (read/set)
+					showBack      <Any> - Show background state (read/set)
+					saveMark      <Any> - Save marker state (read/set)
+					logging       <Any> - Logging state (read/set)
+					markInfo      <Any> - Marker info state (read/set)
 
-		Returns:
-			none
+			Returns:
+				none
+				Global:
+					(see above) - Various UI and marker state globals may be updated (set)
 
-		Variables:
-			_ctrl, _display, _controls_color, _controls_icon, _combo_color, _combo_icon, _controls_icon_pic, and many local UI variables.
-*/
+			Variables:
+				_ctrl, _display, _controls_color, _controls_icon, _combo_color, _combo_icon, _controls_icon_pic, and many local UI variables.
+	*/
 
 params ["_ctrls", "_action"];
 

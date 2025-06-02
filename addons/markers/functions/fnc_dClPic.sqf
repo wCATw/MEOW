@@ -1,22 +1,28 @@
 #include "../script_component.hpp"
-/*
-	Function: fnc_dClPic
+	/*
+		Function: fnc_dClPic
 
-		Description:
-			Handles double-click events on the marker picture control. Toggles the visibility of color and icon listboxes if the click is within the icon area and within a short time interval.
+			Description:
+				Handles double-click events on the marker picture control. Toggles the visibility of color and icon listboxes if the click is within the icon area and within a short time interval.
 
-		Arguments:
-			_display     <Display>  - The display containing the picture control.
-			_two         <Any>      - Unused/unknown, passed for compatibility.
-			_posClickX   <Scalar>   - X coordinate of the click.
-			_posClickY   <Scalar>   - Y coordinate of the click.
+			Arguments:
+				_display     <Display>  - The display containing the picture control.
+				_two         <Any>      - Unused/unknown, passed for compatibility.
+				_posClickX   <Scalar>   - X coordinate of the click.
+				_posClickY   <Scalar>   - Y coordinate of the click.
+				Global:
+					time   <Scalar>   - Used to check double-click interval (read/set)
+					dClBut <Any>      - Used to track double-click state (read/set)
 
-		Returns:
-			none
+			Returns:
+				none
+				Global:
+					time   <Scalar>   - Updated with last click time (set)
+					dClBut <Any>      - Updated with double-click state (set)
 
-		Variables:
-			_display, _two, _posClickX, _posClickY, _pos_click, _pos_to_chek
-*/
+			Variables:
+				_display, _two, _posClickX, _posClickY, _pos_click, _pos_to_chek
+	*/
 
 params ["_display", "_two", "_posClickX", "_posClickY"];
 

@@ -1,19 +1,23 @@
 #include "../script_component.hpp"
-/*
-	Function: fnc_disableLoc
+	/*
+		Function: fnc_disableLoc
 
-		Description:
-			Toggles the disableLoc global variable and updates the control text to reflect the new state.
+			Description:
+				Toggles the disableLoc global variable and updates the control text to reflect the new state.
 
-		Arguments:
-			_ctrl   <Control>  - The control whose text is updated.
+			Arguments:
+				_ctrl   <Control>  - The control whose text is updated.
+				Global:
+					disableLoc <Bool> - Global variable toggled to enable/disable location updates (read/set)
 
-		Returns:
-			none
+			Returns:
+				none
+				Global:
+					disableLoc <Bool> - Updated state after toggle (set)
 
-		Variables:
-			_ctrl   <Control>  - The control to update.
-*/
+			Variables:
+				_ctrl   <Control>  - The control to update.
+	*/
 
 
 

@@ -7,8 +7,12 @@
 
         Arguments:
             none (uses _this as marker parameters)
+            Global:
+                disableLoc <Bool> - If true, disables marker creation (read-only)
 
         Returns:
+            Global:
+                none
             none
 
         Variables:

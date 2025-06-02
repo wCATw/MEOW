@@ -1,19 +1,36 @@
 #include "../script_component.hpp"
-/*
-	Function: fnc_advancedSetButton
+	/*
+		Function: fnc_advancedSetButton
 
-		Description:
-			Toggles the advanced settings panel in the marker dialog and updates all advanced setting controls to reflect current global states.
+			Description:
+				Toggles the advanced settings panel in the marker dialog and updates all advanced setting controls to reflect current global states.
 
-		Arguments:
-			_displayCtrl   <Control>  - The control that triggered the advanced settings panel.
+			Arguments:
+				_displayCtrl   <Control>  - The control that triggered the advanced settings panel.
+				Global:
+					showButt      <Any> - Show button state (read/set)
+					showIcon      <Any> - Show icon state (read/set)
+					showColor     <Any> - Show color state (read/set)
+					showLb        <Any> - Show listbox state (read/set)
+					saveText      <Any> - Save text state (read/set)
+					saveMode      <Any> - Save mode state (read/set)
+					showInfo      <Any> - Show info state (read/set)
+					showBack      <Any> - Show background state (read/set)
+					saveMark      <Any> - Save marker state (read/set)
+					logging       <Any> - Logging state (read/set)
+					markInfo      <Any> - Marker info state (read/set)
+					disableLoc    <Bool> - If true, disables location updates (read)
+					fastTextTSaved <Any> - Saved fast text (read/set)
+					advSet        <Any> - Advanced settings panel state (read/set)
 
-		Returns:
-			none
+			Returns:
+				none
+				Global:
+					(see above) - Various UI and marker state globals may be updated (set)
 
-		Variables:
-			_display   <Display>  - The parent display.
-*/
+			Variables:
+				_display   <Display>  - The parent display.
+	*/
 
 params ["_displayCtrl"];
 

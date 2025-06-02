@@ -1,27 +1,33 @@
 #include "../script_component.hpp"
-/*
-	Function: fnc_createMarker
+	/*
+		Function: fnc_createMarker
 
-		Description:
-			Creates a new marker with the specified parameters and adds it to the global marker arrays. Handles different marker shapes and types.
+			Description:
+				Creates a new marker with the specified parameters and adds it to the global marker arrays. Handles different marker shapes and types.
 
-		Arguments:
-			_mark    <String>  - Marker name.
-			_Chan    <String>  - Channel code.
-			_Text    <String>  - Marker text.
-			_Pos     <Array>   - Marker position.
-			_Type    <Scalar>  - Marker type index.
-			_Color   <Scalar>  - Marker color index (can be string).
-			_Dir     <Scalar>  - Marker direction.
-			_Scale   <Array>   - Marker scale (can be scalar).
-			_Name    <String>  - Marker creator name.
+			Arguments:
+				_mark    <String>  - Marker name.
+				_Chan    <String>  - Channel code.
+				_Text    <String>  - Marker text.
+				_Pos     <Array>   - Marker position.
+				_Type    <Scalar>  - Marker type index.
+				_Color   <Scalar>  - Marker color index (can be string).
+				_Dir     <Scalar>  - Marker direction.
+				_Scale   <Array>   - Marker scale (can be scalar).
+				_Name    <String>  - Marker creator name.
+				Global:
+					cfgMarkerColorsNames <Array> - Marker color config (read)
+					cfgMarkersNames      <Array> - Marker type config (read)
 
-		Returns:
-			none
+			Returns:
+				none
+				Global:
+					allMarkers         <Array> - Updated with new marker (set)
+					allMarkersParams   <Array> - Updated with new marker params (set)
 
-		Variables:
-			_params   <Array>   - All marker parameters.
-*/
+			Variables:
+				_params   <Array>   - All marker parameters.
+	*/
 
 params ["_mark", "_Chan", "_Text", "_Pos", "_Type", "_Color", "_Dir", "_Scale", "_Name"];
  

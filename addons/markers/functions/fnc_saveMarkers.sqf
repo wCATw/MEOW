@@ -1,20 +1,24 @@
 #include "../script_component.hpp"
-/*
-	Function: fnc_saveMarkers
+	/*
+		Function: fnc_saveMarkers
 
-		Description:
-			Saves the current marker parameters to the clipboard or to the profile namespace for persistence.
+			Description:
+				Saves the current marker parameters to the clipboard or to the profile namespace for persistence.
 
-		Arguments:
-			_this   <String>  - If "CLIP", saves to clipboard; otherwise saves to profile namespace.
+			Arguments:
+				_this   <String>  - If "CLIP", saves to clipboard; otherwise saves to profile namespace.
+				Global:
+					allMarkersParams <Array> - All marker parameters (read)
 
-		Returns:
-			none
+			Returns:
+				none
+				Global:
+					saveArr         <Array> - Saved marker array (set)
 
-		Variables:
-			_arr        <Array>   - Copy of all marker parameters.
-			_arr_copy   <Array>   - Array of marker data to save.
-*/
+			Variables:
+				_arr        <Array>   - Copy of all marker parameters.
+				_arr_copy   <Array>   - Array of marker data to save.
+	*/
 
 GVAR_ISNIL(allMarkersParams)
 GVAR_ISNIL(saveArr)

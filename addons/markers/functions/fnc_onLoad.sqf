@@ -1,19 +1,35 @@
 #include "../script_component.hpp"
-/*
-	Function: fnc_onLoad
+	/*
+		Function: fnc_onLoad
 
-		Description:
-			Initializes and arranges all controls and UI elements for the marker dialog when it is loaded. Sets up positions, colors, icons, and fast text options.
+			Description:
+				Initializes and arranges all controls and UI elements for the marker dialog when it is loaded. Sets up positions, colors, icons, and fast text options.
 
-		Arguments:
-			_display   <Display>  - The display being initialized.
+			Arguments:
+				_display   <Display>  - The display being initialized.
+				Global:
+					displayCoord      <Array>  - UI display coordinates (read)
+					showInfo          <Bool>   - Show info flag (read)
+					saveText          <Bool>   - Save text flag (read)
+					saveMode          <Bool>   - Save mode flag (read)
+					showButt          <Bool>   - Show button flag (read)
+					showBack          <Bool>   - Show back flag (read)
+					showColor         <Bool>   - Show color flag (read)
+					showIcon          <Bool>   - Show icon flag (read)
+					showLb            <Bool>   - Show listbox flag (read)
+					text              <String> - Marker text (read)
+					pic               <String> - Marker icon (read)
+					colorArr          <Array>  - Marker color array (read)
+					channel           <String> - Channel (read)
+					colorSlotParams   <Array>  - Color slot parameters (read)
+					iconSlotParams    <Array>  - Icon slot parameters (read)
 
-		Returns:
-			none
+			Returns:
+				none
 
-		Variables:
-			_display, _text, _picture, _buttonOK, _buttonCancel, _buttonInfo, _description, _channButt, _info, _swt_info_group, _combo_color, _combo_icon, _controls_color, _controls_icon, _controls_icon_pic, _all, and many local UI variables.
-*/
+			Variables:
+				_display, _text, _picture, _buttonOK, _buttonCancel, _buttonInfo, _description, _channButt, _info, _swt_info_group, _combo_color, _combo_icon, _controls_color, _controls_icon, _controls_icon_pic, _all, and many local UI variables.
+	*/
 
 #define SWT_W 0.025
 #define SWT_H 0.02

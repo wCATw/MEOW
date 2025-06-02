@@ -8,8 +8,12 @@
 		Arguments:
 			_player    <Object>  - The player loading the markers.
 			_markers   <Array>   - Array of marker data to load.
+			Global:
+				disableLoc <Bool> - If true, disables marker loading (read-only)
 
 		Returns:
+			Global:
+				none
 			none
 
 		Variables:

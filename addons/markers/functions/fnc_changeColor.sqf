@@ -1,20 +1,27 @@
-/*
-	Function: fnc_changeColor
+	/*
+		Function: fnc_changeColor
 
-		Description:
-			Changes the current marker color to the next or previous color in the color slot parameters, updating the preview in the UI.
+			Description:
+				Changes the current marker color to the next or previous color in the color slot parameters, updating the preview in the UI.
 
-		Arguments:
-			_display   <Display>  - The display containing the color control.
-			_dir       <String>   - Direction to change ("UP" or "DOWN").
+			Arguments:
+				_display   <Display>  - The display containing the color control.
+				_dir       <String>   - Direction to change ("UP" or "DOWN").
+				Global:
+					markColor      <String> - Current marker color (read/set)
+					colorSlotParams <Array> - List of available color types (read)
+					colorArr       <Array>  - Current color array (read/set)
 
-		Returns:
-			none
+			Returns:
+				none
+				Global:
+					markColor <String> - Updated marker color (set)
+					colorArr  <Array>  - Updated color array (set)
 
-		Variables:
-			_control      <Control>  - The color control.
-			_curr_num     <Number>   - Current color index.
-*/
+			Variables:
+				_control      <Control>  - The color control.
+				_curr_num     <Number>   - Current color index.
+	*/
 
 #include "../script_component.hpp"
 

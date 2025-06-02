@@ -1,21 +1,28 @@
 #include "../script_component.hpp"
-/*
-	Function: fnc_changeIcon
+	/*
+		Function: fnc_changeIcon
 
-		Description:
-			Changes the current marker icon to the next or previous icon in the icon slot parameters, updating the preview in the UI.
+			Description:
+				Changes the current marker icon to the next or previous icon in the icon slot parameters, updating the preview in the UI.
 
-		Arguments:
-			_display   <Display>  - The display containing the icon control.
-			_dir       <String>   - Direction to change ("UP" or "DOWN").
+			Arguments:
+				_display   <Display>  - The display containing the icon control.
+				_dir       <String>   - Direction to change ("UP" or "DOWN").
+				Global:
+					iconSlotParams <Array> - List of available icon types (read)
+					markType       <String> - Current marker type (read/set)
+					pic            <String> - Current marker icon path (read/set)
 
-		Returns:
-			none
+			Returns:
+				none
+				Global:
+					markType <String> - Updated marker type (set)
+					pic      <String> - Updated marker icon path (set)
 
-		Variables:
-			_control    <Control>  - The icon control.
-			_curr_num   <Number>   - Current icon index.
-*/
+			Variables:
+				_control    <Control>  - The icon control.
+				_curr_num   <Number>   - Current icon index.
+	*/
 
 params ["_display", "_dir"];
 

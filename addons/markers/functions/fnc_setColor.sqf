@@ -1,16 +1,27 @@
 #include "../script_component.hpp"
-/*
-	Function: fnc_setColor
-		Description:
-			Sets the marker color and updates the color preview for all relevant UI controls when a user selects a new color.
-		Arguments:
-			_control   <Control>  - The control that triggered the color change.
-			_num       <Scalar>   - The index of the selected color in the color slot parameters.
-		Returns:
-			none
-		Variables:
-			none
-*/
+	/*
+		Function: fnc_setColor
+
+			Description:
+				Sets the marker color and updates the color preview for all relevant UI controls when a user selects a new color.
+
+			Arguments:
+				_control   <Control>  - The control that triggered the color change.
+				_num       <Scalar>   - The index of the selected color in the color slot parameters.
+				Global:
+					markColor       <String> - Marker color (read/set)
+					colorSlotParams <Array>  - Color slot parameters (read)
+					colorArr        <Array>  - Marker color array (read/set)
+
+			Returns:
+				none
+				Global:
+					markColor       <String> - Marker color (set)
+					colorArr        <Array>  - Marker color array (set)
+
+			Variables:
+				none
+	*/
 
 params ["_control", "_num"];
 

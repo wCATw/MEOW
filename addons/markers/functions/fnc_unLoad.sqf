@@ -1,17 +1,41 @@
 #include "../script_component.hpp"
-/*
-	Description:
-		Handles the unloading/cleanup of marker UI display. Resets or clears global marker-related variables and states when the marker dialog is closed or unloaded.
+	/*
+		Description:
+			Handles the unloading/cleanup of marker UI display. Resets or clears global marker-related variables and states when the marker dialog is closed or unloaded.
 
-	Arguments:
-		_display      <Display>  - The display being unloaded.
+		Arguments:
+			_display      <Display>  - The display being unloaded.
+			Global:
+				saveMark        <Bool>   - If true, marker is saved (read)
+				markType        <String> - Marker type (read/set)
+				markColor       <String> - Marker color (read/set)
+				pic             <String> - Marker icon (read/set)
+				colorArr        <Array>  - Marker color array (read/set)
+				iconSlotParams  <Array>  - Icon slot parameters (read)
+				colorSlotParams <Array>  - Color slot parameters (read)
+				saveMode        <Bool>   - Save mode flag (read)
 
-	Returns:
-		none
+		Returns:
+			none
+			Global:
+				markType        <String> - Marker type (set)
+				markColor       <String> - Marker color (set)
+				pic             <String> - Marker icon (set)
+				colorArr        <Array>  - Marker color array (set)
+				text            <String> - Marker text (set)
+				loadDone        <Any>    - Load done state (set)
+				dClBut          <Any>    - dClBut state (set)
+				advSet          <Any>    - advSet state (set)
+				RscDisplayInsertMarkerInfo <Any> - UI state (set)
+				RscDisplayInsertMarkerSetButton <Any> - UI state (set)
+				sweetkS         <Any>    - SweetkS value (set)
+				fastTextG       <Bool>   - Fast text group flag (set)
+				fastTextN       <Bool>   - Fast text name flag (set)
+				fastTextT       <Bool>   - Fast text text flag (set)
 
-	Variables:
-		none
-*/
+		Variables:
+			none
+	*/
 
 params ["_display"];
 

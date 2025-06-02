@@ -1,23 +1,25 @@
 #include "../script_component.hpp"
-/*
-    Function: fnc_radioListenFreqs
+    /*
+        Function: fnc_radioListenFreqs
 
-        Description:
-            Retrieves the list of radio listening frequencies for a player, including long-range and short-range radios, if enabled.
+            Description:
+                Retrieves the list of radio listening frequencies for a player, including long-range and short-range radios, if enabled.
 
-        Arguments:
-            _player   <Object>  - The player object to get radio frequencies for.
+            Arguments:
+                _player   <Object>  - The player object to get radio frequencies for.
+                Global:
+                    groupMarkersViaRadio <Scalar> - Controls LR radio group marker logic (read)
 
-        Returns:
-            <Array> - Array of radio frequencies the player is listening to.
+            Returns:
+                <Array> - Array of radio frequencies the player is listening to.
 
-        Variables:
-            _player         <Object>  - The player.
-            _result         <Array>   - Array to store frequencies.
-            _radiolist      <Array>   - List of LR radios.
-            _lr_settings    <Array>   - Settings for the LR radio.
-            _sw_settings    <Array>   - Settings for the SW radio.
-*/
+            Variables:
+                _player         <Object>  - The player.
+                _result         <Array>   - Array to store frequencies.
+                _radiolist      <Array>   - List of LR radios.
+                _lr_settings    <Array>   - Settings for the LR radio.
+                _sw_settings    <Array>   - Settings for the SW radio.
+    */
 
 params ["_player"];
 

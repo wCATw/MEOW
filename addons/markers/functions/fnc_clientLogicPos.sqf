@@ -1,23 +1,29 @@
 #include "../script_component.hpp"
-/*
-    Function: fnc_clientLogicPos
+    /*
+        Function: fnc_clientLogicPos
 
-        Description:
-            Updates the position of a marker for a client and logs the change. Exits if location updates are disabled.
+            Description:
+                Updates the position of a marker for a client and logs the change. Exits if location updates are disabled.
 
-        Arguments:
-            _mark     <String>  - Marker name.
-            _pos      <Array>   - New marker position.
-            _player   <Object>  - Player making the change.
-            _ctime    <Scalar>  - Change timestamp.
+            Arguments:
+                _mark     <String>  - Marker name.
+                _pos      <Array>   - New marker position.
+                _player   <Object>  - Player making the change.
+                _ctime    <Scalar>  - Change timestamp.
+                Global:
+                    allMarkers       <Array> - Global array of all marker names (read/set)
+                    allMarkersParams <Array> - Global array of all marker parameters (read/set)
+                    disableLoc       <Bool>  - If true, disables marker position update (read)
 
-        Returns:
-            none
+            Returns:
+                none
+                Global:
+                    allMarkersParams <Array> - Updated with new position and timestamp (set)
 
-        Variables:
-            _mindex     <Number>  - Index of the marker in the global array.
-            _paramsOut  <Array>   - Marker parameters array.
-*/
+            Variables:
+                _mindex     <Number>  - Index of the marker in the global array.
+                _paramsOut  <Array>   - Marker parameters array.
+    */
 
 
 

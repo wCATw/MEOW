@@ -1,24 +1,37 @@
 #include "../script_component.hpp"
-/*
-	Function: fnc_dimMarkersFromOtherChannels
+	/*
+		Function: fnc_dimMarkersFromOtherChannels
 
-		Description:
-			Adjusts the alpha (transparency) of markers that are not on the current channel or are considered old, to visually dim them in the UI.
+			Description:
+				Adjusts the alpha (transparency) of markers that are not on the current channel or are considered old, to visually dim them in the UI.
 
-		Arguments:
-			_mrk   <String>  - The marker name to dim, or empty/undefined to process all markers.
+			Arguments:
+				_mrk   <String>  - The marker name to dim, or empty/undefined to process all markers.
+				Global:
+					dimNonActiveChannels      <Any>   - Controls dimming of non-active channels (read)
+					dimNonActiveChannelsAlpha <Any>   - Alpha value for dimmed non-active channels (read)
+					dimOldMarkers             <Any>   - Controls dimming of old markers (read)
+					dimOldMarkersAlpha        <Any>   - Alpha value for dimmed old markers (read)
+					dimOldMarkersTime         <Any>   - Time threshold for old markers (read)
+					timedimOnlyRedBlueGreen   <Any>   - Restricts dimming to certain colors (read)
+					notdimLoadedMarkers       <Any>   - Controls dimming of loaded markers (read)
+					allMarkers                <Array> - Global array of all marker names (read/set)
+					allMarkersParams          <Array> - Global array of all marker parameters (read/set)
+					wmaptools_frzState        <Any>   - Mission freeze state (read)
 
-		Returns:
-			none
+			Returns:
+				none
+				Global:
+					allMarkersParams <Array> - May be updated with marker timestamps (set)
 
-		Variables:
-			_swt_to_arma_channel      <Array>   - Mapping of SWT to Arma channel codes.
-			_currentChannel           <String>  - The current channel code.
-			_setMrkAlpha              <Code>    - Function to set marker alpha based on channel and age.
-			_mrk                      <String>  - Marker name.
-			_mindex                   <Number>  - Index of the marker in the global array.
-			_mparams                  <Array>   - Marker parameters array.
-*/
+			Variables:
+				_swt_to_arma_channel      <Array>   - Mapping of SWT to Arma channel codes.
+				_currentChannel           <String>  - The current channel code.
+				_setMrkAlpha              <Code>    - Function to set marker alpha based on channel and age.
+				_mrk                      <String>  - Marker name.
+				_mindex                   <Number>  - Index of the marker in the global array.
+				_mparams                  <Array>   - Marker parameters array.
+	*/
 
 GVAR_ISNIL(dimNonActiveChannels)
 GVAR_ISNIL(dimNonActiveChannelsAlpha)

@@ -1,24 +1,47 @@
 #include "../script_component.hpp"
-/*
-	Function: fnc_sendMark
-		Description:
-			Handles sending of marker data to the server or other clients, based on user action (mark, fast, line, ellipse, road). Prepares marker data and manages channel logic, permissions, and UI state.
-		Arguments:
-			_action   <String>  - The action type ("mark", "fast", "line", "ellipse", "road").
-			_params   <Array>   - Parameters for the action (may include controls, positions, etc).
-		Returns:
-			<Bool> - True if the marker was sent or action completed, false/empty otherwise.
-		Variables:
-			_action         <String>  - Action type.
-			_params         <Array>   - Action parameters.
-			_displayMap     <Display> - The map display.
-			_text           <String>  - Marker text.
-			_WorldCoord     <Array>   - World coordinates for the marker.
-			_send           <Array>   - Array of marker data to send.
-			_channel        <String>  - Channel code.
-			_go             <Bool>    - Whether the action is allowed.
-			_swtid          <String>  - Marker ID prefix.
-*/
+	/*
+		Function: fnc_sendMark
+
+			Description:
+				Handles sending of marker data to the server or other clients, based on user action (mark, fast, line, ellipse, road). Prepares marker data and manages channel logic, permissions, and UI state.
+
+			Arguments:
+				_action   <String>  - The action type ("mark", "fast", "line", "ellipse", "road").
+				_params   <Array>   - Parameters for the action (may include controls, positions, etc).
+				Global:
+					disable             <Bool>   - If true, disables marker sending (read)
+					markType            <String> - Current marker type (read)
+					markColor           <String> - Current marker color (read)
+					cfgMarkersNames     <Array>  - Marker type names (read)
+					cfgMarkerColorsNames<Array>  - Marker color names (read)
+					fastTextG           <Bool>   - Fast text group flag (read)
+					fastTextN           <Bool>   - Fast text name flag (read)
+					fastTextT           <Bool>   - Fast text text flag (read)
+					fastTextTSaved      <String> - Saved fast text (read)
+					channel             <String> - Current channel (read)
+					posM                <Array>  - Marker position (read)
+					saveText            <Bool>   - Save text flag (read)
+					text                <String> - Marker text (read)
+					ctrlState           <Bool>   - Control key state (read)
+					sweetkS             <Any>    - SweetkS value (read)
+					limitSideMarkers    <Any>    - Side marker limit (read)
+
+			Returns:
+				<Bool> - True if the marker was sent or action completed, false/empty otherwise.
+				Global:
+					markDir             <Scalar> - Direction of the marker (set)
+
+			Variables:
+				_action         <String>  - Action type.
+				_params         <Array>   - Action parameters.
+				_displayMap     <Display> - The map display.
+				_text           <String>  - Marker text.
+				_WorldCoord     <Array>   - World coordinates for the marker.
+				_send           <Array>   - Array of marker data to send.
+				_channel        <String>  - Channel code.
+				_go             <Bool>    - Whether the action is allowed.
+				_swtid          <String>  - Marker ID prefix.
+	*/
 
 params ["_action", "_params"];
 
