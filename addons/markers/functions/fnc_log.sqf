@@ -1,23 +1,23 @@
 #include "../script_component.hpp"
-    /*
-        Function: fnc_log
+/*
+    Function: fnc_log
 
-            Description:
-                Logs marker actions (create, delete, direction, position, load) to the player's diary if logging is enabled.
+        Description:
+            Logs marker actions (create, delete, direction, position, load) to the player's diary if logging is enabled.
 
-            Arguments:
-                _action   <String>  - The action type ("CREATE", "DEL", "DIR", "POS", "LOAD").
-                _params   <Array>   - Parameters for the action.
-                Global:
-                    logging     <Bool>   - If true, enables logging (read)
-                    markersLog  <String> - Diary subject for marker logs (read)
+        Arguments:
+            _action   <String>  - The action type ("CREATE", "DEL", "DIR", "POS", "LOAD").
+            _params   <Array>   - Parameters for the action.
+            Global:
+                logging     <Bool>   - If true, enables logging (read)
+                markersLog  <String> - Diary subject for marker logs (read)
 
-            Returns:
-                none
+        Returns:
+            none
 
-            Variables:
-                _getFormatedTime, _sep, _text
-    */
+        Variables:
+            _sep, _text
+*/
 
 params ["_action", "_params"];
 
@@ -25,23 +25,6 @@ PARAM_INVALID(_action,"STRING")
 PARAM_INVALID(_params,"ARRAY")
 GVAR_ISNIL(logging)
 GVAR_ISNIL(markersLog)
-
-// Helper: returns formatted time string
-private _getFormatedTime = {
-    params ["_time"];
-    PARAM_INVALID(_time,"SCALAR")
-    private ["_time", "_hour", "_minute", "_second"];
-    _time = _this;
-    _hour = floor(abs(_time)/3600);
-    _minute = floor(abs(_time)/60)%60;
-    _second = round(abs(_time)%60);
-    format [
-        "%1:%2:%3: ", 
-        _hour call FUNC(addZero), 
-        _minute call FUNC(addZero), 
-        _second call FUNC(addZero)
-    ];
-};
 
 if (GVAR(logging)) then {
     // Ensure diary subject exists
@@ -62,7 +45,7 @@ if (GVAR(logging)) then {
             _Type = _params select 4;
             _Owner = _params select 8;
             _text = format [
-                ((time call _getFormatedTime) 
+                (([time] call FUNC(getFormatedTime)) 
                 + (localize LSTRING(MARKCREATED)) 
                 + _sep),
                 _Owner,
@@ -89,7 +72,7 @@ if (GVAR(logging)) then {
             _owner = _markParams select 8;
             _Type = _markParams select 4;
             _text = format [
-                ((time call _getFormatedTime) 
+                (([time] call FUNC(getFormatedTime)) 
                 + (localize LSTRING(MARKDELETED)) 
                 + _sep),
                 _Name,
@@ -114,7 +97,7 @@ if (GVAR(logging)) then {
             _owner = _markParams select 8;
             _Type = _markParams select 4;
             _text = format [
-                ((time call _getFormatedTime) 
+                (([time] call FUNC(getFormatedTime)) 
                 + (localize LSTRING(MARKDIR)) 
                 + "<font color='#F88379'><marker name='%3'>%4</marker></font>" + _sep),
                 _Name,
@@ -139,7 +122,7 @@ if (GVAR(logging)) then {
             _owner = _markParams select 8;
             _Type = _markParams select 4;
             _text = format [
-                ((time call _getFormatedTime) 
+                (([time] call FUNC(getFormatedTime)) 
                 + (localize LSTRING(MARKPOS)) 
                 + "<font color='#F88379'><marker name='%3'>%4</marker></font>" 
                 + _sep),
@@ -162,7 +145,7 @@ if (GVAR(logging)) then {
             _Name  = _params select 0;
             _count = _params select 1;
             _text = format [
-                str ((time call _getFormatedTime) 
+                str (([time] call FUNC(getFormatedTime)) 
                 + (localize LSTRING(MARKLOAD)) 
                 + _sep), 
                 _Name, 

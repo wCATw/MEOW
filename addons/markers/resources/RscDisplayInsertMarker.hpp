@@ -75,7 +75,7 @@ class GVAR(RscDisplayInsertMarker)
 			w=QUOTE(5 *  (((safeZoneW/safeZoneH) min 1.2)/40));
 			h=QUOTE(1 *  ((((safeZoneW/safeZoneH) min 1.2)/1.2)/25));
 		};
-		class ButtonMenuInfo: GVAR(RscButton)Menu
+		class ButtonMenuInfo: GVAR(RscButtonMenu)
 		{
 			idc=IDC_MENU_INFO;
 			text=QUOTE($STR_A3_RscDisplayInsertMarker_ButtonMenuInfo);
@@ -161,7 +161,7 @@ class GVAR(RscDisplayInsertMarker)
 			h=QUOTE(15 *  ((((safeZoneW/safeZoneH) min 1.2)/1.2)/25));
 			class controls
 			{
-				class Info_butt_1: GVAR(RscButton)Menu
+				class Info_butt_1: GVAR(RscButtonMenu)
 				{
 					idc=IDC_CONTROLS_GROUP_INFO_BUTTON_1;
 					text=QUOTE(Info);
@@ -171,7 +171,7 @@ class GVAR(RscDisplayInsertMarker)
 					h=QUOTE(1 *  ((((safeZoneW/safeZoneH) min 1.2)/1.2)/25));
 					OnButtonClick=QUOTE([ARR_2(_this select 0,'info')] call FUNC(infoButtons));
 				};
-				class Info_butt_2: GVAR(RscButton)Menu
+				class Info_butt_2: GVAR(RscButtonMenu)
 				{
 					idc=IDC_CONTROLS_GROUP_INFO_BUTTON_2;
 					text=QUOTE(Sett);
@@ -181,7 +181,7 @@ class GVAR(RscDisplayInsertMarker)
 					h=QUOTE(1 *  ((((safeZoneW/safeZoneH) min 1.2)/1.2)/25));
 					OnButtonClick=QUOTE([ARR_2(_this select 0,'sett')] call FUNC(infoButtons));
 				};
-				class Info_butt_3: GVAR(RscButton)Menu
+				class Info_butt_3: GVAR(RscButtonMenu)
 				{
 					idc=IDC_CONTROLS_GROUP_INFO_BUTTON_3;
 					text=QUOTE(Author);
@@ -448,7 +448,7 @@ class GVAR(RscDisplayInsertMarker)
 			h=QUOTE(1 *  ((((safeZoneW/safeZoneH) min 1.2)/1.2)/25));
 			onLBSelChanged=QUOTE(_this call FUNC(lbSel));
 		};
-		class GVAR(ButtonAdv): GVAR(RscButton)Menu
+		class GVAR(ButtonAdv): GVAR(RscButtonMenu)
 		{
 			idc=IDC_BUTTON_ADV;
 			text=CSTRING(ADV);
@@ -680,7 +680,7 @@ class GVAR(RscDisplayInsertMarker)
 					w=QUOTE(10.4 * (((safeZoneW/safeZoneH) min 1.2)/40));
 					h=QUOTE((4+4*0.15) * ((((safeZoneW/safeZoneH) min 1.2)/1.2)/25));
 				};
-				class GVAR(ButtonSAVE): GVAR(RscButton)Menu
+				class GVAR(ButtonSAVE): GVAR(RscButtonMenu)
 				{
 					idc=IDC_ADV_BUTTON_SAVE;
 					text=CSTRING(SAVE);

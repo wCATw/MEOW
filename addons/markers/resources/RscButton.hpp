@@ -1,4 +1,4 @@
-class GVAR(RscButton)
+class GVAR(RscButton) : RscButton
 {
 	type=1;
 	style=2;
