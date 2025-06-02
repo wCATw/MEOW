@@ -16,7 +16,10 @@
 			_arr, _copyArr
 */
 
-params ["_control", "_array"];
+params [
+	"_control",
+	"_array"
+];
 
 PARAM_INVALID(_control,"CONTROL")
 PARAM_INVALID(_array,"ARRAY")
@@ -29,13 +32,43 @@ GVAR_ISNIL(load)
 GVAR_ISNIL(logicServerLoad)
 
 // Check if loading is allowed for this player and situation
-if (GVAR(loadEnabled) and ((GVAR(loadEnabledFor) and (((leader player == player) or (((effectiveCommander (vehicle player)) == player) and (isNull objectParent player))))) or (!(GVAR(loadEnabledFor))))and((GVAR(loadEnabledWhen))or((!(GVAR(loadEnabledWhen)))and(time<=0)))) then {
+if (
+	GVAR(loadEnabled) 
+	&& ((
+			GVAR(loadEnabledFor) 
+			&& (
+				(leader player == player) 
+				|| (
+					((effectiveCommander (vehicle player)) == player) 
+					&& (isNull objectParent player)
+				)
+			)
+		) || !(GVAR(loadEnabledFor))
+	) && (
+		(GVAR(loadEnabledWhen))
+		|| (
+			!(GVAR(loadEnabledWhen))
+			&& (time <= 0)
+		)
+	)
+) then {
 	private ["_arr"];
 	// Load markers from argument or profileNamespace
-	_arr = (if (isNil {_array}) then {[] + parseSimpleArray str (profileNamespace getVariable [QGVAR(saveArr),[]])} else {parseSimpleArray _array});
-	if ((_arr isNotEqualTo [])) then {
+	_arr = (
+		if (isNil {_array}) then {
+			[] + parseSimpleArray str (profileNamespace getVariable [QGVAR(saveArr),[]])
+		} else {
+			parseSimpleArray _array
+		}
+	);
+	if (
+		(_arr isNotEqualTo [])
+	) then 
+	{
 		// Prevent loading too many markers
-		if (count _arr > 500) exitWith {hintSilent (format [localize LSTRING(CANTLOAD), count _arr, 500]);};
+		if ( count _arr > 500 ) exitWith {
+			hintSilent (format [localize LSTRING(CANTLOAD), count _arr, 500]);
+		};
 		_copyArr = [];
 		{
 			// Pad marker data for server compatibility
@@ -44,7 +77,12 @@ if (GVAR(loadEnabled) and ((GVAR(loadEnabledFor) and (((leader player == player)
 		GVAR(load) = [player, _copyArr];
 		publicVariableServer QGVAR(load);
 		// If SP, process directly
-		if (isServer && !isMultiplayer) then {GVAR(load) call FUNC(logicServerLoad);};
+		if (
+			isServer 
+			&& !isMultiplayer
+		) then {
+			GVAR(load) call FUNC(logicServerLoad);
+		};
 		(_control select 0) ctrlEnable false;
 		GVAR(loaded) = true;
 	} else {

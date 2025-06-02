@@ -46,7 +46,11 @@ GVAR(sendJIP) = [];
 			};
 			case "C": {
 				// Add command channel markers if player is leader or commander
-				if ((leader _player == _player) or (((effectiveCommander (vehicle _player)) == _player) and (isNull objectParent player))) then {
+				if (
+					(leader _player == _player) 
+					|| (((effectiveCommander (vehicle _player)) == _player) 
+					&& (isNull objectParent player))
+				) then {
 					(side _player) call _addMarkers;
 				};
 			};

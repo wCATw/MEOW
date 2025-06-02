@@ -77,7 +77,9 @@ private _findChangeMarkers = {
 			} forEach (_channelData select _i);
 		};
 	};
-	if (!_find) then {diag_log "CHANGE MARKER FAIL: CAN'T FIND DATA";};
+	if (!_find) then {
+		diag_log "CHANGE MARKER FAIL: CAN'T FIND DATA";
+	};
 };
 
 _dir = 0;

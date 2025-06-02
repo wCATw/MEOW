@@ -39,9 +39,19 @@ switch (_action) do {
 		};
 		// Update button color to indicate active/inactive state
 		if (GVAR(fastTextN)) then {
-			_ctrl ctrlSetTextColor [IDC_ADV_CB_LOG/255,176/255,74/255,1];
+			_ctrl ctrlSetTextColor [
+				IDC_ADV_CB_LOG/255,
+				176/255,
+				74/255,
+				1
+			];
 		} else {
-			_ctrl ctrlSetTextColor [1,1,1,0.5];
+			_ctrl ctrlSetTextColor [
+				1,
+				1,
+				1,
+				0.5
+			];
 		};
 	};
 
@@ -52,9 +62,19 @@ switch (_action) do {
 		};
 		// Update button color to indicate active/inactive state
 		if (GVAR(fastTextG)) then {
-			_ctrl ctrlSetTextColor [IDC_ADV_CB_LOG/255,176/255,74/255,1];
+			_ctrl ctrlSetTextColor [
+				IDC_ADV_CB_LOG/255,
+				176/255,
+				74/255,
+				1
+			];
 		} else {
-			_ctrl ctrlSetTextColor [1,1,1,0.5];
+			_ctrl ctrlSetTextColor [
+				1,
+				1,
+				1,
+				0.5
+			];
 		};
 	};
 
@@ -65,9 +85,19 @@ switch (_action) do {
 		};
 		// Update button color to indicate active/inactive state
 		if (GVAR(fastTextT)) then {
-			_ctrl ctrlSetTextColor [IDC_ADV_CB_LOG/255,176/255,74/255,1];
+			_ctrl ctrlSetTextColor [
+				IDC_ADV_CB_LOG/255,
+				176/255,
+				74/255,
+				1
+			];
 		} else {
-			_ctrl ctrlSetTextColor [1,1,1,0.5];
+			_ctrl ctrlSetTextColor [
+				1,
+				1,
+				1,
+				0.5
+			];
 		};
 	};
 };

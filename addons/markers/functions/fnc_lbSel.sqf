@@ -27,37 +27,41 @@ _num = ctrlIDC(_control) - IDC_COMBO_00;
 ctrlSetFocus((_display displayCtrl IDC_TEXT));
 
 // handle color selection, else handle icon selection
-switch (_num < 6) do {
-	case true: {
+switch (_num < 6) do 
+{
+	case true: 
+	{
 		// Update color slot parameter and save to profileNamespace
 		_class = _control lbData _lbCurSel;
 		if (_class == "" or {_class == (GVAR(colorSlotParams) select _num)}) exitWith {};
-		GVAR(colorSlotParams) set [_num,_class];
+		GVAR(colorSlotParams) set [_num, _class];
 		profileNamespace setVariable [QGVAR(colorSlotParams), GVAR(colorSlotParams)];
 		saveProfileNamespace;
 
 		// Update color preview controls
 		_slot_color = getArray(configFile >> "CfgMarkerColors" >> _class >> "color");
 		{
-			if (typeName _x != "SCALAR") then {
+			if (typeName _x != "SCALAR") then 
+			{
 				_slot_color set [_forEachIndex, call compile _x];
 			};
 		} forEach _slot_color;
-		((ctrlParent(_control)) displayCtrl (IDC_COLOR_00+_num)) ctrlSetTextColor [_slot_color select 0, _slot_color select 1, _slot_color select 2, 0.6];
-		((ctrlParent(_control)) displayCtrl (IDC_COLOR_00+_num)) ctrlSetActiveColor _slot_color;
+		((ctrlParent(_control)) displayCtrl (IDC_COLOR_00 + _num)) ctrlSetTextColor [_slot_color select 0, _slot_color select 1, _slot_color select 2, 0.6];
+		((ctrlParent(_control)) displayCtrl (IDC_COLOR_00 + _num)) ctrlSetActiveColor _slot_color;
 	};
 
-	case false: {
+	case false: 
+	{
 		// Update icon slot parameter and save to profileNamespace
 		_class = _control lbData _lbCurSel;
-		if (_class == "" or {_class == (GVAR(iconSlotParams) select (_num-6))}) exitWith {};
-		GVAR(iconSlotParams) set [_num-6,_class];
+		if (_class == "" or {_class == (GVAR(iconSlotParams) select (_num - 6))}) exitWith {};
+		GVAR(iconSlotParams) set [_num - 6, _class];
 		profileNamespace setVariable [QGVAR(iconSlotParams), GVAR(iconSlotParams)];
 		saveProfileNamespace;
 
 		// Update icon preview controls
 		_slot_icon = getText(configFile >> "CfgMarkers" >> _class >> "icon");
-		((ctrlParent(_control)) displayCtrl (IDC_ICON_00+_num-6)) ctrlSetText _slot_icon;
-		((ctrlParent(_control)) displayCtrl (IDC_ICON_10+_num-6)) ctrlSetText _slot_icon;
+		((ctrlParent(_control)) displayCtrl (IDC_ICON_00 + _num - 6)) ctrlSetText _slot_icon;
+		((ctrlParent(_control)) displayCtrl (IDC_ICON_10 + _num - 6)) ctrlSetText _slot_icon;
 	};
 };

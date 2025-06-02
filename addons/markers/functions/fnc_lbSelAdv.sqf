@@ -27,15 +27,18 @@ GVAR_ISNIL(colorArr)
 
 ctrlSetFocus ((ctrlParent _control) displayCtrl IDC_TEXT);
 
-switch (ctrlIDC _control) do {
-	case IDC_LB_COLOR: {
+switch (ctrlIDC _control) do 
+{
+	case IDC_LB_COLOR: 
+	{
 		// Update global color based on selection
 		private _class = _control lbData _index;
 		GVAR(markColor) = _class;
 		GVAR(colorArr) = getArray (configFile >> "CfgMarkerColors" >> GVAR(markColor) >> "color");
 		{
 			// Convert non-scalar color values
-			if (typeName _x != "SCALAR") then {
+			if (typeName _x != "SCALAR") then 
+			{
 				GVAR(colorArr) set [_forEachIndex, call compile _x];
 			};
 		} forEach GVAR(colorArr);
@@ -47,7 +50,8 @@ switch (ctrlIDC _control) do {
 		} forEach _controls_icon_pic;
 	};
 
-	case IDC_LB_PIC: {
+	case IDC_LB_PIC: 
+	{
 		// Update global icon based on selection
 		private _class = _control lbData _index;
 		GVAR(markType) = _class;

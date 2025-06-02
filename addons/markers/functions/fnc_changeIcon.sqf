@@ -36,14 +36,23 @@ private _control = _display displayCtrl IDC_PICTURE;
 private _curr_num = GVAR(iconSlotParams) find GVAR(markType);
 
 // Change icon index based on direction, wrap if out of bounds
-switch (_dir) do {
-	case 'UP': {
-		_curr_num = _curr_num+1;
-		if (_curr_num>((count GVAR(iconSlotParams)) - 1)) then {_curr_num = 0};
+switch (_dir) do
+{
+	case 'UP':
+	{
+		_curr_num = _curr_num + 1;
+		if (_curr_num > ((count GVAR(iconSlotParams)) - 1)) then
+		{
+			_curr_num = 0;
+		};
 	};
-	case 'DOWN': {
-		_curr_num = _curr_num-1;
-		if (_curr_num<0) then {_curr_num = (count GVAR(iconSlotParams)) - 1};
+	case 'DOWN':
+	{
+		_curr_num = _curr_num - 1;
+		if (_curr_num < 0) then
+		{
+			_curr_num = (count GVAR(iconSlotParams)) - 1;
+		};
 	};
 };
 

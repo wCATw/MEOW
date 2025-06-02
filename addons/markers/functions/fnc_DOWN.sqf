@@ -40,30 +40,48 @@ if ((_dikCode == 0xC8) or (_dikCode == 0xD0)) then {
     if !(_shiftState) then {
         // Icon change
         switch (_dikCode) do {
-            case 0xD0: { [_display,"DOWN"] call FUNC(changeIcon); };
-            case 0xC8: { [_display,"UP"] call FUNC(changeIcon); };
+            case 0xD0: {
+                [_display, "DOWN"] call FUNC(changeIcon);
+            };
+            case 0xC8: {
+                [_display, "UP"] call FUNC(changeIcon);
+            };
         };
     } else {
         // Color change
         switch (_dikCode) do {
-            case 0xD0: { [_display,"DOWN"] call FUNC(changeColor); };
-            case 0xC8: { [_display,"UP"] call FUNC(changeColor); };
+            case 0xD0: {
+                [_display, "DOWN"] call FUNC(changeColor);
+            };
+            case 0xC8: {
+                [_display, "UP"] call FUNC(changeColor);
+            };
         };
     };
-// Left/Right arrow + shift: channel change
 } else {
+    // Left/Right arrow + shift: channel change
     if (((_dikCode == 0xCB) or (_dikCode == 0xCD)) and _shiftState) then {
         switch (_dikCode) do {
-            case 0xCB: { [_display,"DOWN"] call FUNC(changeChannel); };
-            case 0xCD: { [_display,"UP"] call FUNC(changeChannel); };
+            case 0xCB: {
+                [_display, "DOWN"] call FUNC(changeChannel);
+            };
+            case 0xCD: {
+                [_display, "UP"] call FUNC(changeChannel);
+            };
         };
-// Ctrl+key: toggle fast text buttons
     } else {
+        // Ctrl+key: toggle fast text buttons
         if (_ctrlState) then {
             switch (_dikCode) do {
-                case 0x14: { [_display displayCtrl IDC_ADD_TEXT,"T"] call FUNC(fastText); };
-                case 0x22: { [_display displayCtrl IDC_ADD_GROUP,"G"] call FUNC(fastText); };
-                case 0x31: { [_display displayCtrl IDC_ADD_NAME,"N"] call FUNC(fastText); };
+                case 0x14: {
+                    [_display displayCtrl IDC_ADD_TEXT, "T"] call FUNC(fastText);
+                };
+                case 0x22: {
+                    [_display displayCtrl IDC_ADD_GROUP, "G"] call FUNC(fastText);
+                };
+                case 0x31: {
+                    [_display displayCtrl IDC_ADD_NAME, "N"] call FUNC(fastText);
+                };
             };
         };
     };

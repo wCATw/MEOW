@@ -90,7 +90,11 @@ switch (_channel) do {
 	case "GR": {
 		_cond = QUOTE(((group _x == group _player) || (GVAR(groupMarkersViaRadio) > 0 && {(side _x isEqualTo side _player) && {([ARR_2(_player,_x)] call FUNC(listenSameTFRadio))}})));
 		[_channel, group _player, _markArr] call _addToChannel;
-		_units = if (GVAR(groupMarkersViaRadio) > 0) then {playableUnits+switchableUnits} else {units group _player};
+		_units = if (GVAR(groupMarkersViaRadio) > 0) then {
+			playableUnits+switchableUnits
+		} else {
+			units group _player
+		};
 	};
 	// Direct channel: notify players within 15m
 	case "D": {
@@ -105,7 +109,9 @@ switch (_channel) do {
 		private _cond_x = call compile _cond;
 		if _cond_x then {
 			(owner _x) publicVariableClient QGVAR(sendMark);
-			if (!isMultiplayer and {_x == player}) then {GVAR(sendMark) call FUNC(clientLogicCreate)};
+			if (!isMultiplayer and {_x == player}) then {
+				GVAR(sendMark) call FUNC(clientLogicCreate)
+			};
 		};
 	};
 } forEach _units;

@@ -52,11 +52,22 @@ if (GVAR(logicServer_S) find (side _player) == -1) then {
 // Notify clients of loaded markers
 GVAR(sendLoad) = [_player, _data];
 {
-	if (isPlayer _x or {time == 0 and {_player in GVAR(isPlayerBug)}}) then {
+	if (
+		isPlayer _x 
+		|| {
+			time == 0 
+			&& {_player in GVAR(isPlayerBug)}
+		}
+	) then {
 		if (side _player == side _x) then {
 			(owner _x) publicVariableClient QGVAR(sendLoad);
 			// If SP, process directly
-			if (!isMultiplayer and {_x == player}) then {GVAR(sendLoad) call FUNC(clientLogicLoad)};
+			if (
+				!isMultiplayer 
+				&& {_x == player}
+			) then {
+				GVAR(sendLoad) call FUNC(clientLogicLoad)
+			};
 		};
 	};
 } forEach (playableUnits + switchableUnits);

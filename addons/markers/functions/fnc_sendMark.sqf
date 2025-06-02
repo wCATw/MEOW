@@ -140,28 +140,100 @@ switch (_action) do {
 		[0,0] call FUNC(mapMouseUp);
 		private _displayMark = _params # 0;
 		// Get world coordinates from UI control
-		_WorldCoord = (_displayMap displayCtrl IDC_MAP) ctrlMapScreenToWorld [((ctrlPosition (_displayMark displayCtrl IDC_PICTURE)) select 0)+((ctrlPosition (_displayMark displayCtrl IDC_PICTURE)) select 2)/2,((ctrlPosition (_displayMark displayCtrl IDC_PICTURE)) select 1)+((ctrlPosition (_displayMark displayCtrl IDC_PICTURE)) select 3)/2];
-		_text =  _text + ctrlText (_displayMark displayCtrl IDC_TEXT);
-		_send pushBack [_swtid,_channel,_text, _WorldCoord, GVAR(cfgMarkersNames) find GVAR(markType), GVAR(cfgMarkerColorsNames) find GVAR(markColor), GVAR(markDir), GVAR(sweetkS), name player];
-		if (!(GVAR(ctrlState))) then {(_displayMark closeDisplay 0)};
+		_WorldCoord = (_displayMap displayCtrl IDC_MAP) ctrlMapScreenToWorld [
+			((ctrlPosition (_displayMark displayCtrl IDC_PICTURE)) select 0) + ((ctrlPosition (_displayMark displayCtrl IDC_PICTURE)) select 2)/2,
+			((ctrlPosition (_displayMark displayCtrl IDC_PICTURE)) select 1) + ((ctrlPosition (_displayMark displayCtrl IDC_PICTURE)) select 3)/2
+		];
+		_text = _text + ctrlText (_displayMark displayCtrl IDC_TEXT);
+		_send pushBack [
+			_swtid,
+			_channel,
+			_text,
+			_WorldCoord,
+			GVAR(cfgMarkersNames) find GVAR(markType),
+			GVAR(cfgMarkerColorsNames) find GVAR(markColor),
+			GVAR(markDir),
+			GVAR(sweetkS),
+			name player
+		];
+		if (!(GVAR(ctrlState))) then {
+			(_displayMark closeDisplay 0)
+		};
 	};
 	case "fast": {
 		// Fast marker, use saved position and text
 		_WorldCoord = (_displayMap displayCtrl IDC_MAP) ctrlMapScreenToWorld GVAR(posM);
-		if (GVAR(saveText)) then {_text = _text + GVAR(text)};
-		_send pushBack [_swtid,_channel,_text,_WorldCoord,GVAR(cfgMarkersNames) find GVAR(markType),GVAR(cfgMarkerColorsNames) find GVAR(markColor),GVAR(markDir),GVAR(sweetkS), name player];
+		if (GVAR(saveText)) then {
+			_text = _text + GVAR(text)
+		};
+		_send pushBack [
+			_swtid,
+			_channel,
+			_text,
+			_WorldCoord,
+			GVAR(cfgMarkersNames) find GVAR(markType),
+			GVAR(cfgMarkerColorsNames) find GVAR(markColor),
+			GVAR(markDir),
+			GVAR(sweetkS),
+			name player
+		];
 	};
 	case "line": {
 		// Line marker, use two positions and extra params
-		_send pushBack [_swtid,_channel,"",[(((_params select 0) select 0) + ((_params select 1) select 0))/2,(((_params select 0) select 1) + ((_params select 1) select 1))/2],-2,GVAR(cfgMarkerColorsNames) find GVAR(markColor),_params select 2,[_params select 3,_params select 4], name player];
+		_send pushBack [
+			_swtid,
+			_channel,
+			"",
+			[
+				(((_params select 0) select 0) + ((_params select 1) select 0))/2,
+				(((_params select 0) select 1) + ((_params select 1) select 1))/2
+			],
+			-2,
+			GVAR(cfgMarkerColorsNames) find GVAR(markColor),
+			_params select 2,
+			[
+				_params select 3,
+				_params select 4
+			],
+			name player
+		];
 	};
 	case "ellipse": {
 		// Ellipse marker, use two positions for center and size
-		_send pushBack [_swtid,_channel,"",[(_params select 0) select 0,(_params select 0) select 1],-3,GVAR(cfgMarkerColorsNames) find GVAR(markColor),0,[abs(((_params select 1) select 0) - ((_params select 0) select 0)),abs(((_params select 1) select 1) - ((_params select 0) select 1))], name player];
+		_send pushBack [
+			_swtid,
+			_channel,
+			"",
+			[
+				(_params select 0) select 0,
+				(_params select 0) select 1
+			],
+			-3,
+			GVAR(cfgMarkerColorsNames) find GVAR(markColor),
+			0,
+			[
+				abs(((_params select 1) select 0) - ((_params select 0) select 0)),
+				abs(((_params select 1) select 1) - ((_params select 0) select 1))
+			],
+			name player
+		];
 	};
 	case "road": {
 		// Road marker, use two positions
-		_send pushBack [_swtid,_channel,"",[_params select 0, _params select 1], GVAR(cfgMarkersNames) find GVAR(markType),GVAR(cfgMarkerColorsNames) find GVAR(markColor),GVAR(markDir),GVAR(sweetkS), name player];
+		_send pushBack [
+			_swtid,
+			_channel,
+			"",
+			[
+				_params select 0,
+				_params select 1
+			],
+			GVAR(cfgMarkersNames) find GVAR(markType),
+			GVAR(cfgMarkerColorsNames) find GVAR(markColor),
+			GVAR(markDir),
+			GVAR(sweetkS),
+			name player
+		];
 	};
 };
 

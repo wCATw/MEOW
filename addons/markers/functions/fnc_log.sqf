@@ -35,7 +35,12 @@ private _getFormatedTime = {
     _hour = floor(abs(_time)/3600);
     _minute = floor(abs(_time)/60)%60;
     _second = round(abs(_time)%60);
-    format ["%1:%2:%3: ", _hour call FUNC(addZero), _minute call FUNC(addZero), _second call FUNC(addZero)];
+    format [
+        "%1:%2:%3: ", 
+        _hour call FUNC(addZero), 
+        _minute call FUNC(addZero), 
+        _second call FUNC(addZero)
+    ];
 };
 
 if (GVAR(logging)) then {
@@ -56,12 +61,25 @@ if (GVAR(logging)) then {
             _Chan = [(_params select 1),"font"] call FUNC(getColorChannel);
             _Type = _params select 4;
             _Owner = _params select 8;
-            _text = format [((time call _getFormatedTime) + (localize LSTRING(MARKCREATED)) + _sep),
-                        _Owner,
-                        _mark,
-                        _Chan,
-                        (if (_Type==-2) then {toLower(localize LSTRING(LINE))} else {if (_Type==-3) then {toLower(localize LSTRING(ELLIPSE))} else {toLower(localize LSTRING(MARKER))}})
-                    ];
+            _text = format [
+                ((time call _getFormatedTime) 
+                + (localize LSTRING(MARKCREATED)) 
+                + _sep),
+                _Owner,
+                _mark,
+                _Chan,
+                (
+                    if (_Type==-2) then {
+                        toLower(localize LSTRING(LINE))
+                    } else {
+                        if (_Type==-3) then {
+                            toLower(localize LSTRING(ELLIPSE))
+                        } else {
+                            toLower(localize LSTRING(MARKER))
+                        }
+                    }
+                )
+            ];
         };
         case "DEL": {
             private ["_Name", "_markParams", "_mark", "_owner", "_Type"];
@@ -70,12 +88,23 @@ if (GVAR(logging)) then {
             _mark = _markParams select 0;
             _owner = _markParams select 8;
             _Type = _markParams select 4;
-            _text = format [((time call _getFormatedTime) + (localize LSTRING(MARKDELETED)) + _sep),
-                        _Name,
-                        _owner,
-                        _mark,
-                        (if (_Type==-2) then {toLower(localize LSTRING(LINE))} else {if (_Type==-3) then {toLower(localize LSTRING(ELLIPSE))} else {toLower(localize LSTRING(MARKER))}})
-                    ];
+            _text = format [
+                ((time call _getFormatedTime) 
+                + (localize LSTRING(MARKDELETED)) 
+                + _sep),
+                _Name,
+                _owner,
+                _mark,
+                (if (_Type==-2) then {
+                    toLower(localize LSTRING(LINE))
+                } else {
+                    if (_Type==-3) then {
+                        toLower(localize LSTRING(ELLIPSE))
+                    } else {
+                        toLower(localize LSTRING(MARKER))
+                    }
+                })
+            ];
         };
         case "DIR": {
             private ["_Name", "_markParams", "_mark", "_owner", "_Type"];
@@ -84,12 +113,23 @@ if (GVAR(logging)) then {
             _mark = _markParams select 0;
             _owner = _markParams select 8;
             _Type = _markParams select 4;
-            _text = format [((time call _getFormatedTime) + (localize LSTRING(MARKDIR)) + "<font color='#F88379'><marker name='%3'>%4</marker></font>" + _sep),
-                        _Name,
-                        _owner,
-                        _mark,
-                        (if (_Type==-2) then {toLower(localize LSTRING(LINE))} else {if (_Type==-3) then {toLower(localize LSTRING(ELLIPSE))} else {toLower(localize LSTRING(MARKER))}})
-                    ];
+            _text = format [
+                ((time call _getFormatedTime) 
+                + (localize LSTRING(MARKDIR)) 
+                + "<font color='#F88379'><marker name='%3'>%4</marker></font>" + _sep),
+                _Name,
+                _owner,
+                _mark,
+                (if (_Type==-2) then {
+                    toLower(localize LSTRING(LINE))
+                } else {
+                    if (_Type==-3) then {
+                        toLower(localize LSTRING(ELLIPSE))
+                    } else {
+                        toLower(localize LSTRING(MARKER))
+                    }
+                })
+            ];
         };
         case "POS": {
             private ["_Name", "_markParams", "_mark", "_owner", "_Type"];
@@ -98,18 +138,36 @@ if (GVAR(logging)) then {
             _mark = _markParams select 0;
             _owner = _markParams select 8;
             _Type = _markParams select 4;
-            _text = format [((time call _getFormatedTime) + (localize LSTRING(MARKPOS)) + "<font color='#F88379'><marker name='%3'>%4</marker></font>" + _sep),
-                        _Name,
-                        _owner,
-                        _mark,
-                        (if (_Type==-2) then {toLower(localize LSTRING(LINE))} else {if (_Type==-3) then {toLower(localize LSTRING(ELLIPSE))} else {toLower(localize LSTRING(MARKER))}})
-                    ];
+            _text = format [
+                ((time call _getFormatedTime) 
+                + (localize LSTRING(MARKPOS)) 
+                + "<font color='#F88379'><marker name='%3'>%4</marker></font>" 
+                + _sep),
+                _Name,
+                _owner,
+                _mark,
+                (if (_Type==-2) then {
+                    toLower(localize LSTRING(LINE))
+                } else {
+                    if (_Type==-3) then {
+                        toLower(localize LSTRING(ELLIPSE))
+                    } else {
+                        toLower(localize LSTRING(MARKER))
+                    }
+                })
+            ];
         };
         case "LOAD": {
             private ["_Name", "_count"];
             _Name  = _params select 0;
             _count = _params select 1;
-            _text = format [str ((time call _getFormatedTime) + (localize LSTRING(MARKLOAD)) + _sep), _Name, _count];
+            _text = format [
+                str ((time call _getFormatedTime) 
+                + (localize LSTRING(MARKLOAD)) 
+                + _sep), 
+                _Name, 
+                _count
+            ];
         };
     };
     // Add entry to diary

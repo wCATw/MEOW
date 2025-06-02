@@ -50,7 +50,10 @@ if (!isNil {GVAR(lineParamsWorld)}) then {
 			};
 		};
 		// Update marker size to reflect new thickness
-		"SWT_MARKERS LOCAL LINE" setMarkerSizeLocal [GVAR(lineParamsWorld) select 3,(((GVAR(lineParamsWorld) select 0) distance (GVAR(lineParamsWorld) select 1)))/2];
+		"SWT_MARKERS LOCAL LINE" setMarkerSizeLocal [
+			GVAR(lineParamsWorld) select 3,
+			(((GVAR(lineParamsWorld) select 0) distance (GVAR(lineParamsWorld) select 1)))/2
+		];
 		true
 	};
 } else {
@@ -63,7 +66,9 @@ if (!isNil {GVAR(lineParamsWorld)}) then {
 			// Delete marker if mouse is close enough
 			if (([_pos,GVAR(posM)] call BIS_fnc_distance2D) < 0.025) exitWith {
 				GVAR(changeMark)  = ["DEL", player, _x, _x call FUNC(getChannel)];
-				if (!isMultiplayer) then {GVAR(changeMark) call FUNC(logicServerChangeMark)};
+				if (!isMultiplayer) then {
+					GVAR(changeMark) call FUNC(logicServerChangeMark)
+				};
 				publicVariableServer QGVAR(changeMark);
 			};
 		} forEach GVAR(allMarkers);

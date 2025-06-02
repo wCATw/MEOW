@@ -54,7 +54,18 @@ private _getFormatedTime = {
 	_secondN = round(abs(_daytime)%60);
 	
 	_ctimeN = floor(abs(CBA_missionTime - _ctime) / 60);
-	format ["%1:%2:%3 (%4:%5:%6) [%7 min]",_hour call FUNC(addZero), _minute call FUNC(addZero), _second call FUNC(addZero), _hourN call FUNC(addZero), _minuteN call FUNC(addZero), _secondN call FUNC(addZero), _ctimeN];
+
+	private _formatted = format [
+		"%1:%2:%3 (%4:%5:%6) [%7 min]",
+		[_hour] call FUNC(addZero),
+		[_minute] call FUNC(addZero),
+		[_second] call FUNC(addZero),
+		[_hourN] call FUNC(addZero),
+		[_minuteN] call FUNC(addZero),
+		[_secondN] call FUNC(addZero),
+		_ctimeN
+	];
+	_formatted
 };
 
 private ["_ctrl_info", "_find"];
@@ -82,16 +93,43 @@ _find = false;
 			_time = _x select 9;
 			_Type = _x select 4;
 			_ctime = _x select 11;
-			_ctrl_info ctrlSetStructuredText parseText format ["<t size='0.8'>\
-<t align='center' color='#F88379'>%1 ID: %2" + (if (!isNil {_x select 10} && {_x#10}) then {localize LSTRING(INFOLOADED)} else {""}) + "</t><br/>" + (localize LSTRING(INFOWIN)) + ([_time,_ctime] call _getFormatedTime) + "</t>",
-			(if (_Type==-2) then {localize LSTRING(LINE)} else {if (_Type==-3) then {localize LSTRING(ELLIPSE)} else {localize LSTRING(MARKER)}}), _id, _name, _channel];
+			_ctrl_info ctrlSetStructuredText parseText format [
+				"<t size='0.8'><t align='center' color='#F88379'>%1 ID: %2" 
+				+ (if (!isNil {_x select 10} && {_x#10}) then {
+					localize LSTRING(INFOLOADED)
+				} else {""}) 
+				+ "</t><br/>" 
+				+ (localize LSTRING(INFOWIN)) 
+				+ ([_time,_ctime] call _getFormatedTime) 
+				+ "</t>",
+				(if (_Type==-2) then {
+					localize LSTRING(LINE)} else {
+						if (_Type==-3) then {localize LSTRING(ELLIPSE)
+					} else {
+						localize LSTRING(MARKER)
+					}
+				}),
+				_id,
+				_name,
+				_channel
+			];
 
 			_ctrl_pos = ctrlPosition _ctrl_info;
 			// Position info box left/right of marker depending on marker text
 			if ((markerText _mark) == "") then {
-				_ctrl_info ctrlSetPosition [(_pos select 0) - (0.05)/2 + 0.07, (_pos select 1) - (_ctrl_pos select 3)/2, _ctrl_pos select 2, _ctrl_pos select 3];
+				_ctrl_info ctrlSetPosition [
+					(_pos select 0) - (0.05)/2 + 0.07,
+					(_pos select 1) - (_ctrl_pos select 3)/2,
+					_ctrl_pos select 2,
+					_ctrl_pos select 3
+				];
 			} else {
-				_ctrl_info ctrlSetPosition [(_pos select 0) + (0.05)/2 - 0.07 - (_ctrl_pos select 2), (_pos select 1) - (_ctrl_pos select 3)/2, _ctrl_pos select 2, _ctrl_pos select 3];
+				_ctrl_info ctrlSetPosition [
+					(_pos select 0) + (0.05)/2 - 0.07 - (_ctrl_pos select 2),
+					(_pos select 1) - (_ctrl_pos select 3)/2,
+					_ctrl_pos select 2,
+					_ctrl_pos select 3
+				];
 			};
 			_ctrl_info ctrlCommit 0;
 			_ctrl_info ctrlShow true;

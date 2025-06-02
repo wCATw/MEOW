@@ -33,21 +33,31 @@ GVAR_ISNIL(allChannels)
 // Get the current channel index
 private _curNum = GVAR(availableChannels) find GVAR(channel);
 
-switch (_dir) do {
-	case "UP": {
+switch (_dir) do
+{
+	case "UP":
+	{
 		// Next channel
-		_curNum = _curNum+1;
+		_curNum = _curNum + 1;
 		// upper bound
-		if (_curNum>((count GVAR(availableChannels))-1)) then {_curNum = 0};
+		if (_curNum > ((count GVAR(availableChannels)) - 1)) then
+		{
+			_curNum = 0;
+		};
 	};
-	case "DOWN": {
+	case "DOWN":
+	{
 		// Previous channel
-		_curNum = _curNum-1;
+		_curNum = _curNum - 1;
 		// lower bound
-		if (_curNum<0) then {_curNum = (count GVAR(availableChannels))-1};
+		if (_curNum < 0) then
+		{
+			_curNum = (count GVAR(availableChannels)) - 1;
+		};
 	};
-	default {
-		hint "Change Channel Error."
+	default
+	{
+		hint "Change Channel Error.";
 	};
 };
 
