@@ -34,6 +34,10 @@ PARAM_INVALID(_markColor,"STRING")
 private _control = (_display displayCtrl IDC_PICTURE);
 private _handled = false;
 
+GVAR(shiftState) = _shiftState;
+GVAR(ctrlState) = _ctrlState;
+GVAR(altState) = _altState;
+
 // Up/Down arrow: icon or color change (shift = color, else icon)
 if ((_dikCode == 0xC8) or (_dikCode == 0xD0)) then {
     _handled = true;
