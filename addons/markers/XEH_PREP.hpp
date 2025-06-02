@@ -64,3 +64,4 @@ PREP(unLoad);
 PREP(UP);
 PREP(pathFinder);
 PREP(mapButtonDblClick);
+PREP(getFormatedTime);

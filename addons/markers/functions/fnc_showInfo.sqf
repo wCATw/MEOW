@@ -1,31 +1,30 @@
 #include "../script_component.hpp"
-	/*
-		Function: fnc_showInfo
+/*
+	Function: fnc_showInfo
 
-			Description:
-				Displays detailed information about a marker when hovering or interacting with it on the map UI. Shows marker ID, type, channel, and time info in a structured text control.
+		Description:
+			Displays detailed information about a marker when hovering or interacting with it on the map UI. Shows marker ID, type, channel, and time info in a structured text control.
 
-			Arguments:
-				_control   <Control>  - The map control being interacted with.
-				Global:
-					hold            <Bool>   - Hold state for info display (read/set)
-					mapTime         <Scalar> - Map time for info display (read/set)
-					allMarkersParams<Array>  - All marker parameters (read)
-					daytime         <Scalar> - Mission daytime (read)
-					posM            <Array>  - Marker position (read)
+		Arguments:
+			_control   <Control>  - The map control being interacted with.
+			Global:
+				hold            <Bool>   - Hold state for info display (read/set)
+				mapTime         <Scalar> - Map time for info display (read/set)
+				allMarkersParams<Array>  - All marker parameters (read)
+				daytime         <Scalar> - Mission daytime (read)
+				posM            <Array>  - Marker position (read)
 
-			Returns:
-				none
-				Global:
-					hold            <Bool>   - Hold state for info display (set)
-					mapTime         <Scalar> - Map time for info display (set)
+		Returns:
+			none
+			Global:
+				hold            <Bool>   - Hold state for info display (set)
+				mapTime         <Scalar> - Map time for info display (set)
 
-			Variables:
-				_control        <Control>  - The map control.
-				_ctrl_info      <Control>  - The info display control.
-				_find           <Bool>     - Whether a marker was found under the cursor.
-				_getFormatedTime <Code>    - Local function to format time values for display.
-	*/
+		Variables:
+			_control        <Control>  - The map control.
+			_ctrl_info      <Control>  - The info display control.
+			_find           <Bool>     - Whether a marker was found under the cursor.
+*/
 
 params ["_control"];
 
@@ -37,36 +36,6 @@ GVAR_ISNIL(allMarkersParams)
 GVAR_ISNIL(daytime)
 GVAR_ISNIL(posM)
 
-private _getFormatedTime = {
-	params ['_time','_ctime'];
-	PARAM_INVALID(_time,"SCALAR")
-	PARAM_INVALID(_ctime,"SCALAR")
-
-	private ["_hour", "_minute", "_second", "_daytime", "_hourN", "_minuteN", "_secondN", "_ctimeN"];
-
-	_hour = floor(abs(_time)/3600);
-	_minute = floor(abs(_time)/60)%60;
-	_second = round(abs(_time)%60);
-
-	_daytime = (GVAR(daytime) * 3600) + _time;
-	_hourN = floor(abs(_daytime)/3600);
-	_minuteN = floor(abs(_daytime)/60)%60;
-	_secondN = round(abs(_daytime)%60);
-	
-	_ctimeN = floor(abs(CBA_missionTime - _ctime) / 60);
-
-	private _formatted = format [
-		"%1:%2:%3 (%4:%5:%6) [%7 min]",
-		[_hour] call FUNC(addZero),
-		[_minute] call FUNC(addZero),
-		[_second] call FUNC(addZero),
-		[_hourN] call FUNC(addZero),
-		[_minuteN] call FUNC(addZero),
-		[_secondN] call FUNC(addZero),
-		_ctimeN
-	];
-	_formatted
-};
 
 private ["_ctrl_info", "_find"];
 
@@ -100,11 +69,18 @@ _find = false;
 				} else {""}) 
 				+ "</t><br/>" 
 				+ (localize LSTRING(INFOWIN)) 
-				+ ([_time,_ctime] call _getFormatedTime) 
+				+ format [
+					"%1 | %2 [%3m]", 
+					[_time] call FUNC(getFormatedTime), 
+					[(GVAR(daytime) * 3600) + _time] call FUNC(getFormatedTime),
+					floor(abs(CBA_missionTime - _ctime) / 60)
+				] 
 				+ "</t>",
 				(if (_Type==-2) then {
-					localize LSTRING(LINE)} else {
-						if (_Type==-3) then {localize LSTRING(ELLIPSE)
+					localize LSTRING(LINE)
+				} else {
+					if (_Type==-3) then {
+						localize LSTRING(ELLIPSE)
 					} else {
 						localize LSTRING(MARKER)
 					}
