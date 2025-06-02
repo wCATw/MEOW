@@ -17,7 +17,7 @@
             _minute <Scalar>  - Minutes part of the time.
             _second <Scalar>  - Seconds part of the time.
 */
-private _time = param [0, 0, [0]];
+private _time = param [0, time, [0]];
 
 PARAM_INVALID(_time,"SCALAR")
 
