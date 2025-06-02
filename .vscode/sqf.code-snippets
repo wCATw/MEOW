@@ -5,36 +5,34 @@
         "body": [
             "#include \"..\\script_component.hpp\"",
             "/*",
-            " * Author: ${1:Author}",
-            " * ${2:Description}",
-            " *",
-            " * Arguments:",
-            " * ${8:0: ${9:Description} <${10|OBJECT,NUMBER,STRING,BOOL,ARRAY,CONTROL,DISPLAY,CONFIG,CODE,ANY,LOGIC,SIDE,GROUP,HASHMAP,NAMESPACE,LOCATION,TEXT|}>}$0",
-            " *",
-            " * Return Value:",
-            " * ${4:${5:Description} <${6|OBJECT,NUMBER,STRING,BOOL,ARRAY,CONTROL,DISPLAY,CONFIG,CODE,ANY,LOGIC,SIDE,GROUP,HASHMAP,NAMESPACE,LOCATION,TEXT|}>}",
-            " *",
-            " * Example:",
-            " * [$7] call meow_${TM_DIRECTORY/(.*)addons\\\\(.*)\\\\functions(.*)/$2/}_${TM_FILENAME_BASE}",
-            " *",
-            " * Public: ${3|No,Yes|}",
-            " */",
+            "    Function: meow_${TM_DIRECTORY/(.*)addons\\\\(.*)\\\\functions(.*)/$2/}_${TM_FILENAME_BASE}",
             "",
-            ""
-        ],
+            "        Description:",
+            "            ${1:Description}",
+            "",
+            "        Arguments:",
+            "            ${2:_arg}   <${3|OBJECT,SCALAR,STRING,BOOL,ARRAY,CONTROL,DISPLAY,CONFIG,CODE,ANY,LOGIC,SIDE,GROUP,HASHMAP,NAMESPACE,LOCATION,TEXT|}>  - ${4:Description}.",
+            "",
+            "        Returns:",
+            "            <${5|OBJECT,SCALAR,STRING,BOOL,ARRAY,CONTROL,DISPLAY,CONFIG,CODE,ANY,LOGIC,SIDE,GROUP,HASHMAP,NAMESPACE,LOCATION,TEXT|}> - ${6:Description}.",
+            "",
+            "        Variables:",
+            "            ${7:_var}   <${8|OBJECT,SCALAR,STRING,BOOL,ARRAY,CONTROL,DISPLAY,CONFIG,CODE,ANY,LOGIC,SIDE,GROUP,HASHMAP,NAMESPACE,LOCATION,TEXT|}>  - ${9:Description}.",
+            "*/",
+        ]
     },
     "SQF Function Header Argument": {
         "description": "SQF function header argument",
         "prefix": "header_argument",
         "body": [
-            "* ${1:1}: ${2:Description} <${3|OBJECT,NUMBER,STRING,BOOL,ARRAY,CONTROL,DISPLAY,CONFIG,CODE,ANY,LOGIC,SIDE,GROUP,HASHMAP,NAMESPACE,LOCATION,TEXT|}>",
-        ],
+            "* ${1:_arg}   <${2|OBJECT,SCALAR,STRING,BOOL,ARRAY,CONTROL,DISPLAY,CONFIG,CODE,ANY,LOGIC,SIDE,GROUP,HASHMAP,NAMESPACE,LOCATION,TEXT|}>  - ${3:Description}.",
+        ]
     },
     "SQF Function Header Return Value": {
         "description": "SQF function header return value",
         "prefix": "header_return",
         "body": [
-            "* ${1:Description} <${2|OBJECT,NUMBER,STRING,BOOL,ARRAY,CONTROL,DISPLAY,CONFIG,CODE,ANY,LOGIC,SIDE,GROUP,HASHMAP,NAMESPACE,LOCATION,TEXT|}>",
-        ],
-    },
+            "* <${1|OBJECT,SCALAR,STRING,BOOL,ARRAY,CONTROL,DISPLAY,CONFIG,CODE,ANY,LOGIC,SIDE,GROUP,HASHMAP,NAMESPACE,LOCATION,TEXT|}> - ${2:Description}.",
+        ]
+    }
 }
