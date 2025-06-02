@@ -1,4 +1,22 @@
 #include "../script_component.hpp"
+/*
+    Function: fnc_listenSameTFRadio
+
+        Description:
+            Checks if two players share at least one radio frequency.
+
+        Arguments:
+            _player   <Object>  - The first player.
+            _unit     <Object>  - The second player.
+
+        Returns:
+            <Bool> - True if they share a frequency, false otherwise.
+
+        Variables:
+            _playerRadios, _unitRadios
+*/
+
+
 
 params ["_player","_unit"];
 

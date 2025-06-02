@@ -1,4 +1,26 @@
 #include "../script_component.hpp"
+/*
+	Description:
+	Handles mouse down events on the map, supporting marker creation, selection, and editing based on modifier keys.
+
+	Arguments:
+		_ctrl <CONTROL> - The map control
+		_dikCode <SCALAR> - The DIK key code
+		_posClickX <SCALAR> - X position of the click
+		_posClickY <SCALAR> - Y position of the click
+		_shift <BOOL> - Shift key state
+		_ctrlKey <BOOL> - Ctrl key state
+		_alt <BOOL> - Alt key state
+
+	Returns:
+		none
+
+	Variables:
+		GVAR(allMarkers) <ARRAY> - All marker IDs
+		GVAR(allMarkersParams) <ARRAY> - All marker parameters
+		GVAR(markColor) <STRING> - Current marker color
+		GVAR(limitSideMarkers) <SCALAR> - Side marker limit
+*/
 
 params ["_ctrl", "_dikCode", "_posClickX", "_posClickY", "_shift", "_ctrlKey", "_alt"];
 
@@ -19,10 +41,12 @@ private _posClick = [_posClickX,_posClickY];
 
 if (_shift and !_alt and !_ctrlKey and (_dikCode == 0)) then 
 {
+	// Fast marker creation (Shift + LMB)
 	["fast",[]] call FUNC(sendMark);
 } else {
 	if (!_shift and !_ctrlKey and _alt and (_dikCode == 0)) then 
 	{
+		// Change marker direction (Alt + LMB)
 		{
 			_pos = getMarkerPos _x;
 			_pos = _ctrl ctrlMapWorldToScreen _pos;
@@ -37,6 +61,7 @@ if (_shift and !_alt and !_ctrlKey and (_dikCode == 0)) then
 		} forEach GVAR(allMarkers);
 	} else {
 		if (!_shift and _ctrlKey and _alt and (_dikCode == 0)) then {
+			// Start drawing a line marker (Ctrl + Alt + LMB)
 			GVAR(lineParamsWorld) = [(_display displayCtrl IDC_MAP) ctrlMapScreenToWorld _posClick,(_display displayCtrl IDC_MAP) ctrlMapScreenToWorld _posClick,0,5,0];
 			createMarkerLocal ["SWT_MARKERS LOCAL LINE", (_display displayCtrl IDC_MAP) ctrlMapScreenToWorld _posClick];
 			createMarkerLocal ["SWT_MARKERS LOCAL INFO", (_display displayCtrl IDC_MAP) ctrlMapScreenToWorld _posClick];
@@ -51,6 +76,7 @@ if (_shift and !_alt and !_ctrlKey and (_dikCode == 0)) then
 			"SWT_MARKERS LOCAL LINE" setMarkerSizeLocal [GVAR(lineParamsWorld) select 3,0];
 		} else {
 			if (_shift and !_ctrlKey and _alt and (_dikCode == 0)) then {
+				// Start drawing an ellipse marker (Shift + Alt + LMB)
 				GVAR(ellipseParamsWorld) = [(_display displayCtrl IDC_MAP) ctrlMapScreenToWorld _posClick,(_display displayCtrl IDC_MAP) ctrlMapScreenToWorld _posClick];
 				createMarkerLocal ["SWT_MARKERS LOCAL ELLIPSE", (_display displayCtrl IDC_MAP) ctrlMapScreenToWorld _posClick];
 				createMarkerLocal ["SWT_MARKERS LOCAL INFO", (_display displayCtrl IDC_MAP) ctrlMapScreenToWorld _posClick];
@@ -65,6 +91,7 @@ if (_shift and !_alt and !_ctrlKey and (_dikCode == 0)) then
 				"SWT_MARKERS LOCAL ELLIPSE" setMarkerSizeLocal [0,0];
 			} else {
 				if (_shift and _ctrlKey and !_alt and (_dikCode == 0)) then {
+					// Road marker creation (Shift + Ctrl + LMB)
 					_pos = (_display displayCtrl IDC_MAP) ctrlMapScreenToWorld _posClick;
 					_roads = _pos nearRoads 50;
 					_min = _roads select 0;
@@ -75,6 +102,7 @@ if (_shift and !_alt and !_ctrlKey and (_dikCode == 0)) then
 					["road", getPosATL _min] call FUNC(sendMark);
 				} else {
 					if (_dikCode == 0) then {
+						// Marker selection for editing (plain LMB)
 						_mapPosClick = _ctrl ctrlMapScreenToWorld _posClick;
 						private _markers = [GVAR(allMarkers), [_mapPosClick], {[_posClick, getMarkerPos _x] call BIS_fnc_distance2D}, "ASCEND"] call BIS_fnc_sortBy;
 						{
@@ -84,6 +112,7 @@ if (_shift and !_alt and !_ctrlKey and (_dikCode == 0)) then
 							private _pos = _ctrl ctrlMapWorldToScreen (getMarkerPos _x);
 							if (([_pos,_posClick] call BIS_fnc_distance2D) < 0.05) exitWith {
 									if (name player == (_param # 8)) then {
+										// Only allow editing if player is marker owner and side/channel rules allow
 										if (_param #1 isNotEqualTo "S" || (0 call FUNC(checkSideChannel))) then {
 											GVAR(markToChangePos) = _x;
 											GVAR(position) = getMarkerPos _x;

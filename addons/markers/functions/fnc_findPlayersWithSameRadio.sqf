@@ -1,4 +1,23 @@
 #include "../script_component.hpp"
+/*
+    Function: fnc_findPlayersWithSameRadio
+
+        Description:
+            Finds all players who share at least one radio frequency with the given player.
+
+        Arguments:
+            _player   <Object>  - The player to compare radio frequencies with.
+
+        Returns:
+            <Array> - Array of players with at least one matching radio frequency.
+
+        Variables:
+            _player         <Object>  - The player.
+            _result         <Array>   - Array of matching players.
+            _playerRadios   <Array>   - The player's radio frequencies.
+*/
+
+
 
 params ["_player"];
 

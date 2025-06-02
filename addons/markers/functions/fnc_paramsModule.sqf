@@ -1,4 +1,21 @@
 #include "../script_component.hpp"
+/*
+    Function: fnc_paramsModule
+
+        Description:
+            Loads and assigns module parameters to global variables for marker loading logic.
+
+        Arguments:
+            _module   <Object>  - The module object containing parameters.
+
+        Returns:
+            none
+
+        Variables:
+            _module             <Object>  - The module object.
+*/
+
+
 
 params ["_module"];
 

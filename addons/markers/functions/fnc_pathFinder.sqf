@@ -1,4 +1,24 @@
 #include "../script_component.hpp"
+/*
+    Function: fnc_pathFinder
+
+        Description:
+            Finds and visualizes a path between two positions using road network logic. Implements a pathfinding algorithm and creates markers for the path.
+
+        Arguments:
+            _first_pos   <Array>  - Starting position [x, y, z].
+            _second_pos  <Array>  - Ending position [x, y, z].
+
+        Returns:
+            none
+
+        Variables:
+            _createOne      <Code>   - Creates a marker for a given road/position.
+            _getParams      <Code>   - Retrieves pathfinding data from a logic object.
+            _findMin        <Code>   - Finds the open node with the lowest cost.
+            _pathTo         <Code>   - Traces back and visualizes the found path.
+            _deleteObjects  <Code>   - Deletes temporary logic objects.
+*/
 
 private _createOne = {
     params ["_marker", "_params"];
@@ -54,6 +74,7 @@ private _pathTo = {
 
     PARAM_INVALID(_curr_road,"OBJECT")
 
+    // Trace back from end node to start node, building the path
     _parent = (_curr_road call _getParams) select 0 select 3;
     _path = [];
     diag_log ((_curr_road call _getParams) select 0 select 1);
@@ -63,6 +84,7 @@ private _pathTo = {
         _parent = (_curr_road call _getParams) select 0 select 3;
     };
     reverse _path;
+    // Visualize the found path with markers
     {
         [str _forEachIndex,["", (getPosATL _x),15,3]] call _createOne;
     } forEach _path;
@@ -73,6 +95,7 @@ private _deleteObjects = {
 
     PARAM_INVALID(_objs,"ARRAY")    
 
+    // Clean up temporary logic objects
     {
         deleteVehicle _x;
     } forEach _objs;
@@ -97,23 +120,28 @@ params ["_first_pos", "_second_pos"];
     _black_roads = [];
     _open_roads = [_start_road];
     _count = 0;
+    // Main pathfinding loop: search for path using open/closed lists
     while {count _open_roads > 0} do {
         private ["_curr_road", "_curr_params"];
 
+        // Select node with lowest cost (A* open set)
         _curr_road = [_open_roads] call _findMin;
         _count = _count + 1;
+        // Visualize search progress with markers
         [str _count,["", (getPosATL _curr_road),15,10]] call _createOne;
         _black_roads pushBack _curr_road;
         if (_curr_road isEqualTo _end_road) exitWith {
             _done = true;
+            // Path found, visualize it
             _curr_road call _pathTo;
         };
 
-
+        // Get connected roads, excluding already visited
         _roads = (roadsConnectedTo _curr_road) - _black_roads;
 
         _curr_params = (_curr_road call _getParams) select 0;
 
+        // For each neighbor, update costs and parent if better path found
         {
             private ["_g", "_h"];
 
